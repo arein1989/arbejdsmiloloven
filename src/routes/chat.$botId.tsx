@@ -1,4 +1,5 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import { isBotId } from "@/lib/bots";
 import { createThread } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
@@ -14,17 +15,25 @@ export const Route = createFileRoute("/chat/$botId")({
 
 function BotEntry() {
   const { botId } = Route.useParams();
-  // Create a new thread on first render, then navigate to it
-  if (typeof window !== "undefined" && isBotId(botId)) {
+  const navigate = useNavigate();
+  const ran = useRef(false);
+
+  useEffect(() => {
+    if (ran.current) return;
+    ran.current = true;
+    if (!isBotId(botId)) return;
     const sessionId = getSessionId();
     createThread({ data: { sessionId, botId } })
       .then((row) => {
-        window.location.replace(`/chat/${botId}/${row.id}`);
+        navigate({
+          to: "/chat/$botId/$threadId",
+          params: { botId, threadId: row.id },
+          replace: true,
+        });
       })
-      .catch((e) => {
-        console.error(e);
-      });
-  }
+      .catch(console.error);
+  }, [botId, navigate]);
+
   return (
     <div className="grid min-h-screen place-items-center bg-background text-muted-foreground">
       Starter samtale…
