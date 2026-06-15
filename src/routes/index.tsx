@@ -1,29 +1,109 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/SiteHeader";
+import { BOT_LIST } from "@/lib/bots";
+import heroImg from "@/assets/conference-hero.jpg";
+import { ArrowRight, ScrollText, Scale, Search, FileCheck2 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "arbejdsmiljøhjælp.dk – AI-assistenter til arbejdsmiljø" },
+      {
+        name: "description",
+        content:
+          "Få hurtig hjælp til arbejdsmiljøproblemer, lovgivning, viden og handlingsplaner med 4 specialiserede AI-assistenter.",
+      },
+      { property: "og:title", content: "arbejdsmiljøhjælp.dk" },
+      {
+        property: "og:description",
+        content:
+          "4 AI-assistenter til arbejdsmiljø: problemløsning, juridisk opslag, vidensøgning og handlingsplaner.",
+      },
     ],
   }),
-  component: Index,
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+const icons = {
+  problem: ScrollText,
+  regler: Scale,
+  viden: Search,
+  plan: FileCheck2,
+} as const;
+
+function Home() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <SiteHeader />
+
+      {/* Hero */}
+      <section className="border-b border-border/60 bg-surface">
+        <div className="mx-auto max-w-6xl px-4 pb-10 pt-8 sm:px-6">
+          <div className="overflow-hidden rounded-2xl">
+            <img
+              src={heroImg}
+              alt="Konference om arbejdsmiljø"
+              className="h-56 w-full object-cover sm:h-72"
+            />
+          </div>
+          <div className="mt-8 max-w-3xl">
+            <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+              Velkommen til arbejdsmiljøhjælp.dk
+            </h1>
+            <p className="mt-3 text-base text-muted-foreground sm:text-lg">
+              Arbejdsmiljøhjælp.dk har 4 AI-assistenter på samme tjeneste. Få svar på et
+              konkret arbejdsmiljøproblem, find den rigtige paragraf, søg viden på AT, NFA
+              og BFA-WEB, eller udarbejd en struktureret handlingsplan – på få sekunder.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Bot grid */}
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <div className="mb-6 flex items-end justify-between">
+          <h2 className="font-display text-2xl font-semibold">Vælg en assistent</h2>
+          <span className="text-xs text-muted-foreground">Samtaler gemmes i 1 time</span>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          {BOT_LIST.map((b) => {
+            const Icon = icons[b.id];
+            return (
+              <Link
+                key={b.id}
+                to="/chat/$botId"
+                params={{ botId: b.id }}
+                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
+              >
+                <div className="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-primary/5 transition-all group-hover:scale-150" />
+                <div className="relative flex items-start gap-4">
+                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground">
+                    <Icon size={22} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-xs font-medium uppercase tracking-wider text-primary/80">
+                      Bot {b.number}
+                    </div>
+                    <h3 className="mt-1 font-display text-xl font-semibold text-foreground">
+                      {b.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-muted-foreground">{b.description}</p>
+                    <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                      Start samtale <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      <footer className="border-t border-border/60 bg-surface">
+        <div className="mx-auto max-w-6xl px-4 py-6 text-sm text-muted-foreground sm:px-6">
+          arbejdsmiljøhjælp.dk · AI-assistance er vejledende – tjek altid kilden.
+        </div>
+      </footer>
     </div>
   );
 }
