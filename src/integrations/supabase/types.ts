@@ -14,13 +14,71 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          role: string
+          thread_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          role: string
+          thread_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          role?: string
+          thread_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messages_thread_id_fkey"
+            columns: ["thread_id"]
+            isOneToOne: false
+            referencedRelation: "threads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      threads: {
+        Row: {
+          bot_id: string
+          created_at: string
+          expires_at: string
+          id: string
+          session_id: string
+          title: string
+        }
+        Insert: {
+          bot_id: string
+          created_at?: string
+          expires_at?: string
+          id?: string
+          session_id: string
+          title?: string
+        }
+        Update: {
+          bot_id?: string
+          created_at?: string
+          expires_at?: string
+          id?: string
+          session_id?: string
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      cleanup_expired_threads: { Args: never; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
