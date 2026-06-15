@@ -1,0 +1,1 @@
+REVOKE EXECUTE ON FUNCTION public.cleanup_expired_threads() FROM PUBLIC, anon, authenticated;

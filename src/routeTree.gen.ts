@@ -10,33 +10,81 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChatBotIdRouteImport } from './routes/chat.$botId'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ChatBotIdIndexRouteImport } from './routes/chat.$botId.index'
+import { Route as ChatBotIdThreadIdRouteImport } from './routes/chat.$botId.$threadId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChatBotIdRoute = ChatBotIdRouteImport.update({
+  id: '/chat/$botId',
+  path: '/chat/$botId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatBotIdIndexRoute = ChatBotIdIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ChatBotIdRoute,
+} as any)
+const ChatBotIdThreadIdRoute = ChatBotIdThreadIdRouteImport.update({
+  id: '/$threadId',
+  path: '/$threadId',
+  getParentRoute: () => ChatBotIdRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/chat': typeof ApiChatRoute
+  '/chat/$botId': typeof ChatBotIdRouteWithChildren
+  '/chat/$botId/$threadId': typeof ChatBotIdThreadIdRoute
+  '/chat/$botId/': typeof ChatBotIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/chat': typeof ApiChatRoute
+  '/chat/$botId/$threadId': typeof ChatBotIdThreadIdRoute
+  '/chat/$botId': typeof ChatBotIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/chat': typeof ApiChatRoute
+  '/chat/$botId': typeof ChatBotIdRouteWithChildren
+  '/chat/$botId/$threadId': typeof ChatBotIdThreadIdRoute
+  '/chat/$botId/': typeof ChatBotIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/api/chat'
+    | '/chat/$botId'
+    | '/chat/$botId/$threadId'
+    | '/chat/$botId/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/api/chat' | '/chat/$botId/$threadId' | '/chat/$botId'
+  id:
+    | '__root__'
+    | '/'
+    | '/api/chat'
+    | '/chat/$botId'
+    | '/chat/$botId/$threadId'
+    | '/chat/$botId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiChatRoute: typeof ApiChatRoute
+  ChatBotIdRoute: typeof ChatBotIdRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +96,56 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chat/$botId': {
+      id: '/chat/$botId'
+      path: '/chat/$botId'
+      fullPath: '/chat/$botId'
+      preLoaderRoute: typeof ChatBotIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chat/$botId/': {
+      id: '/chat/$botId/'
+      path: '/'
+      fullPath: '/chat/$botId/'
+      preLoaderRoute: typeof ChatBotIdIndexRouteImport
+      parentRoute: typeof ChatBotIdRoute
+    }
+    '/chat/$botId/$threadId': {
+      id: '/chat/$botId/$threadId'
+      path: '/$threadId'
+      fullPath: '/chat/$botId/$threadId'
+      preLoaderRoute: typeof ChatBotIdThreadIdRouteImport
+      parentRoute: typeof ChatBotIdRoute
+    }
   }
 }
 
+interface ChatBotIdRouteChildren {
+  ChatBotIdThreadIdRoute: typeof ChatBotIdThreadIdRoute
+  ChatBotIdIndexRoute: typeof ChatBotIdIndexRoute
+}
+
+const ChatBotIdRouteChildren: ChatBotIdRouteChildren = {
+  ChatBotIdThreadIdRoute: ChatBotIdThreadIdRoute,
+  ChatBotIdIndexRoute: ChatBotIdIndexRoute,
+}
+
+const ChatBotIdRouteWithChildren = ChatBotIdRoute._addFileChildren(
+  ChatBotIdRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiChatRoute: ApiChatRoute,
+  ChatBotIdRoute: ChatBotIdRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
