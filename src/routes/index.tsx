@@ -100,11 +100,7 @@ function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-border/60 bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-6 text-sm text-muted-foreground sm:px-6">
-          arbejdsmiljøhjælp.dk · AI-assistance er vejledende – tjek altid kilden.
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
