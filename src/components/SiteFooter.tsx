@@ -50,7 +50,6 @@ export function SiteFooter() {
             className="inline-flex items-center gap-2 text-white transition-opacity hover:opacity-80"
           >
             <Linkedin size={28} fill="currentColor" strokeWidth={0} />
-            <span className="text-lg font-bold">Linked<span className="rounded-sm bg-white px-1 text-[#0C6B3B]">in</span></span>
           </a>
         </div>
       </div>
