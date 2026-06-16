@@ -1,40 +1,68 @@
-import { Link, useLocation } from "@tanstack/react-router";
-import { BOT_LIST } from "@/lib/bots";
+import { Link } from "@tanstack/react-router";
+import logoAsset from "@/assets/arbejdsmiljoloven-logo.png.asset.json";
+
+const NAV_LINKS: { label: string; botId: "problem" | "regler" | "viden" }[] = [
+  { label: "Arbejdsmiljøloven", botId: "problem" },
+  { label: "Regler", botId: "regler" },
+  { label: "Viden om arbejdsmiljø", botId: "viden" },
+];
 
 export function SiteHeader() {
-  const { pathname } = useLocation();
   return (
-    <header className="sticky top-0 z-30 border-b border-border/60 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
-      <div className="mx-auto flex h-14 max-w-6xl items-center gap-6 px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2 font-display text-lg font-semibold text-primary">
-          <span className="grid h-8 w-8 place-items-center rounded-md bg-primary text-primary-foreground">A</span>
-          arbejdsmiljøhjælp.dk
+    <header
+      className="sticky top-0 z-30 w-full"
+      style={{ backgroundColor: "#0C6B3B", color: "#ffffff" }}
+    >
+      <div className="mx-auto flex h-20 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+        <Link to="/" className="flex shrink-0 items-center">
+          <img
+            src={logoAsset.url}
+            alt="Arbejdsmiljøloven Adweyse"
+            className="h-14 w-auto"
+          />
         </Link>
-        <nav className="hidden flex-1 items-center gap-1 md:flex">
-          {BOT_LIST.map((b) => {
-            const active = pathname.startsWith(`/chat/${b.id}`);
-            return (
-              <Link
-                key={b.id}
-                to="/chat/$botId"
-                params={{ botId: b.id }}
-                className={`rounded-md px-3 py-1.5 text-sm transition-colors ${
-                  active
-                    ? "bg-primary/10 text-primary"
-                    : "text-foreground/80 hover:bg-muted hover:text-foreground"
-                }`}
-              >
-                {b.short}
-              </Link>
-            );
-          })}
+
+        <nav className="hidden flex-1 items-center justify-center gap-8 md:flex">
+          {NAV_LINKS.map((l) => (
+            <Link
+              key={l.botId}
+              to="/chat/$botId"
+              params={{ botId: l.botId }}
+              className="font-display text-lg font-semibold text-white transition-opacity hover:opacity-80"
+            >
+              {l.label}
+            </Link>
+          ))}
         </nav>
-        <Link
-          to="/"
-          className="ml-auto text-xs text-muted-foreground hover:text-foreground md:ml-0"
-        >
-          Forside
-        </Link>
+
+        <div className="ml-auto flex items-center gap-3">
+          <Link
+            to="/chat/$botId"
+            params={{ botId: "plan" }}
+            className="inline-flex items-center justify-center px-5 py-2 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
+            style={{
+              border: "1px solid #F78D0B",
+              borderRadius: "16px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.25)",
+              backgroundColor: "transparent",
+            }}
+          >
+            Handlingsplan
+          </Link>
+          <a
+            href="https://adweyse.dk/kurser/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-5 py-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+            style={{
+              backgroundColor: "#F78D0B",
+              borderRadius: "16px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.25)",
+            }}
+          >
+            Kurser hos Adweyse
+          </a>
+        </div>
       </div>
     </header>
   );
