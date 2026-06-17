@@ -1,4 +1,4 @@
-import { Linkedin } from "lucide-react";
+import linkedinAsset from "@/assets/linkedin-logo.png.asset.json";
 import logoAsset from "@/assets/adweyse-logo.png.asset.json";
 
 const LINKS = [
@@ -47,9 +47,13 @@ export function SiteFooter() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="inline-flex items-center gap-2 text-white transition-opacity hover:opacity-80"
+            className="transition-opacity hover:opacity-80"
           >
-            <Linkedin size={28} fill="currentColor" strokeWidth={0} />
+            <img
+              src={linkedinAsset.url}
+              alt="LinkedIn"
+              className="h-8 w-auto sm:h-10"
+            />
           </a>
         </div>
       </div>
