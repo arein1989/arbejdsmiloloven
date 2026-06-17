@@ -15,7 +15,7 @@ export function SiteFooter() {
     >
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-10 px-6 py-10 md:grid-cols-3 md:items-center md:gap-6 md:py-12">
         {/* Column 1: links */}
-        <div className="flex min-w-0 flex-col items-center gap-3 lg:items-start">
+        <div className="flex min-w-0 flex-col items-center gap-3 md:items-start">
           {LINKS.map((href) => (
             <a
               key={href}
@@ -34,12 +34,12 @@ export function SiteFooter() {
           <img
             src={logoAsset.url}
             alt="AdWeyse"
-            className="h-20 w-auto sm:h-24 lg:h-28"
+            className="h-20 w-auto sm:h-24 md:h-28"
           />
         </div>
 
         {/* Column 3: LinkedIn */}
-        <div className="flex min-w-0 flex-col items-center gap-3 lg:items-end">
+        <div className="flex min-w-0 flex-col items-center gap-3 md:items-end">
           <span className="text-sm font-semibold sm:text-base">Følge os på</span>
           <a
             href="https://www.linkedin.com/"
