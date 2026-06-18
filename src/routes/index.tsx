@@ -51,8 +51,10 @@ function Home() {
             <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Velkommen til Arbejdsmiljøloven.dk!
             </h1>
-            <p className="mt-3 text-base text-muted-foreground sm:text-lg">
+            <h3 className="mt-3 text-base font-semibold text-black sm:text-lg">
               Arbejdsmiljøloven.dk har – 4 AI assistenter på samme hjemmeside
+            </h3>
+            <p className="mt-[2px] text-base text-muted-foreground sm:text-lg">
               AdWeyse har udviklet Arbejdsmiljøloven.dk, for at samle alt tilgængeligt offentligt udgivet arbejdsmiljømateriale på et sted og for at gøre det nemt at finde frem til det der kan hjælpe jer i jeres arbejdsmiljøarbejde.
               Brug de 4 forskellige AI-assistenter, en på hver side, der har 4 forskellige formål, og få svar på specifikke arbejdsmiljøspørgsmål eller få fat i det materiale som I har brug for i jeres videre arbejde.
             </p>
