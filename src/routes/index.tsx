@@ -39,14 +39,14 @@ function Home() {
 
       {/* Hero */}
       <section className="border-b border-border/60 bg-surface">
+        <div className="w-full">
+          <img
+            src={heroAsset.url}
+            alt="Konference om arbejdsmiljø"
+            className="h-56 w-full object-cover sm:h-72 md:h-96"
+          />
+        </div>
         <div className="mx-auto max-w-6xl px-4 pb-10 pt-8 sm:px-6">
-          <div className="overflow-hidden rounded-2xl">
-            <img
-              src={heroImg}
-              alt="Konference om arbejdsmiljø"
-              className="h-56 w-full object-cover sm:h-72"
-            />
-          </div>
           <div className="mt-8 max-w-3xl">
             <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               Velkommen til arbejdsmiljøhjælp.dk
