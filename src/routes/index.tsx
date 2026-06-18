@@ -3,7 +3,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { BOT_LIST } from "@/lib/bots";
 import heroAsset from "@/assets/hero-forside.jpg.asset.json";
-import { ArrowRight, ScrollText, Scale, Search, FileCheck2 } from "lucide-react";
+import robotMascot from "@/assets/robot-mascot.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,12 +25,12 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const icons = {
-  problem: ScrollText,
-  regler: Scale,
-  viden: Search,
-  plan: FileCheck2,
-} as const;
+const cardData: Record<string, { label: string; title: string; description: string; gradient: string }> = {
+  problem: { label: "Siden 1", title: "Arbejdsmiljoloven", description: "Få svar på et specifikt arbejdsmiljøproblem", gradient: "linear-gradient(180deg, #00A86B 0%, #007A4F 100%)" },
+  regler: { label: "Siden 2", title: "Regelfinder", description: "Find en specifik bekendtgørelse eller AT-vejledning", gradient: "linear-gradient(180deg, #04C27E 0%, #8CC63E 100%)" },
+  viden: { label: "Siden 3", title: "Viden om Arbejdsmiljø", description: "Søg viden på AT.dk, NFA.dk. BFA-WEB.dk", gradient: "linear-gradient(180deg, #007A4F 0%, #F78D0B 100%)" },
+  plan: { label: "Siden 4", title: "Handlingsplan", description: "Opret et dokument, sæt det ind og få lavet en plan for jeres arbejdsmiljøudfordring inden for lovens rammer.", gradient: "linear-gradient(180deg, #58D500 0%, #007A4F 100%)" },
+};
 
 function Home() {
   return (
