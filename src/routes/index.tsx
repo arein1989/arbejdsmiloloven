@@ -49,12 +49,12 @@ function Home() {
         <div className="mx-auto max-w-6xl px-4 pb-10 pt-8 sm:px-6">
           <div className="mt-8 max-w-3xl">
             <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Velkommen til arbejdsmiljøhjælp.dk
+              Velkommen til Arbejdsmiljøloven.dk!
             </h1>
             <p className="mt-3 text-base text-muted-foreground sm:text-lg">
-              Arbejdsmiljøhjælp.dk har 4 AI-assistenter på samme tjeneste. Få svar på et
-              konkret arbejdsmiljøproblem, find den rigtige paragraf, søg viden på AT, NFA
-              og BFA-WEB, eller udarbejd en struktureret handlingsplan – på få sekunder.
+              Arbejdsmiljøloven.dk har – 4 AI assistenter på samme hjemmeside
+              AdWeyse har udviklet Arbejdsmiljøloven.dk, for at samle alt tilgængeligt offentligt udgivet arbejdsmiljømateriale på et sted og for at gøre det nemt at finde frem til det der kan hjælpe jer i jeres arbejdsmiljøarbejde.
+              Brug de 4 forskellige AI-assistenter, en på hver side, der har 4 forskellige formål, og få svar på specifikke arbejdsmiljøspørgsmål eller få fat i det materiale som I har brug for i jeres videre arbejde.
             </p>
           </div>
         </div>
