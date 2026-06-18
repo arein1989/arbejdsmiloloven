@@ -68,34 +68,28 @@ function Home() {
           <h2 className="font-display text-2xl font-semibold">Vælg en assistent</h2>
           <span className="text-xs text-muted-foreground">Samtaler gemmes i 1 time</span>
         </div>
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {BOT_LIST.map((b) => {
-            const Icon = icons[b.id];
+            const data = cardData[b.id];
             return (
               <Link
                 key={b.id}
                 to="/chat/$botId"
                 params={{ botId: b.id }}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
+                className="group flex flex-col items-center rounded-2xl p-6 text-center text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                style={{ background: data.gradient }}
               >
-                <div className="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-primary/5 transition-all group-hover:scale-150" />
-                <div className="relative flex items-start gap-4">
-                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground">
-                    <Icon size={22} />
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-xs font-medium uppercase tracking-wider text-primary/80">
-                      Bot {b.number}
-                    </div>
-                    <h3 className="mt-1 font-display text-xl font-semibold text-foreground">
-                      {b.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{b.description}</p>
-                    <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-                      Start samtale <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src={robotMascot}
+                  alt="Robot"
+                  width={64}
+                  height={64}
+                  className="mb-3 h-16 w-16 object-contain"
+                  loading="lazy"
+                />
+                <div className="text-sm font-medium">{data.label}</div>
+                <h3 className="mt-1 text-xl font-semibold">{data.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed opacity-90">{data.description}</p>
               </Link>
             );
           })}
