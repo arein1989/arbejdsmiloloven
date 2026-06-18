@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { BOT_LIST } from "@/lib/bots";
-import heroImg from "@/assets/conference-hero.jpg";
+import heroAsset from "@/assets/hero-forside.jpg.asset.json";
 import { ArrowRight, ScrollText, Scale, Search, FileCheck2 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
