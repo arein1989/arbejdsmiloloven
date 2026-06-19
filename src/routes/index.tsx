@@ -3,7 +3,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { BOT_LIST } from "@/lib/bots";
 import heroAsset from "@/assets/hero-forside.jpg.asset.json";
-import robotMascot from "@/assets/robot-mascot.png";
+import robotMascot from "@/assets/chatbot.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,11 +34,11 @@ const cardData: Record<string, { label: string; title: string; description: stri
 
 function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <SiteHeader />
 
       {/* Hero */}
-      <section className="border-b border-border/60 bg-surface">
+      <section className="bg-white">
         <div className="w-full">
           <img
             src={heroAsset.url}
@@ -64,10 +64,6 @@ function Home() {
 
       {/* Bot grid */}
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <div className="mb-6 flex items-end justify-between">
-          <h2 className="font-display text-2xl font-semibold">Vælg en assistent</h2>
-          <span className="text-xs text-muted-foreground">Samtaler gemmes i 1 time</span>
-        </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {BOT_LIST.map((b) => {
             const data = cardData[b.id];
@@ -80,7 +76,7 @@ function Home() {
                 style={{ background: data.gradient }}
               >
                 <img
-                  src={robotMascot}
+                  src={robotMascot.url}
                   alt="Robot"
                   width={64}
                   height={64}
