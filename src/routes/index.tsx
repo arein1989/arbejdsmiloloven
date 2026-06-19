@@ -34,11 +34,11 @@ const cardData: Record<string, { label: string; title: string; description: stri
 
 function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <SiteHeader />
 
       {/* Hero */}
-      <section className="border-b border-border/60 bg-surface">
+      <section className="bg-white">
         <div className="w-full">
           <img
             src={heroAsset.url}
