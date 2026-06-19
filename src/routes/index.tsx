@@ -92,6 +92,18 @@ function Home() {
         </div>
       </section>
 
+      {/* Description after bots */}
+      <section className="mx-auto max-w-6xl px-4 pb-10 pt-8 sm:px-6">
+        <div className="max-w-3xl">
+          <p className="text-base text-muted-foreground sm:text-lg">
+            Arbejdsmiljøloven.dk er lavet til dig, der har brug for konkret viden indenfor arbejdsmiljølovgivningen, eller har brug for, at finde en specifik bekendtgørelse, AT-vejledning, eller materiale udgivet af Arbejdstilsynet, NFA eller BFA'erne.
+          </p>
+          <p className="mt-3 text-base text-muted-foreground sm:text-lg">
+            Som noget særligt, kan vi også hjælpe med, at finde løsninger på jeres arbejdsmiljøudfordringer.
+          </p>
+        </div>
+      </section>
+
       <SiteFooter />
     </div>
   );
