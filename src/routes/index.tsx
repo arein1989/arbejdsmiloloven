@@ -3,7 +3,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { BOT_LIST } from "@/lib/bots";
 import heroAsset from "@/assets/hero-forside.jpg.asset.json";
-import robotMascot from "@/assets/robot-mascot.png";
+import robotMascot from "@/assets/chatbot.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
