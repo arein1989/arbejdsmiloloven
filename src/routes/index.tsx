@@ -104,6 +104,40 @@ function Home() {
         </div>
       </section>
 
+      {/* Info box */}
+      <section className="mx-auto max-w-6xl px-4 pb-10 sm:px-6">
+        <div
+          className="max-w-3xl rounded-2xl bg-white p-6 sm:p-8"
+          style={{ boxShadow: "0 4px 24px rgba(0, 0, 0, 0.35)" }}
+        >
+          <p className="text-base text-foreground sm:text-lg">
+            Arbejdsmiljøloven.dk er skabt til at løfte arbejdsmiljøarbejdet til nye højder.
+          </p>
+          <p className="mt-3 text-base text-foreground sm:text-lg">
+            Mangler du{" "}
+            <a
+              href="https://www.arbejdsmiljøuddannelse.dk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold hover:underline"
+              style={{ color: "#0C6B3B" }}
+            >
+              "Den Lovpligtige Arbejdsmiljøuddannelse"
+            </a>
+            ? Så find en tæt på dig på{" "}
+            <a
+              href="https://www.arbejdsmiljøuddannelse.dk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold hover:underline"
+              style={{ color: "#0C6B3B" }}
+            >
+              www.arbejdsmiljøuddannelse.dk
+            </a>
+          </p>
+        </div>
+      </section>
+
       <SiteFooter />
     </div>
   );
