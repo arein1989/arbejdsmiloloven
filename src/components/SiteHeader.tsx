@@ -58,7 +58,7 @@ export function SiteHeader() {
             href="https://adweyse.dk/kurser/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-5 py-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center px-5 py-2 text-sm font-semibold text-black transition-transform hover:-translate-y-0.5"
             style={{
               backgroundColor: "#F78D0B",
               borderRadius: "16px",
@@ -116,7 +116,7 @@ export function SiteHeader() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={close}
-                className="inline-flex flex-1 items-center justify-center px-5 py-3 text-sm font-semibold text-white"
+                className="inline-flex flex-1 items-center justify-center px-5 py-3 text-sm font-semibold text-black"
                 style={{
                   backgroundColor: "#F78D0B",
                   borderRadius: "16px",
