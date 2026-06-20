@@ -5,7 +5,7 @@ import { createThread } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import heroAsset from "@/assets/hero-forside.jpg.asset.json";
+import videnHeroAsset from "@/assets/arbejdsmiljøloven.jpg.asset.json";
 import chatbotAsset from "@/assets/chatbot.png.asset.json";
 
 export const Route = createFileRoute("/chat/$botId/")({
@@ -52,8 +52,8 @@ function BotEntry() {
         <section className="bg-white">
           <div className="w-full">
             <img
-              src={heroAsset.url}
-              alt="Konference om arbejdsmiljø"
+              src={videnHeroAsset.url}
+              alt="Workshop om arbejdsmiljø"
               className="h-56 w-full object-cover sm:h-72 md:h-96"
             />
           </div>
