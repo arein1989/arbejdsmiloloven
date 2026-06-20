@@ -71,7 +71,7 @@ function BotEntry() {
               <img
                 src={chatbotAsset.url}
                 alt="AI assistent"
-                className="h-16 w-16 shrink-0 object-contain sm:h-20 sm:w-20"
+                className="h-20 w-20 shrink-0 object-contain sm:h-24 sm:w-24"
               />
               <p className="text-sm leading-relaxed text-white sm:text-base">
                 Hej og velkommen til AI assistenten "Viden om Arbejdsmiljø" Jeg er en digital assistent der hjælper dig med at finde brugbart materiale på de tre officielle hjemmesider, for Arbejdstilsynet,{" "}
