@@ -5,7 +5,7 @@ import { createThread } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import heroAsset from "@/assets/hero-forside.jpg.asset.json";
+import videnHeroAsset from "@/assets/arbejdsmiljøloven.jpg.asset.json";
 import chatbotAsset from "@/assets/chatbot.png.asset.json";
 
 export const Route = createFileRoute("/chat/$botId/")({
