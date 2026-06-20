@@ -52,8 +52,8 @@ function BotEntry() {
         <section className="bg-white">
           <div className="w-full">
             <img
-              src={heroAsset.url}
-              alt="Konference om arbejdsmiljø"
+              src={videnHeroAsset.url}
+              alt="Workshop om arbejdsmiljø"
               className="h-56 w-full object-cover sm:h-72 md:h-96"
             />
           </div>
