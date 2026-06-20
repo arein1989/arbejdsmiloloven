@@ -78,9 +78,9 @@ function Home() {
                 <img
                   src={robotMascot.url}
                   alt="Robot"
-                  width={64}
-                  height={64}
-                  className="mb-3 h-16 w-16 object-contain"
+                  width={80}
+                  height={80}
+                  className="mb-3 h-20 w-20 object-contain"
                   loading="lazy"
                 />
                 <div className="text-sm font-medium">{data.label}</div>
