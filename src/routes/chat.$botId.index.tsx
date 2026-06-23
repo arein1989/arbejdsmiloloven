@@ -120,12 +120,12 @@ function BotEntry() {
               <img src={atLogoAsset.url} alt="Arbejdstilsynet" className="max-h-full max-w-full object-contain" />
             </div>
             <div className="flex-1 text-sm leading-relaxed sm:text-base">
-              <h3 className="mb-1 text-lg font-semibold">Arbejdstilsynet</h3>
+              <h3 className="mb-1 text-xl font-semibold">Arbejdstilsynet</h3>
               <p>
                 Arbejdstilsynet er den danske myndighed, der kontrollerer og vejleder virksomheder om arbejdsmiljø for at sørge for, at vi har sikre og sunde arbejdspladser i hele Danmark. Deres hjemmeside opdateres sig løbende og præsenterer den nyeste viden inden for arbejdsmiljø. Se f.eks. på et tema og se hvordan Arbejdstilsynet forholder sig til det område.
               </p>
-              <p className="mt-2">
-                <span className="font-semibold">Link</span>{" "}
+              <div className="mt-2">
+                <h3 className="inline text-base font-semibold">Link</h3>{" "}
                 <a
                   href="https://at.dk/"
                   target="_blank"
@@ -135,7 +135,7 @@ function BotEntry() {
                 >
                   https://at.dk/
                 </a>
-              </p>
+              </div>
             </div>
           </div>
 
@@ -152,12 +152,12 @@ function BotEntry() {
               <img src={nfaLogoAsset.url} alt="NFA" className="max-h-full max-w-full object-contain" />
             </div>
             <div className="flex-1 text-sm leading-relaxed sm:text-base">
-              <h3 className="mb-1 text-lg font-semibold">NFA</h3>
+              <h3 className="mb-1 text-xl font-semibold">NFA</h3>
               <p>
                 NFA er en uafhængig sektorforskningsinstitution under Beskæftigelsesministeriet (BM) og den største forskningsinstitution på arbejdsmiljøområdet i Danmark.
               </p>
-              <p className="mt-2">
-                <span className="font-semibold">Link</span>{" "}
+              <div className="mt-2">
+                <h3 className="inline text-base font-semibold">Link</h3>{" "}
                 <a
                   href="https://nfa.dk/"
                   target="_blank"
@@ -167,7 +167,7 @@ function BotEntry() {
                 >
                   https://nfa.dk/
                 </a>
-              </p>
+              </div>
             </div>
           </div>
         </section>
