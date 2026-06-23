@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Link2 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ComponentProps } from "react";
 import { isBotId } from "@/lib/bots";
 import { createThread } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
