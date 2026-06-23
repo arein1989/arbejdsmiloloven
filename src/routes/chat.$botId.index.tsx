@@ -122,7 +122,7 @@ function BotEntry() {
               <img src={atLogoAsset.url} alt="Arbejdstilsynet" className="max-h-full max-w-full object-contain" />
             </div>
             <div className="flex-1 text-sm leading-relaxed sm:text-base">
-              <h4 className="mb-1 text-xl font-semibold">Arbejdstilsynet</h4>
+              <h4 className="mb-1 text-lg font-semibold">Arbejdstilsynet</h4>
               <p>
                 Arbejdstilsynet er den danske myndighed, der kontrollerer og vejleder virksomheder om arbejdsmiljø for at sørge for, at vi har sikre og sunde arbejdspladser i hele Danmark. Deres hjemmeside opdateres sig løbende og præsenterer den nyeste viden inden for arbejdsmiljø. Se f.eks. på et tema og se hvordan Arbejdstilsynet forholder sig til det område.
               </p>
@@ -154,7 +154,7 @@ function BotEntry() {
               <img src={nfaLogoAsset.url} alt="NFA" className="max-h-full max-w-full object-contain" />
             </div>
             <div className="flex-1 text-sm leading-relaxed sm:text-base">
-              <h4 className="mb-1 text-xl font-semibold">NFA</h4>
+              <h4 className="mb-1 text-lg font-semibold">NFA</h4>
               <p>
                 NFA er en uafhængig sektorforskningsinstitution under Beskæftigelsesministeriet (BM) og den største forskningsinstitution på arbejdsmiljøområdet i Danmark.
               </p>
