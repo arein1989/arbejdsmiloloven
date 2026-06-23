@@ -219,14 +219,10 @@ function BotEntry() {
               }}
             >
               <div className="flex items-start gap-4 p-5 sm:gap-6 sm:p-6">
-                <div
-                  className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg sm:h-20 sm:w-20"
-                  style={{ backgroundColor: "#ffffff" }}
-                >
-                  <span className="text-base font-bold sm:text-lg" style={{ color: "#0C6B3B" }}>
-                    BFA
-                  </span>
-                </div>
+                <BfaLogo
+                  name={item.title as React.ComponentProps<typeof BfaLogo>["name"]}
+                  className="h-16 w-16 shrink-0 sm:h-20 sm:w-20"
+                />
                 <div className="flex-1">
                   <h4 className="text-base font-semibold sm:text-lg">{item.title}</h4>
                   <div className="mt-2 text-sm leading-relaxed sm:text-base">
