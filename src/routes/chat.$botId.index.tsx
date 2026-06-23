@@ -220,7 +220,7 @@ function BotEntry() {
             >
               <div className="flex items-start gap-4 p-5 sm:gap-6 sm:p-6">
                 <BfaLogo
-                  name={item.title as React.ComponentProps<typeof BfaLogo>["name"]}
+                  name={item.title as ComponentProps<typeof BfaLogo>["name"]}
                   className="h-16 w-16 shrink-0 sm:h-20 sm:w-20"
                 />
                 <div className="flex-1">
