@@ -103,8 +103,18 @@ function BotEntry() {
           </div>
         </section>
 
-        {/* Info boxes */}
         <section className="mx-auto max-w-4xl space-y-6 px-4 pb-10 sm:px-6">
+          <h2 className="text-2xl font-semibold" style={{ color: "#000000" }}>
+            Branchefællesskaberne for Arbejdsmiljø (BFA)
+          </h2>
+          <p className="text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+            BrancheFællesskaberne for Arbejdsmiljø understøtter arbejdsmiljøarbejdet på arbejdspladserne med information og vejledning om arbejdsmiljø ved blandt andet at lave vejledninger, konferencer og uddannelse.
+            De fem BrancheFællesskaber for Arbejdsmiljø (BFA) består af repræsentanter for arbejdsmarkedets parter.
+            Undersøg hvilke(n) BFA, som dækker din branche eller på din arbejdsplads.
+          </p>
+        </section>
+
+        <SiteFooter />
           <div
             className="flex items-start gap-4 p-5 sm:gap-6 sm:p-6"
             style={{
