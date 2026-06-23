@@ -108,7 +108,7 @@ function BotEntry() {
         {/* Info boxes */}
         <section className="mx-auto max-w-4xl space-y-6 px-4 pb-10 sm:px-6">
           <div
-            className="flex items-start gap-4 p-5 sm:gap-6 sm:p-6"
+            className="flex min-h-[180px] items-start gap-4 p-5 sm:gap-6 sm:p-6"
             style={{
               borderRadius: "16px",
               background: "#0C6B3B",
@@ -116,10 +116,10 @@ function BotEntry() {
               boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
             }}
           >
-            <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg bg-white sm:h-24 sm:w-24">
-              <span className="text-xl font-bold text-[#0C6B3B] sm:text-2xl">AT</span>
+            <div className="flex h-24 w-32 shrink-0 items-center justify-center rounded-lg bg-white p-2 sm:h-28 sm:w-36">
+              <img src={atLogoAsset.url} alt="Arbejdstilsynet" className="max-h-full max-w-full object-contain" />
             </div>
-            <div className="text-sm leading-relaxed sm:text-base">
+            <div className="flex-1 text-sm leading-relaxed sm:text-base">
               <h3 className="mb-1 text-lg font-semibold">Arbejdstilsynet</h3>
               <p>
                 Arbejdstilsynet er den danske myndighed, der kontrollerer og vejleder virksomheder om arbejdsmiljø for at sørge for, at vi har sikre og sunde arbejdspladser i hele Danmark. Deres hjemmeside opdateres sig løbende og præsenterer den nyeste viden inden for arbejdsmiljø. Se f.eks. på et tema og se hvordan Arbejdstilsynet forholder sig til det område.
@@ -140,7 +140,7 @@ function BotEntry() {
           </div>
 
           <div
-            className="flex items-start gap-4 p-5 sm:gap-6 sm:p-6"
+            className="flex min-h-[180px] items-start gap-4 p-5 sm:gap-6 sm:p-6"
             style={{
               borderRadius: "16px",
               background: "#0C6B3B",
@@ -148,10 +148,10 @@ function BotEntry() {
               boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
             }}
           >
-            <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg bg-white sm:h-24 sm:w-24">
-              <span className="text-xl font-bold text-[#0C6B3B] sm:text-2xl">NFA</span>
+            <div className="flex h-24 w-32 shrink-0 items-center justify-center rounded-lg bg-white p-2 sm:h-28 sm:w-36">
+              <img src={nfaLogoAsset.url} alt="NFA" className="max-h-full max-w-full object-contain" />
             </div>
-            <div className="text-sm leading-relaxed sm:text-base">
+            <div className="flex-1 text-sm leading-relaxed sm:text-base">
               <h3 className="mb-1 text-lg font-semibold">NFA</h3>
               <p>
                 NFA er en uafhængig sektorforskningsinstitution under Beskæftigelsesministeriet (BM) og den største forskningsinstitution på arbejdsmiljøområdet i Danmark.
