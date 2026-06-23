@@ -1,11 +1,12 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Link2 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ComponentProps } from "react";
 import { isBotId } from "@/lib/bots";
 import { createThread } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { BfaLogo } from "@/components/BfaLogo";
 import videnHeroAsset from "@/assets/arbejdsmiljøloven.jpg.asset.json";
 import chatbotAsset from "@/assets/Chatbot2.png.asset.json";
 import atLogoAsset from "@/assets/arbejdstilsynet-logo.png.asset.json";
@@ -121,12 +122,12 @@ function BotEntry() {
               <img src={atLogoAsset.url} alt="Arbejdstilsynet" className="max-h-full max-w-full object-contain" />
             </div>
             <div className="flex-1 text-sm leading-relaxed sm:text-base">
-              <h3 className="mb-1 text-xl font-semibold">Arbejdstilsynet</h3>
+              <h4 className="mb-1 text-lg font-semibold">Arbejdstilsynet</h4>
               <p>
                 Arbejdstilsynet er den danske myndighed, der kontrollerer og vejleder virksomheder om arbejdsmiljø for at sørge for, at vi har sikre og sunde arbejdspladser i hele Danmark. Deres hjemmeside opdateres sig løbende og præsenterer den nyeste viden inden for arbejdsmiljø. Se f.eks. på et tema og se hvordan Arbejdstilsynet forholder sig til det område.
               </p>
               <div className="mt-2">
-                <h3 className="inline text-base font-semibold">Link</h3>{" "}
+                <h4 className="inline text-base font-semibold">Link</h4>{" "}
                 <a
                   href="https://at.dk/"
                   target="_blank"
@@ -153,12 +154,12 @@ function BotEntry() {
               <img src={nfaLogoAsset.url} alt="NFA" className="max-h-full max-w-full object-contain" />
             </div>
             <div className="flex-1 text-sm leading-relaxed sm:text-base">
-              <h3 className="mb-1 text-xl font-semibold">NFA</h3>
+              <h4 className="mb-1 text-lg font-semibold">NFA</h4>
               <p>
                 NFA er en uafhængig sektorforskningsinstitution under Beskæftigelsesministeriet (BM) og den største forskningsinstitution på arbejdsmiljøområdet i Danmark.
               </p>
               <div className="mt-2">
-                <h3 className="inline text-base font-semibold">Link</h3>{" "}
+                <h4 className="inline text-base font-semibold">Link</h4>{" "}
                 <a
                   href="https://nfa.dk/"
                   target="_blank"
@@ -218,14 +219,10 @@ function BotEntry() {
               }}
             >
               <div className="flex items-start gap-4 p-5 sm:gap-6 sm:p-6">
-                <div
-                  className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg sm:h-20 sm:w-20"
-                  style={{ backgroundColor: "#ffffff" }}
-                >
-                  <span className="text-base font-bold sm:text-lg" style={{ color: "#0C6B3B" }}>
-                    BFA
-                  </span>
-                </div>
+                <BfaLogo
+                  name={item.title as ComponentProps<typeof BfaLogo>["name"]}
+                  className="h-16 w-16 shrink-0 sm:h-20 sm:w-20"
+                />
                 <div className="flex-1">
                   <h4 className="text-base font-semibold sm:text-lg">{item.title}</h4>
                   <div className="mt-2 text-sm leading-relaxed sm:text-base">
