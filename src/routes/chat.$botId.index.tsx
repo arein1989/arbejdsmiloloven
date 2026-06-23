@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { Link2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { isBotId } from "@/lib/bots";
 import { createThread } from "@/lib/chat.functions";
@@ -181,6 +182,119 @@ function BotEntry() {
             De fem BrancheFællesskaber for Arbejdsmiljø (BFA) består af repræsentanter for arbejdsmarkedets parter.
             Undersøg hvilke(n) BFA, som dækker din branche eller på din arbejdsplads.
           </p>
+        </section>
+
+        <section className="mx-auto max-w-4xl space-y-5 px-4 pb-10 sm:px-6">
+          {[
+            {
+              title: "Velfærd og Offentlig administration",
+              url: "https://www.godtarbejdsmiljo.dk/",
+            },
+            {
+              title: "Bygge & anlæg",
+              url: "https://bfa-ba.dk/",
+            },
+            {
+              title: "Handel, Finans og Kontor",
+              url: "https://www.bfa-hfk.dk/",
+            },
+            {
+              title: "Transport, service og Turisme, samt jord til bord",
+              url: "https://www.handelfinanskontor.dk/",
+            },
+            {
+              title: "BFA Portalen",
+              url: "https://www.bfaportalen.dk/",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="overflow-hidden"
+              style={{
+                backgroundColor: "#0C6B3B",
+                borderRadius: "16px",
+                color: "#ffffff",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+              }}
+            >
+              <div className="flex items-start gap-4 p-5 sm:gap-6 sm:p-6">
+                <div
+                  className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg sm:h-20 sm:w-20"
+                  style={{ backgroundColor: "#ffffff" }}
+                >
+                  <span className="text-base font-bold sm:text-lg" style={{ color: "#0C6B3B" }}>
+                    BFA
+                  </span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-base font-semibold sm:text-lg">{item.title}</h4>
+                  <div className="mt-2 text-sm leading-relaxed sm:text-base">
+                    <h4 className="inline text-sm font-semibold sm:text-base">Link</h4>{" "}
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline"
+                      style={{ color: "#58D500" }}
+                    >
+                      {item.url}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </section>
+
+        <section className="mx-auto max-w-4xl space-y-4 px-4 pb-10 sm:px-6">
+          <h2 className="text-2xl font-semibold" style={{ color: "#000000" }}>
+            Andre Links
+          </h2>
+          <div
+            className="overflow-hidden"
+            style={{
+              backgroundColor: "#0C6B3B",
+              borderRadius: "16px",
+              color: "#ffffff",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+            }}
+          >
+            <div className="flex items-center gap-4 p-5 sm:gap-6 sm:p-6">
+              <div
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full"
+                style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+              >
+                <Link2 className="h-6 w-6" style={{ color: "#ffffff" }} />
+              </div>
+              <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base">
+                <li>
+                  <a href="https://www.retsinformation.dk" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#ffffff" }}>
+                    retsinformation.dk
+                  </a>
+                </li>
+                <li>
+                  <a href="https://osha.europa.eu/da" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#ffffff" }}>
+                    osha.europa.eu/da
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.arbejdsmedicinsk.dk" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#ffffff" }}>
+                    arbejdsmedicinske klinikker
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.arbejdsmiljoklagenavnet.dk" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#ffffff" }}>
+                    arbejdsmiljøklagenævnet
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.aes.dk" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#ffffff" }}>
+                    arbejdsmarkedets erhvervssikring
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         <SiteFooter />
