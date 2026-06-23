@@ -6,6 +6,7 @@ import { createThread } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { BfaLogo } from "@/components/BfaLogo";
 import videnHeroAsset from "@/assets/arbejdsmiljøloven.jpg.asset.json";
 import chatbotAsset from "@/assets/Chatbot2.png.asset.json";
 import atLogoAsset from "@/assets/arbejdstilsynet-logo.png.asset.json";
