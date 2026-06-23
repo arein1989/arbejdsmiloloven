@@ -170,6 +170,17 @@ function BotEntry() {
           </div>
         </section>
 
+        <section className="mx-auto max-w-4xl space-y-4 px-4 pb-10 sm:px-6">
+          <h2 className="text-2xl font-semibold" style={{ color: "#000000" }}>
+            Branchefællesskaberne for Arbejdsmiljø (BFA)
+          </h2>
+          <p className="text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+            BrancheFællesskaberne for Arbejdsmiljø understøtter arbejdsmiljøarbejdet på arbejdspladserne med information og vejledning om arbejdsmiljø ved blandt andet at lave vejledninger, konferencer og uddannelse.
+            De fem BrancheFællesskaber for Arbejdsmiljø (BFA) består af repræsentanter for arbejdsmarkedets parter.
+            Undersøg hvilke(n) BFA, som dækker din branche eller på din arbejdsplads.
+          </p>
+        </section>
+
         <SiteFooter />
       </div>
     );
