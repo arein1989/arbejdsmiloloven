@@ -7,6 +7,8 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import videnHeroAsset from "@/assets/arbejdsmiljøloven.jpg.asset.json";
 import chatbotAsset from "@/assets/Chatbot2.png.asset.json";
+import atLogoAsset from "@/assets/arbejdstilsynet-logo.png.asset.json";
+import nfaLogoAsset from "@/assets/nfa-logo.png.asset.json";
 
 export const Route = createFileRoute("/chat/$botId/")({
   component: BotEntry,
