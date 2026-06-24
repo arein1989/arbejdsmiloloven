@@ -1,6 +1,12 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Link2 } from "lucide-react";
 import { useEffect, useRef, useState, type ComponentProps } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { isBotId } from "@/lib/bots";
 import { createThread } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
@@ -365,9 +371,21 @@ function BotEntry() {
         </section>
 
         <section className="mx-auto max-w-4xl space-y-4 px-4 pb-10 sm:px-6">
-          <h3 className="text-xl font-semibold" style={{ color: "#000000" }}>
-            Lov om arbejdsmiljø og hoved-bekendtgørelserne
-          </h3>
+          <Accordion type="single" collapsible defaultValue="lov">
+            <AccordionItem value="lov" className="border-b-0">
+              <AccordionTrigger className="justify-start gap-2 py-0 hover:no-underline">
+                <h3 className="text-xl font-semibold" style={{ color: "#000000" }}>
+                  Lov om arbejdsmiljø og hoved-bekendtgørelserne
+                </h3>
+              </AccordionTrigger>
+              <AccordionContent>
+                <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+                  <li>Lovbekendtgørelse nr. 442 af 24/04/2026 - Lov om arbejdsmiljø</li>
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
           <p className="text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
             Denne liste består af arbejdsmiljøloven, men også de bekendtgørelser som er såkaldte hovedbekendtgørelser og som dermed er med til at sætte rammen for arbejdsmiljøarbejdet. Endelig består den også af de mest benyttede og vigtige bekendtgørelser. Mangler der for jer at se vigtige bekendtgørelser på denne liste, så tøv ikke med at skrive til os på{" "}
             <a href="mailto:info@adweyse.dk" className="underline" style={{ color: "#0C6B3B" }}>info@adweyse.dk</a>
