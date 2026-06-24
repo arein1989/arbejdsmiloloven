@@ -44,7 +44,7 @@ function BotEntry() {
 
   useEffect(() => {
     if (!isBotId(botId)) return;
-    if (botId === "viden") return; // show welcome screen
+    if (botId === "viden" || botId === "regler") return; // show welcome screen
     startThread();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [botId]);
@@ -290,6 +290,67 @@ function BotEntry() {
                   </a>
                 </li>
               </ul>
+            </div>
+          </div>
+        </section>
+
+        <SiteFooter />
+      </div>
+    );
+
+  }
+
+  if (botId === "regler" && isBotId(botId)) {
+    return (
+      <div className="min-h-screen bg-white">
+        <SiteHeader />
+        <section className="bg-white">
+          <div className="w-full">
+            <img
+              src={videnHeroAsset.url}
+              alt="Workshop om arbejdsmiljø"
+              className="h-56 w-full object-cover sm:h-72 md:h-96"
+            />
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+          <div
+            className="relative p-6 sm:p-8"
+            style={{
+              borderRadius: "25px",
+              background: "linear-gradient(180deg, #0C6B3B 0%, #17D173 100%)",
+            }}
+          >
+            <div className="flex gap-4 sm:gap-6">
+              <img
+                src={chatbotAsset.url}
+                alt="AI assistent"
+                className="h-20 w-20 shrink-0 object-contain sm:h-24 sm:w-24"
+              />
+              <p className="text-sm leading-relaxed text-white sm:text-base">
+                Hej og velkommen til AI assistenten "Regelfinder". Jeg er en digital juridisk assistent, der hjælper dig med at finde præcis den bekendtgørelse, paragraf eller AT-vejledning du leder efter. Har du brug for råd og vejledning, så tøv ikke med at kontakte os på{" "}
+                <a href="mailto:info@adweyse.dk" className="underline" style={{ color: "#58D500" }}>info@adweyse.dk</a>
+                {" "}eller søg mere information på{" "}
+                <a href="https://www.AdWeyse.dk" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#58D500" }}>www.AdWeyse.dk</a>
+                .
+              </p>
+            </div>
+
+            <div className="mt-6 flex justify-end">
+              <button
+                onClick={startThread}
+                disabled={loading}
+                className="px-6 py-2.5 text-sm font-semibold transition-transform hover:-translate-y-0.5 disabled:opacity-60"
+                style={{
+                  borderRadius: "16px",
+                  background: "#F78D0B",
+                  color: "#000000",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+                }}
+              >
+                {loading ? "Starter…" : "Søg regler"}
+              </button>
             </div>
           </div>
         </section>
