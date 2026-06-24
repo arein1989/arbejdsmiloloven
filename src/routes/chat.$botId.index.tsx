@@ -1,6 +1,12 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Link2 } from "lucide-react";
 import { useEffect, useRef, useState, type ComponentProps } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { isBotId } from "@/lib/bots";
 import { createThread } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
