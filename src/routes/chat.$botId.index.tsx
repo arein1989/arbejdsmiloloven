@@ -338,10 +338,10 @@ function BotEntry() {
                 className="h-20 w-20 shrink-0 object-contain sm:h-24 sm:w-24"
               />
               <p className="text-sm leading-relaxed text-white sm:text-base">
-                Hej og velkommen til AI assistenten "Regelfinder". Jeg er en digital juridisk assistent, der hjælper dig med at finde præcis den bekendtgørelse, paragraf eller AT-vejledning du leder efter. Har du brug for råd og vejledning, så tøv ikke med at kontakte os på{" "}
-                <a href="mailto:info@adweyse.dk" className="underline" style={{ color: "#58D500" }}>info@adweyse.dk</a>
-                {" "}eller søg mere information på{" "}
-                <a href="https://www.AdWeyse.dk" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#58D500" }}>www.AdWeyse.dk</a>
+                Hej og velkommen til AI assistenten "Regelfinder". Jeg er en digital assistent, der hjælper dig med at finde en bestemt bekendtgørelse eller en bestemt AT-vejledning.
+                <br /><br />
+                Skal I på "Den Lovpligtige Arbejdsmiljøuddannelse", på en supplerende arbejdsmiljøuddannelse eller på "Arbejdsmiljøkoordinatoruddannelsen" så find en uddannelse eller kursus på{" "}
+                <a href="https://www.arbejdsmiljøuddannelse.dk" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#58D500" }}>www.arbejdsmiljøuddannelse.dk</a>
                 .
               </p>
             </div>
@@ -358,7 +358,7 @@ function BotEntry() {
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
                 }}
               >
-                {loading ? "Starter…" : "Søg regler"}
+                {loading ? "Starter…" : "Søg efter regler"}
               </button>
             </div>
           </div>
