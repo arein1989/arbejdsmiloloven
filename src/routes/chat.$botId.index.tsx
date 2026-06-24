@@ -364,6 +364,17 @@ function BotEntry() {
           </div>
         </section>
 
+        <section className="mx-auto max-w-4xl space-y-4 px-4 pb-10 sm:px-6">
+          <h3 className="text-xl font-semibold" style={{ color: "#000000" }}>
+            Lov om arbejdsmiljø og hoved-bekendtgørelserne
+          </h3>
+          <p className="text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+            Denne liste består af arbejdsmiljøloven, men også de bekendtgørelser som er såkaldte hovedbekendtgørelser og som dermed er med til at sætte rammen for arbejdsmiljøarbejdet. Endelig består den også af de mest benyttede og vigtige bekendtgørelser. Mangler der for jer at se vigtige bekendtgørelser på denne liste, så tøv ikke med at skrive til os på{" "}
+            <a href="mailto:info@adweyse.dk" className="underline" style={{ color: "#0C6B3B" }}>info@adweyse.dk</a>
+            {" "}og begrund hvorfor en bestemt bekendtgørelse skal med på denne liste.
+          </p>
+        </section>
+
         <SiteFooter />
       </div>
     );
