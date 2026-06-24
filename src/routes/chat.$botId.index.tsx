@@ -44,7 +44,7 @@ function BotEntry() {
 
   useEffect(() => {
     if (!isBotId(botId)) return;
-    if (botId === "viden") return; // show welcome screen
+    if (botId === "viden" || botId === "regler") return; // show welcome screen
     startThread();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [botId]);
