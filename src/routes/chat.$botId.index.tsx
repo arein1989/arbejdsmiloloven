@@ -314,6 +314,15 @@ function BotEntry() {
           </div>
         </section>
 
+        <section className="mx-auto max-w-4xl space-y-4 px-4 pt-10 sm:px-6">
+          <h1 className="text-3xl font-semibold" style={{ color: "#000000" }}>
+            Lov om arbejdsmiljø, bekendtgørelser og AT-vejledninger
+          </h1>
+          <p className="text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+            Arbejdsmiljøloven er en såkaldt rammelov. Den sætter sammen med hoved-bekendtgørelserne rammen for arbejdsmiljøet i Danmark.
+          </p>
+        </section>
+
         <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
           <div
             className="relative p-6 sm:p-8"
