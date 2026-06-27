@@ -380,8 +380,7 @@ function BotEntry() {
                   <img
                     src={arrowDownFilledAsset.url}
                     alt=""
-                    className="h-3 w-4 shrink-0 object-contain"
-                    style={{ filter: "brightness(0)" }}
+                    className="h-5 w-6 shrink-0 object-contain"
                   />
                 }
               >
