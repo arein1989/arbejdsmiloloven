@@ -380,8 +380,7 @@ function BotEntry() {
                   <img
                     src={arrowDownFilledAsset.url}
                     alt=""
-                    className="h-3 w-4 shrink-0 object-contain"
-                    style={{ filter: "brightness(0)" }}
+                    className="h-5 w-6 shrink-0 object-contain"
                   />
                 }
               >
@@ -397,7 +396,7 @@ function BotEntry() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="underline"
-                      style={{ color: "#000000" }}
+                      style={{ color: "#0C6B3B" }}
                     >
                       Lovbekendtgørelse nr. 442 af 24/04/2026 - Lov om arbejdsmiljø
                     </a>
