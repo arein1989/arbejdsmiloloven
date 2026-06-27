@@ -429,9 +429,6 @@ function BotEntry() {
                 </h3>
               </AccordionTrigger>
               <AccordionContent>
-                <p className="mb-3 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
-                  En bekendtgørelse er de bindende regler på arbejdsmiljøområdet. En bekendtgørelse har samme betydning som arbejdsmiljøloven, men de er ofte mere detaljeret og forklarende end arbejdsmiljøloven og hoved-bekendtgørelserne.
-                </p>
                 <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
                   {[
                     { label: "Bekendtgørelse nr. 65 af 22/01/2024 - Systematisk arbejdsmiljøarbejde", url: "https://www.retsinformation.dk/eli/lta/2024/65" },
@@ -462,6 +459,10 @@ function BotEntry() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+
+          <p className="text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+            En bekendtgørelse er de bindende regler på arbejdsmiljøområdet. En bekendtgørelse har samme betydning som arbejdsmiljøloven, men de er ofte mere detaljeret og forklarende end arbejdsmiljøloven og hoved-bekendtgørelserne.
+          </p>
         </section>
 
         <SiteFooter />
