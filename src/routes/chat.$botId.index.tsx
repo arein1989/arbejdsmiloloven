@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Link2 } from "lucide-react";
-import { useEffect, useRef, useState, type ComponentProps } from "react";
+import { useEffect, useRef, useState, type ComponentProps, type ReactNode } from "react";
 import {
   Collapsible,
   CollapsibleContent,
@@ -17,6 +17,37 @@ import chatbotAsset from "@/assets/Chatbot2.png.asset.json";
 import atLogoAsset from "@/assets/arbejdstilsynet-logo.png.asset.json";
 import nfaLogoAsset from "@/assets/nfa-logo.png.asset.json";
 import arrowDownFilledAsset from "@/assets/arrow-down-filled.png.asset.json";
+
+function LawSection({ title, children, defaultOpen = false }: { title: string; children: ReactNode; defaultOpen?: boolean }) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <CollapsibleTrigger className="flex w-full items-center justify-start gap-2 py-0 text-left cursor-pointer hover:no-underline">
+        <h3 className="text-xl font-semibold" style={{ color: "#000000" }}>
+          {title}
+        </h3>
+        <img
+          src={arrowDownFilledAsset.url}
+          alt=""
+          className={`h-5 w-6 shrink-0 object-contain transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        />
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <div
+          className="p-4 sm:p-5"
+          style={{
+            backgroundColor: "#ffffff",
+            borderRadius: "16px",
+            border: "1px solid #007A4F",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+          }}
+        >
+          {children}
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+}
 
 export const Route = createFileRoute("/chat/$botId/")({
   component: BotEntry,
