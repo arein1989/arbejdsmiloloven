@@ -389,19 +389,28 @@ function BotEntry() {
                 </h3>
               </AccordionTrigger>
               <AccordionContent>
-                <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
-                  <li>
-                    <a
-                      href="https://www.retsinformation.dk/eli/lta/2026/442"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline"
-                      style={{ color: "#0C6B3B" }}
-                    >
-                      Lovbekendtgørelse nr. 442 af 24/04/2026 - Lov om arbejdsmiljø
-                    </a>
-                  </li>
-                </ul>
+                <div
+                  className="p-4 sm:p-5"
+                  style={{
+                    backgroundColor: "#ffffff",
+                    borderRadius: "16px",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+                  }}
+                >
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+                    <li>
+                      <a
+                        href="https://www.retsinformation.dk/eli/lta/2026/442"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline"
+                        style={{ color: "#0C6B3B" }}
+                      >
+                        Lovbekendtgørelse nr. 442 af 24/04/2026 - Lov om arbejdsmiljø
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -429,33 +438,42 @@ function BotEntry() {
                 </h3>
               </AccordionTrigger>
               <AccordionContent>
-                <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
-                  {[
-                    { label: "Bekendtgørelse nr. 65 af 22/01/2024 - Systematisk arbejdsmiljøarbejde", url: "https://www.retsinformation.dk/eli/lta/2024/65" },
-                    { label: "Bekendtgørelse nr. 1839 af 14/12/2023 - Arbejdets udførelse", url: "https://www.retsinformation.dk/eli/lta/2023/1839" },
-                    { label: "Bekendtgørelse nr. 1406 af 26/09/2020 - Psykisk arbejdsmiljø", url: "https://www.retsinformation.dk/eli/lta/2020/1406" },
-                    { label: "Bekendtgørelse nr. 835 af 16/06/2023 - Faste arbejdssteders indretning", url: "https://www.retsinformation.dk/eli/lta/2023/835" },
-                    { label: "Bekendtgørelse nr. 290 af 05/05/1993 - Skiftende arbejdssteders indretning", url: "https://www.retsinformation.dk/eli/lta/1993/290", note: " (Denne har en alder som gør den ikke kan laves i en pdf på Arbejdstilsynets hjemmeside, så den skal vi selv producere)" },
-                    { label: "Bekendtgørelse nr. 428 af 05/04/2022 - Anvendelse af tekniske hjælpemidler", url: "https://www.retsinformation.dk/eli/lta/2022/428" },
-                    { label: "Bekendtgørelse nr. 429 af 05/04/2022 - Indretning af tekniske hjælpemidler", url: "https://www.retsinformation.dk/eli/lta/2022/429" },
-                    { label: "Bekendtgørelse nr. 381 af 12/04/2023 - Arbejde med stoffer og materialer", url: "https://www.retsinformation.dk/eli/lta/2023/381" },
-                    { label: "Bekendtgørelse nr. 1713 af 18/12/2025 - Unges arbejde", url: "https://www.retsinformation.dk/eli/lta/2025/1713" },
-                    { label: "Bekendtgørelse nr. 324 af 23/05/2002 - Hvileperiode og fridøgn", url: "https://www.retsinformation.dk/eli/lta/2002/324", note: " (Denne har en alder som gør den ikke kan laves i en pdf på Arbejdstilsynets hjemmeside, så den skal vi selv producere)" },
-                  ].map((item) => (
-                    <li key={item.url}>
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline"
-                        style={{ color: "#0C6B3B" }}
-                      >
-                        {item.label}
-                      </a>
-                      {item.note ? <strong>{item.note}</strong> : null}
-                    </li>
-                  ))}
-                </ul>
+                <div
+                  className="p-4 sm:p-5"
+                  style={{
+                    backgroundColor: "#ffffff",
+                    borderRadius: "16px",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+                  }}
+                >
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+                    {[
+                      { label: "Bekendtgørelse nr. 65 af 22/01/2024 - Systematisk arbejdsmiljøarbejde", url: "https://www.retsinformation.dk/eli/lta/2024/65" },
+                      { label: "Bekendtgørelse nr. 1839 af 14/12/2023 - Arbejdets udførelse", url: "https://www.retsinformation.dk/eli/lta/2023/1839" },
+                      { label: "Bekendtgørelse nr. 1406 af 26/09/2020 - Psykisk arbejdsmiljø", url: "https://www.retsinformation.dk/eli/lta/2020/1406" },
+                      { label: "Bekendtgørelse nr. 835 af 16/06/2023 - Faste arbejdssteders indretning", url: "https://www.retsinformation.dk/eli/lta/2023/835" },
+                      { label: "Bekendtgørelse nr. 290 af 05/05/1993 - Skiftende arbejdssteders indretning", url: "https://www.retsinformation.dk/eli/lta/1993/290", note: " (Denne har en alder som gør den ikke kan laves i en pdf på Arbejdstilsynets hjemmeside, så den skal vi selv producere)" },
+                      { label: "Bekendtgørelse nr. 428 af 05/04/2022 - Anvendelse af tekniske hjælpemidler", url: "https://www.retsinformation.dk/eli/lta/2022/428" },
+                      { label: "Bekendtgørelse nr. 429 af 05/04/2022 - Indretning af tekniske hjælpemidler", url: "https://www.retsinformation.dk/eli/lta/2022/429" },
+                      { label: "Bekendtgørelse nr. 381 af 12/04/2023 - Arbejde med stoffer og materialer", url: "https://www.retsinformation.dk/eli/lta/2023/381" },
+                      { label: "Bekendtgørelse nr. 1713 af 18/12/2025 - Unges arbejde", url: "https://www.retsinformation.dk/eli/lta/2025/1713" },
+                      { label: "Bekendtgørelse nr. 324 af 23/05/2002 - Hvileperiode og fridøgn", url: "https://www.retsinformation.dk/eli/lta/2002/324", note: " (Denne har en alder som gør den ikke kan laves i en pdf på Arbejdstilsynets hjemmeside, så den skal vi selv producere)" },
+                    ].map((item) => (
+                      <li key={item.url}>
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline"
+                          style={{ color: "#0C6B3B" }}
+                        >
+                          {item.label}
+                        </a>
+                        {item.note ? <strong>{item.note}</strong> : null}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -481,25 +499,34 @@ function BotEntry() {
                 </h3>
               </AccordionTrigger>
               <AccordionContent>
-                <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
-                  {[
-                    { label: "Bekendtgørelse nr. 2107 af 24/11/2021 - Bygge- og anlægsarbejde", url: "https://www.retsinformation.dk/eli/lta/2021/2107" },
-                    { label: "Bekendtgørelse nr. 117 af 05/02/2013 - Bygherrens pligter", url: "https://www.retsinformation.dk/eli/lta/2013/117" },
-                    { label: "Bekendtgørelse nr. 110 af 05/02/2013 - Projekterendes og rådgiveres pligter", url: "https://www.retsinformation.dk/eli/lta/2013/110" },
-                  ].map((item) => (
-                    <li key={item.url}>
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline"
-                        style={{ color: "#0C6B3B" }}
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                <div
+                  className="p-4 sm:p-5"
+                  style={{
+                    backgroundColor: "#ffffff",
+                    borderRadius: "16px",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+                  }}
+                >
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+                    {[
+                      { label: "Bekendtgørelse nr. 2107 af 24/11/2021 - Bygge- og anlægsarbejde", url: "https://www.retsinformation.dk/eli/lta/2021/2107" },
+                      { label: "Bekendtgørelse nr. 117 af 05/02/2013 - Bygherrens pligter", url: "https://www.retsinformation.dk/eli/lta/2013/117" },
+                      { label: "Bekendtgørelse nr. 110 af 05/02/2013 - Projekterendes og rådgiveres pligter", url: "https://www.retsinformation.dk/eli/lta/2013/110" },
+                    ].map((item) => (
+                      <li key={item.url}>
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline"
+                          style={{ color: "#0C6B3B" }}
+                        >
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
