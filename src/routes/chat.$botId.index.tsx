@@ -40,16 +40,18 @@ function LatestLawChanges() {
 
   return (
     <section className="mx-auto max-w-4xl space-y-4 px-4 pb-10 sm:px-6">
-      <h2 className="text-2xl font-semibold" style={{ color: "#000000" }}>
-        Nyeste lovændringer
-      </h2>
       <div className="space-y-4">
         {placeholders.map((_, idx) => {
           const item = items[idx];
-          return (
+          const title = item
+            ? (item.short_name ?? item.document_id)
+            : isLoading
+              ? "Henter seneste lovændringer…"
+              : "Nyeste lovændringer";
+          const href = item?.href ? item.href.replace(/\/xml$/, "") : undefined;
+          const content = (
             <div
-              key={item?.document_id ?? `placeholder-${idx}`}
-              className="p-5 sm:p-6"
+              className="flex items-center justify-between gap-4 p-5 sm:p-6"
               style={{
                 backgroundColor: "#F78D0B",
                 color: "#000000",
@@ -57,32 +59,29 @@ function LatestLawChanges() {
                 boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
               }}
             >
-              {item ? (
-                <>
-                  <div className="text-xs font-semibold uppercase tracking-wide opacity-80">
-                    {item.short_name ?? "Dokument"} {item.change_date ? `· ${formatDate(item.change_date)}` : ""}
-                  </div>
-                  <h4 className="mt-1 text-base font-semibold sm:text-lg">
-                    {item.document_id}
-                  </h4>
-                  {item.href ? (
-                    <a
-                      href={item.href.replace(/\/xml$/, "")}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-2 inline-block underline"
-                      style={{ color: "#000000" }}
-                    >
-                      Se ændringen på retsinformation.dk
-                    </a>
-                  ) : null}
-                </>
-              ) : (
-                <div className="text-sm">
-                  {isLoading ? "Henter seneste lovændringer…" : "Ingen nye arbejdsmiljø-ændringer fundet."}
-                </div>
-              )}
+              <h3 className="text-base font-semibold sm:text-lg" style={{ color: "#000000" }}>
+                {title}
+                {item?.change_date ? (
+                  <span className="ml-2 text-xs font-normal opacity-80">
+                    {formatDate(item.change_date)}
+                  </span>
+                ) : null}
+              </h3>
+              <Plus className="h-5 w-5 shrink-0" style={{ color: "#000000" }} strokeWidth={2} />
             </div>
+          );
+          return href ? (
+            <a
+              key={item?.document_id ?? `placeholder-${idx}`}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              {content}
+            </a>
+          ) : (
+            <div key={item?.document_id ?? `placeholder-${idx}`}>{content}</div>
           );
         })}
       </div>
