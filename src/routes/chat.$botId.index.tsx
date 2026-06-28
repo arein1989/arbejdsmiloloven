@@ -21,7 +21,7 @@ import arrowDownFilledAsset from "@/assets/arrow-down-filled.png.asset.json";
 function LawSection({ title, description, children, defaultOpen = false }: { title: string; description: ReactNode; children: ReactNode; defaultOpen?: boolean }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="space-y-[2px]">
+    <div className="space-y-1">
       <Collapsible open={open} onOpenChange={setOpen}>
         <CollapsibleTrigger className="flex w-full items-center justify-start gap-2 py-0 text-left cursor-pointer hover:no-underline">
           <h3 className="text-xl font-semibold" style={{ color: "#000000" }}>
@@ -38,7 +38,7 @@ function LawSection({ title, description, children, defaultOpen = false }: { tit
         </p>
         <CollapsibleContent>
           <div
-            className="p-4 sm:p-5"
+            className="mt-1 p-4 sm:p-5"
             style={{
               backgroundColor: "#ffffff",
               borderRadius: "16px",
