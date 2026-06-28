@@ -38,7 +38,7 @@ function LawSection({ title, description, children, defaultOpen = false }: { tit
         </p>
         <CollapsibleContent>
           <div
-            className="mt-1 p-4 sm:p-5"
+            className="mt-2 p-4 sm:p-5"
             style={{
               backgroundColor: "#ffffff",
               borderRadius: "16px",
