@@ -499,25 +499,34 @@ function BotEntry() {
                 </h3>
               </AccordionTrigger>
               <AccordionContent>
-                <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
-                  {[
-                    { label: "Bekendtgørelse nr. 2107 af 24/11/2021 - Bygge- og anlægsarbejde", url: "https://www.retsinformation.dk/eli/lta/2021/2107" },
-                    { label: "Bekendtgørelse nr. 117 af 05/02/2013 - Bygherrens pligter", url: "https://www.retsinformation.dk/eli/lta/2013/117" },
-                    { label: "Bekendtgørelse nr. 110 af 05/02/2013 - Projekterendes og rådgiveres pligter", url: "https://www.retsinformation.dk/eli/lta/2013/110" },
-                  ].map((item) => (
-                    <li key={item.url}>
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline"
-                        style={{ color: "#0C6B3B" }}
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                <div
+                  className="p-4 sm:p-5"
+                  style={{
+                    backgroundColor: "#ffffff",
+                    borderRadius: "16px",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+                  }}
+                >
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+                    {[
+                      { label: "Bekendtgørelse nr. 2107 af 24/11/2021 - Bygge- og anlægsarbejde", url: "https://www.retsinformation.dk/eli/lta/2021/2107" },
+                      { label: "Bekendtgørelse nr. 117 af 05/02/2013 - Bygherrens pligter", url: "https://www.retsinformation.dk/eli/lta/2013/117" },
+                      { label: "Bekendtgørelse nr. 110 af 05/02/2013 - Projekterendes og rådgiveres pligter", url: "https://www.retsinformation.dk/eli/lta/2013/110" },
+                    ].map((item) => (
+                      <li key={item.url}>
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline"
+                          style={{ color: "#0C6B3B" }}
+                        >
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
