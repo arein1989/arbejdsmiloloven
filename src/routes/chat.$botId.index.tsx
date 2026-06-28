@@ -484,7 +484,7 @@ function BotEntry() {
           </LawSection>
 
           <p className="text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
-            En AT-vejledning er siden 15. december 2025 blevet såkaldte “juridiske dokumenter” som fokuserer på forklaringen af det retslige grundlag for arbejdsgodkendelser. En AT-vejledning kan dække mange bekendtgørelser og det der står i en AT-vejledning er nu lige så bindende som en bekendtgørelse.
+            En AT-vejledning er siden 15. december 2025 blevet såkaldte “juridiske dokumenter” som fokuserer på forklaringen af det retslige grundlag for arbejdsgiverne. En AT-vejledning kan dække mange bekendtgørelser og det der står i en AT-vejledning er nu lige så bindende som en bekendtgørelse.
           </p>
         </section>
 
