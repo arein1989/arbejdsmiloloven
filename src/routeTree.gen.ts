@@ -14,6 +14,7 @@ import { Route as ChatBotIdRouteImport } from './routes/chat.$botId'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ChatBotIdIndexRouteImport } from './routes/chat.$botId.index'
 import { Route as ChatBotIdThreadIdRouteImport } from './routes/chat.$botId.$threadId'
+import { Route as ApiPublicHooksRefreshLawChangesRouteImport } from './routes/api/public/hooks/refresh-law-changes'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +41,12 @@ const ChatBotIdThreadIdRoute = ChatBotIdThreadIdRouteImport.update({
   path: '/$threadId',
   getParentRoute: () => ChatBotIdRoute,
 } as any)
+const ApiPublicHooksRefreshLawChangesRoute =
+  ApiPublicHooksRefreshLawChangesRouteImport.update({
+    id: '/api/public/hooks/refresh-law-changes',
+    path: '/api/public/hooks/refresh-law-changes',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,12 +54,14 @@ export interface FileRoutesByFullPath {
   '/chat/$botId': typeof ChatBotIdRouteWithChildren
   '/chat/$botId/$threadId': typeof ChatBotIdThreadIdRoute
   '/chat/$botId/': typeof ChatBotIdIndexRoute
+  '/api/public/hooks/refresh-law-changes': typeof ApiPublicHooksRefreshLawChangesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/chat': typeof ApiChatRoute
   '/chat/$botId/$threadId': typeof ChatBotIdThreadIdRoute
   '/chat/$botId': typeof ChatBotIdIndexRoute
+  '/api/public/hooks/refresh-law-changes': typeof ApiPublicHooksRefreshLawChangesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -61,6 +70,7 @@ export interface FileRoutesById {
   '/chat/$botId': typeof ChatBotIdRouteWithChildren
   '/chat/$botId/$threadId': typeof ChatBotIdThreadIdRoute
   '/chat/$botId/': typeof ChatBotIdIndexRoute
+  '/api/public/hooks/refresh-law-changes': typeof ApiPublicHooksRefreshLawChangesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -70,8 +80,14 @@ export interface FileRouteTypes {
     | '/chat/$botId'
     | '/chat/$botId/$threadId'
     | '/chat/$botId/'
+    | '/api/public/hooks/refresh-law-changes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/chat' | '/chat/$botId/$threadId' | '/chat/$botId'
+  to:
+    | '/'
+    | '/api/chat'
+    | '/chat/$botId/$threadId'
+    | '/chat/$botId'
+    | '/api/public/hooks/refresh-law-changes'
   id:
     | '__root__'
     | '/'
@@ -79,12 +95,14 @@ export interface FileRouteTypes {
     | '/chat/$botId'
     | '/chat/$botId/$threadId'
     | '/chat/$botId/'
+    | '/api/public/hooks/refresh-law-changes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiChatRoute: typeof ApiChatRoute
   ChatBotIdRoute: typeof ChatBotIdRouteWithChildren
+  ApiPublicHooksRefreshLawChangesRoute: typeof ApiPublicHooksRefreshLawChangesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -124,6 +142,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChatBotIdThreadIdRouteImport
       parentRoute: typeof ChatBotIdRoute
     }
+    '/api/public/hooks/refresh-law-changes': {
+      id: '/api/public/hooks/refresh-law-changes'
+      path: '/api/public/hooks/refresh-law-changes'
+      fullPath: '/api/public/hooks/refresh-law-changes'
+      preLoaderRoute: typeof ApiPublicHooksRefreshLawChangesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -145,6 +170,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiChatRoute: ApiChatRoute,
   ChatBotIdRoute: ChatBotIdRouteWithChildren,
+  ApiPublicHooksRefreshLawChangesRoute: ApiPublicHooksRefreshLawChangesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

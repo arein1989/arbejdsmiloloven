@@ -1,4 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 import { Link2 } from "lucide-react";
 import { useEffect, useRef, useState, type ComponentProps, type ReactNode } from "react";
 import {
@@ -8,6 +9,7 @@ import {
 } from "@/components/ui/collapsible";
 import { isBotId } from "@/lib/bots";
 import { createThread } from "@/lib/chat.functions";
+import { getLatestLawChanges } from "@/lib/lawChanges.functions";
 import { getSessionId } from "@/lib/session";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -17,6 +19,79 @@ import chatbotAsset from "@/assets/Chatbot2.png.asset.json";
 import atLogoAsset from "@/assets/arbejdstilsynet-logo.png.asset.json";
 import nfaLogoAsset from "@/assets/nfa-logo.png.asset.json";
 import arrowDownFilledAsset from "@/assets/arrow-down-filled.png.asset.json";
+
+function LatestLawChanges() {
+  const { data, isLoading } = useQuery({
+    queryKey: ["latest-law-changes"],
+    queryFn: () => getLatestLawChanges(),
+    staleTime: 24 * 60 * 60 * 1000,
+    refetchOnWindowFocus: false,
+  });
+
+  const items = data ?? [];
+  const placeholders = Array.from({ length: 3 });
+
+  const formatDate = (iso: string | null) => {
+    if (!iso) return "";
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString("da-DK", { day: "2-digit", month: "2-digit", year: "numeric" });
+  };
+
+  return (
+    <section className="mx-auto max-w-4xl space-y-4 px-4 pb-10 sm:px-6">
+      <h2 className="text-2xl font-semibold" style={{ color: "#000000" }}>
+        Nyeste lovændringer
+      </h2>
+      <div className="space-y-4">
+        {placeholders.map((_, idx) => {
+          const item = items[idx];
+          return (
+            <div
+              key={item?.document_id ?? `placeholder-${idx}`}
+              className="p-5 sm:p-6"
+              style={{
+                backgroundColor: "#F78D0B",
+                color: "#000000",
+                borderRadius: "16px",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+              }}
+            >
+              {item ? (
+                <>
+                  <div className="text-xs font-semibold uppercase tracking-wide opacity-80">
+                    {item.short_name ?? "Dokument"} {item.change_date ? `· ${formatDate(item.change_date)}` : ""}
+                  </div>
+                  <h4 className="mt-1 text-base font-semibold sm:text-lg">
+                    {item.document_id}
+                  </h4>
+                  {item.href ? (
+                    <a
+                      href={item.href.replace(/\/xml$/, "")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-block underline"
+                      style={{ color: "#000000" }}
+                    >
+                      Se ændringen på retsinformation.dk
+                    </a>
+                  ) : null}
+                </>
+              ) : (
+                <div className="text-sm">
+                  {isLoading ? "Henter seneste lovændringer…" : "Ingen nye arbejdsmiljø-ændringer fundet."}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      <p className="text-xs" style={{ color: "#000000", opacity: 0.7 }}>
+        Data hentes fra Retsinformation.dk og opdateres hver 24. time.
+      </p>
+    </section>
+  );
+}
 
 function LawSection({ title, description, children, defaultOpen = false }: { title: string; description: ReactNode; children: ReactNode; defaultOpen?: boolean }) {
   const [open, setOpen] = useState(defaultOpen);
@@ -500,7 +575,10 @@ function BotEntry() {
           </LawSection>
         </section>
 
+        <LatestLawChanges />
+
         <SiteFooter />
+
       </div>
     );
 

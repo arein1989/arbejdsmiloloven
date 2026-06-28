@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      law_changes: {
+        Row: {
+          change_date: string | null
+          document_id: string
+          fetched_at: string
+          href: string | null
+          id: string
+          reason: string | null
+          short_name: string | null
+        }
+        Insert: {
+          change_date?: string | null
+          document_id: string
+          fetched_at?: string
+          href?: string | null
+          id?: string
+          reason?: string | null
+          short_name?: string | null
+        }
+        Update: {
+          change_date?: string | null
+          document_id?: string
+          fetched_at?: string
+          href?: string | null
+          id?: string
+          reason?: string | null
+          short_name?: string | null
+        }
+        Relationships: []
+      }
       messages: {
         Row: {
           content: string
