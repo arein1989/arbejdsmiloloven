@@ -575,7 +575,10 @@ function BotEntry() {
           </LawSection>
         </section>
 
+        <LatestLawChanges />
+
         <SiteFooter />
+
       </div>
     );
 
