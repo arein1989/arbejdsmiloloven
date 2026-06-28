@@ -389,19 +389,28 @@ function BotEntry() {
                 </h3>
               </AccordionTrigger>
               <AccordionContent>
-                <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
-                  <li>
-                    <a
-                      href="https://www.retsinformation.dk/eli/lta/2026/442"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="underline"
-                      style={{ color: "#0C6B3B" }}
-                    >
-                      Lovbekendtgørelse nr. 442 af 24/04/2026 - Lov om arbejdsmiljø
-                    </a>
-                  </li>
-                </ul>
+                <div
+                  className="p-4 sm:p-5"
+                  style={{
+                    backgroundColor: "#ffffff",
+                    borderRadius: "16px",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+                  }}
+                >
+                  <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+                    <li>
+                      <a
+                        href="https://www.retsinformation.dk/eli/lta/2026/442"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline"
+                        style={{ color: "#0C6B3B" }}
+                      >
+                        Lovbekendtgørelse nr. 442 af 24/04/2026 - Lov om arbejdsmiljø
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
