@@ -20,6 +20,66 @@ import atLogoAsset from "@/assets/arbejdstilsynet-logo.png.asset.json";
 import nfaLogoAsset from "@/assets/nfa-logo.png.asset.json";
 import arrowDownFilledAsset from "@/assets/arrow-down-filled.png.asset.json";
 
+function LawChangeBox({
+  title,
+  date,
+  reason,
+  href,
+}: {
+  title: string;
+  date?: string;
+  reason?: string | null;
+  href?: string;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      style={{
+        backgroundColor: "#F78D0B",
+        color: "#000000",
+        borderRadius: "16px",
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+      }}
+    >
+      <Collapsible open={open} onOpenChange={setOpen}>
+        <CollapsibleTrigger className="flex w-full items-center justify-between gap-4 p-5 sm:p-6 cursor-pointer text-left">
+          <h3 className="text-base font-semibold sm:text-lg" style={{ color: "#000000" }}>
+            {title}
+            {date ? (
+              <span className="ml-2 text-xs font-normal opacity-80">{date}</span>
+            ) : null}
+          </h3>
+          <Plus
+            className={`h-5 w-5 shrink-0 transition-transform duration-200 ${open ? "rotate-45" : ""}`}
+            style={{ color: "#000000" }}
+            strokeWidth={2}
+          />
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <div className="px-5 pb-5 sm:px-6 sm:pb-6 space-y-3" style={{ color: "#000000" }}>
+            <p className="text-sm leading-relaxed">
+              {reason && reason.trim().length > 0
+                ? reason
+                : "Ingen yderligere beskrivelse tilgængelig for denne ændring."}
+            </p>
+            {href ? (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-sm font-semibold underline"
+                style={{ color: "#000000" }}
+              >
+                Læs hele ændringen på retsinformation.dk →
+              </a>
+            ) : null}
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
+    </div>
+  );
+}
+
 function LatestLawChanges() {
   const { data, isLoading } = useQuery({
     queryKey: ["latest-law-changes"],
@@ -29,7 +89,6 @@ function LatestLawChanges() {
   });
 
   const items = data ?? [];
-  const placeholders = Array.from({ length: 3 });
 
   const formatDate = (iso: string | null) => {
     if (!iso) return "";
@@ -38,53 +97,35 @@ function LatestLawChanges() {
     return d.toLocaleDateString("da-DK", { day: "2-digit", month: "2-digit", year: "numeric" });
   };
 
+  const boxes = Array.from({ length: 3 }).map((_, idx) => {
+    const item = items[idx];
+    if (item) {
+      return (
+        <LawChangeBox
+          key={item.document_id}
+          title={item.short_name ?? item.document_id}
+          date={item.change_date ? formatDate(item.change_date) : undefined}
+          reason={item.reason}
+          href={item.href ? item.href.replace(/\/xml$/, "") : undefined}
+        />
+      );
+    }
+    return (
+      <LawChangeBox
+        key={`placeholder-${idx}`}
+        title={isLoading ? "Henter seneste lovændringer…" : "Ingen nye lovændringer endnu"}
+        reason={
+          isLoading
+            ? "Henter de seneste arbejdsmiljø-ændringer fra Retsinformation.dk."
+            : "Der er endnu ikke registreret nye ændringer. Listen opdateres automatisk hver 24. time."
+        }
+      />
+    );
+  });
+
   return (
     <section className="mx-auto max-w-4xl space-y-4 px-4 pb-10 sm:px-6">
-      <div className="space-y-4">
-        {placeholders.map((_, idx) => {
-          const item = items[idx];
-          const title = item
-            ? (item.short_name ?? item.document_id)
-            : isLoading
-              ? "Henter seneste lovændringer…"
-              : "Nyeste lovændringer";
-          const href = item?.href ? item.href.replace(/\/xml$/, "") : undefined;
-          const content = (
-            <div
-              className="flex items-center justify-between gap-4 p-5 sm:p-6"
-              style={{
-                backgroundColor: "#F78D0B",
-                color: "#000000",
-                borderRadius: "16px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
-              }}
-            >
-              <h3 className="text-base font-semibold sm:text-lg" style={{ color: "#000000" }}>
-                {title}
-                {item?.change_date ? (
-                  <span className="ml-2 text-xs font-normal opacity-80">
-                    {formatDate(item.change_date)}
-                  </span>
-                ) : null}
-              </h3>
-              <Plus className="h-5 w-5 shrink-0" style={{ color: "#000000" }} strokeWidth={2} />
-            </div>
-          );
-          return href ? (
-            <a
-              key={item?.document_id ?? `placeholder-${idx}`}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              {content}
-            </a>
-          ) : (
-            <div key={item?.document_id ?? `placeholder-${idx}`}>{content}</div>
-          );
-        })}
-      </div>
+      <div className="space-y-4">{boxes}</div>
       <p className="text-xs" style={{ color: "#000000", opacity: 0.7 }}>
         Data hentes fra Retsinformation.dk og opdateres hver 24. time.
       </p>
