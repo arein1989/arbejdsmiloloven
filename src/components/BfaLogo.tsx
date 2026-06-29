@@ -1,4 +1,5 @@
-import { Hand, Wrench } from "lucide-react";
+import { Hand } from "lucide-react";
+import bfaByggeAsset from "@/assets/bfa-byg.png.asset.json";
 
 type BfaLogoProps = {
   name:
