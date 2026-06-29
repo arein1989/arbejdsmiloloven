@@ -1,5 +1,6 @@
 import bfaByggeAsset from "@/assets/bfa-byg.png.asset.json";
 import bfaHfkAsset from "@/assets/bfa-hfk.png.asset.json";
+import bfaTransportAsset from "@/assets/bfa-transport.png.asset.json";
 
 type BfaLogoProps = {
   name:
@@ -47,9 +48,19 @@ export function BfaLogo({ name, className = "" }: BfaLogoProps) {
     );
   }
 
-  // Transport and Portal share the black BFA text logo
-  const showTriangle = name === "Transport, service og Turisme, samt jord til bord";
+  if (name === "Transport, service og Turisme, samt jord til bord") {
+    return (
+      <div className={`flex items-center justify-center ${className}`}>
+        <img
+          src={bfaTransportAsset.url}
+          alt="BFA Transport, service og Turisme, samt jord til bord"
+          className="h-full w-full object-contain"
+        />
+      </div>
+    );
+  }
 
+  // BFA Portalen fallback logo
   return (
     <div className={`flex items-center justify-center ${className}`}>
       <svg viewBox="0 0 80 40" className="h-full w-full">
@@ -65,12 +76,6 @@ export function BfaLogo({ name, className = "" }: BfaLogoProps) {
         >
           BFA
         </text>
-        {showTriangle && (
-          <polygon
-            points="58,22 64,30 52,30"
-            fill="#000000"
-          />
-        )}
       </svg>
     </div>
   );
