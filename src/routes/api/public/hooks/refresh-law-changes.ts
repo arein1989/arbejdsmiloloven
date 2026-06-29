@@ -9,45 +9,59 @@ type RetsinfoDoc = {
   documentType?: { shortName?: string | null } | null;
 };
 
-async function fetchChangesForDate(date?: string): Promise<RetsinfoDoc[]> {
-  const url = date
-    ? `https://api.retsinformation.dk/v1/Documents?date=${date}`
-    : `https://api.retsinformation.dk/v1/Documents`;
+async function fetchChangesForDate(date: string): Promise<RetsinfoDoc[]> {
+  const url = `https://api.retsinformation.dk/v1/Documents?date=${date}`;
   const res = await fetch(url, { headers: { Accept: "application/json" } });
-  if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`Retsinformation API ${res.status}: ${body.slice(0, 300)}`);
-  }
+  if (!res.ok) return [];
   const json = (await res.json()) as RetsinfoDoc[] | { errors?: string[] };
-  if (!Array.isArray(json)) {
-    throw new Error(`Retsinformation API error: ${JSON.stringify(json)}`);
-  }
+  if (!Array.isArray(json)) return [];
   return json;
+}
+
+function isoDate(d: Date): string {
+  return d.toISOString().slice(0, 10);
+}
+
+function daysBetween(from: Date, to: Date): string[] {
+  const out: string[] = [];
+  const cur = new Date(from.getTime());
+  while (cur <= to) {
+    out.push(isoDate(cur));
+    cur.setUTCDate(cur.getUTCDate() + 1);
+  }
+  return out;
+}
+
+async function fetchInBatches(dates: string[], concurrency = 8): Promise<RetsinfoDoc[]> {
+  const out: RetsinfoDoc[] = [];
+  for (let i = 0; i < dates.length; i += concurrency) {
+    const batch = dates.slice(i, i + concurrency);
+    const results = await Promise.all(batch.map((d) => fetchChangesForDate(d).catch(() => [])));
+    for (const r of results) out.push(...r);
+  }
+  return out;
 }
 
 export const Route = createFileRoute("/api/public/hooks/refresh-law-changes")({
   server: {
     handlers: {
-      POST: async () => {
+      POST: async ({ request }) => {
         try {
-          // Try today first, fall back to the last 10 days if the service is closed.
-          let docs: RetsinfoDoc[] = [];
-          try {
-            docs = await fetchChangesForDate();
-          } catch (e) {
-            console.warn("[refresh-law-changes] today failed, scanning recent days", e);
-            for (let i = 1; i <= 10; i++) {
-              const d = new Date();
-              d.setUTCDate(d.getUTCDate() - i);
-              const iso = d.toISOString().slice(0, 10);
-              try {
-                const part = await fetchChangesForDate(iso);
-                docs = docs.concat(part);
-              } catch (err) {
-                console.warn(`[refresh-law-changes] ${iso} failed`, err);
-              }
-            }
-          }
+          const url = new URL(request.url);
+          const fromParam = url.searchParams.get("from");
+          const toParam = url.searchParams.get("to");
+
+          // Default: scan the last 3 days every run (cron is hourly).
+          const today = new Date();
+          const from = fromParam ? new Date(`${fromParam}T00:00:00Z`) : (() => {
+            const d = new Date(today);
+            d.setUTCDate(d.getUTCDate() - 3);
+            return d;
+          })();
+          const to = toParam ? new Date(`${toParam}T00:00:00Z`) : today;
+
+          const dates = daysBetween(from, to);
+          const docs = await fetchInBatches(dates);
 
           // Filter to arbejdsmiljø-domain documents (ressort "lta" in ELI href).
           const lta = docs.filter((d) => (d.href ?? "").includes("/eli/lta/"));
@@ -65,7 +79,6 @@ export const Route = createFileRoute("/api/public/hooks/refresh-law-changes")({
 
           const rows = Array.from(map.values())
             .sort((a, b) => (b.changeDate ?? "").localeCompare(a.changeDate ?? ""))
-            .slice(0, 30)
             .map((d) => ({
               document_id: (d.documentId ?? d.accessionsnummer)!,
               short_name: d.documentType?.shortName ?? null,
@@ -77,7 +90,12 @@ export const Route = createFileRoute("/api/public/hooks/refresh-law-changes")({
             .filter((r) => r.document_id);
 
           if (rows.length === 0) {
-            return Response.json({ ok: true, inserted: 0, note: "no arbejdsmiljø changes" });
+            return Response.json({
+              ok: true,
+              inserted: 0,
+              scanned_days: dates.length,
+              note: "no arbejdsmiljø changes",
+            });
           }
 
           const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -92,7 +110,7 @@ export const Route = createFileRoute("/api/public/hooks/refresh-law-changes")({
             });
           }
 
-          return Response.json({ ok: true, inserted: rows.length });
+          return Response.json({ ok: true, inserted: rows.length, scanned_days: dates.length });
         } catch (e) {
           const msg = e instanceof Error ? e.message : String(e);
           console.error("[refresh-law-changes] failed", msg);
