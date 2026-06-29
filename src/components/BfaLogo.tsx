@@ -1,5 +1,5 @@
-import { Hand } from "lucide-react";
 import bfaByggeAsset from "@/assets/bfa-byg.png.asset.json";
+import bfaHfkAsset from "@/assets/bfa-hfk.png.asset.json";
 
 type BfaLogoProps = {
   name:
@@ -37,11 +37,12 @@ export function BfaLogo({ name, className = "" }: BfaLogoProps) {
 
   if (name === "Handel, Finans og Kontor") {
     return (
-      <div
-        className={`flex items-center justify-center rounded-full ${className}`}
-        style={{ backgroundColor: "#6B7280" }}
-      >
-        <Hand className="h-8 w-8 text-white" strokeWidth={2} />
+      <div className={`flex items-center justify-center ${className}`}>
+        <img
+          src={bfaHfkAsset.url}
+          alt="BFA Handel, Finans og Kontor"
+          className="h-full w-full object-contain"
+        />
       </div>
     );
   }
