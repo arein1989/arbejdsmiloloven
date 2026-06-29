@@ -127,7 +127,7 @@ function LatestLawChanges() {
     <section className="mx-auto max-w-4xl space-y-4 px-4 pb-10 sm:px-6">
       <div className="space-y-4">{boxes}</div>
       <p className="text-xs" style={{ color: "#000000", opacity: 0.7 }}>
-        Data hentes fra Retsinformation.dk og opdateres hver 24. time.
+        Data hentes fra Retsinformation.dk og opdateres automatisk når der kommer en ny arbejdsmiljø-lovændring.
       </p>
     </section>
   );
