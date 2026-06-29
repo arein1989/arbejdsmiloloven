@@ -1,4 +1,5 @@
-import { Hand, Wrench } from "lucide-react";
+import { Hand } from "lucide-react";
+import bfaByggeAsset from "@/assets/bfa-byg.png.asset.json";
 
 type BfaLogoProps = {
   name:
@@ -24,12 +25,12 @@ export function BfaLogo({ name, className = "" }: BfaLogoProps) {
 
   if (name === "Bygge & anlæg") {
     return (
-      <div
-        className={`relative flex flex-col items-center justify-center rounded-xl ${className}`}
-        style={{ backgroundColor: "#1E3A8A" }}
-      >
-        <span className="text-xl font-extrabold tracking-tight text-white">BFA</span>
-        <Wrench className="mt-0.5 h-4 w-4 text-white" strokeWidth={2.5} />
+      <div className={`flex items-center justify-center ${className}`}>
+        <img
+          src={bfaByggeAsset.url}
+          alt="BFA Bygge & anlæg"
+          className="h-full w-full object-contain"
+        />
       </div>
     );
   }
