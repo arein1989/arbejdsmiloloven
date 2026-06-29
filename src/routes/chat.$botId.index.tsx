@@ -201,10 +201,129 @@ function BotEntry() {
 
   useEffect(() => {
     if (!isBotId(botId)) return;
-    if (botId === "viden" || botId === "regler") return; // show welcome screen
+    if (botId === "viden" || botId === "regler" || botId === "problem") return; // show welcome screen
     startThread();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [botId]);
+
+  if (botId === "problem" && isBotId(botId)) {
+    return (
+      <div className="min-h-screen bg-white">
+        <SiteHeader />
+        <section className="bg-white">
+          <div className="w-full">
+            <img
+              src={videnHeroAsset.url}
+              alt="Konference om arbejdsmiljø"
+              className="h-56 w-full object-cover sm:h-72 md:h-96"
+            />
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-4xl space-y-4 px-4 pt-10 sm:px-6">
+          <h1 className="text-3xl font-semibold" style={{ color: "#000000" }}>
+            Få svar på dit arbejdsmiljøspørgsmål
+          </h1>
+          <p className="text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+            Arbejdsmiljøloven.dk
+            <br />
+            Skabt til at løfte arbejdsmiljøarbejdet til nye højder.
+            <br />
+            Mangler du{" "}
+            <a
+              href="https://www.arbejdsmiljøuddannelse.dk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold underline"
+              style={{ color: "#0C6B3B" }}
+            >
+              "Den lovpligtige arbejdsmiljøuddannelse"
+            </a>
+            ? Så find en tæt på dig på{" "}
+            <a
+              href="https://www.arbejdsmiljøuddannelse.dk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold underline"
+              style={{ color: "#0C6B3B" }}
+            >
+              www.arbejdsmiljøuddannelse.dk
+            </a>
+          </p>
+        </section>
+
+        <section className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
+          <div
+            className="p-5 sm:p-6"
+            style={{
+              backgroundColor: "#8CC63E",
+              border: "1px solid #000000",
+              borderRadius: "16px",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.6)",
+              color: "#000000",
+            }}
+          >
+            <h3 className="text-lg font-semibold sm:text-xl" style={{ color: "#000000" }}>
+              Anbefaling
+            </h3>
+            <h4 className="mt-3 text-base font-semibold sm:text-lg" style={{ color: "#000000" }}>
+              Opret en mappe til dine arbejdsmiljødokumenter
+            </h4>
+            <p className="mt-2 text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+              Det at gemme profiler på en hjemmeside kan kræve en større databehandling, så på grund af GDPR, er vi ikke der endnu. Det arbejder vi på.
+              <br />
+              Derfor anbefaler vi, at du opretter en mappe på din computer eller telefon, hvor du kan gemme dine vigtigste dokumenter såsom bekendtgørelser, AT‑vejledninger, BFA‑materiale og andre relevante filer. Det giver dig et samlet og let tilgængeligt overblik, når du arbejder med arbejdsmiljøet.
+            </p>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-4xl px-4 pb-12 sm:px-6">
+          <div
+            className="relative p-6 sm:p-8"
+            style={{
+              borderRadius: "25px",
+              background: "linear-gradient(180deg, #0C6B3B 0%, #17D173 100%)",
+            }}
+          >
+            <div className="flex gap-4 sm:gap-6">
+              <img
+                src={chatbotAsset.url}
+                alt="AI assistent"
+                className="h-20 w-20 shrink-0 object-contain sm:h-24 sm:w-24"
+              />
+              <p className="text-sm leading-relaxed text-white sm:text-base">
+                Hej og velkommen til AI assistenten "Arbejdsmiljøloven"
+                <br />
+                Jeg er en digital assistent, der hjælper dig med at finde svar på spørgsmål indenfor arbejdsmiljø. Jeg søger kun svar i gældende arbejdsmiljølove, bekendtgørelser og AT-vejledninger, som er udgivet på retsinformation, og som I kan finde på næste side. Har I brug brug for rådgivning, eller anden hjælp til jeres arbejdsmiljøudfordringer, så kontakt os på{" "}
+                <a href="mailto:info@adweyse.dk" className="underline" style={{ color: "#58D500" }}>
+                  info@adweyse.dk
+                </a>
+              </p>
+            </div>
+
+            <div className="mt-6 flex justify-end">
+              <button
+                onClick={startThread}
+                disabled={loading}
+                className="px-6 py-2.5 text-sm font-semibold transition-transform hover:-translate-y-0.5 disabled:opacity-60"
+                style={{
+                  borderRadius: "16px",
+                  background: "#F78D0B",
+                  color: "#000000",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+                }}
+              >
+                {loading ? "Starter…" : "Stil dine spørgsmål her"}
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <SiteFooter />
+      </div>
+    );
+  }
+
 
   if (botId === "viden" && isBotId(botId)) {
     return (
