@@ -1,5 +1,6 @@
 import bfaByggeAsset from "@/assets/bfa-byg.png.asset.json";
 import bfaHfkAsset from "@/assets/bfa-hfk.png.asset.json";
+import bfaTransportAsset from "@/assets/bfa-transport.png.asset.json";
 
 type BfaLogoProps = {
   name:
