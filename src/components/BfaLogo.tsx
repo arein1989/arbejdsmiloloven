@@ -1,6 +1,7 @@
 import bfaByggeAsset from "@/assets/bfa-byg.png.asset.json";
 import bfaHfkAsset from "@/assets/bfa-hfk.png.asset.json";
 import bfaTransportAsset from "@/assets/bfa-transport.png.asset.json";
+import bfaPortalAsset from "@/assets/bfa-portal.png.asset.json";
 
 type BfaLogoProps = {
   name:
@@ -60,23 +61,17 @@ export function BfaLogo({ name, className = "" }: BfaLogoProps) {
     );
   }
 
-  // BFA Portalen fallback logo
-  return (
-    <div className={`flex items-center justify-center ${className}`}>
-      <svg viewBox="0 0 80 40" className="h-full w-full">
-        <text
-          x="50%"
-          y="50%"
-          dominantBaseline="central"
-          textAnchor="middle"
-          fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-          fontSize="28"
-          fontWeight="900"
-          fill="#000000"
-        >
-          BFA
-        </text>
-      </svg>
-    </div>
-  );
+  if (name === "BFA Portalen") {
+    return (
+      <div className={`flex items-center justify-center ${className}`}>
+        <img
+          src={bfaPortalAsset.url}
+          alt="BFA Portalen"
+          className="h-full w-full object-contain"
+        />
+      </div>
+    );
+  }
+
+  return null;
 }
