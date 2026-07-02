@@ -97,7 +97,7 @@ function LatestLawChanges() {
     return d.toLocaleDateString("da-DK", { day: "2-digit", month: "2-digit", year: "numeric" });
   };
 
-  const boxes = Array.from({ length: 5 }).map((_, idx) => {
+  const boxes = Array.from({ length: 4 }).map((_, idx) => {
     const item = items[idx];
     if (item) {
       return (
@@ -117,7 +117,7 @@ function LatestLawChanges() {
         reason={
           isLoading
             ? "Henter de seneste arbejdsmiljø-ændringer fra Retsinformation.dk."
-            : "Der er endnu ikke registreret nye ændringer. Listen opdateres automatisk hver 24. time."
+            : "Der er endnu ikke registreret nye ændringer."
         }
       />
     );
@@ -125,6 +125,9 @@ function LatestLawChanges() {
 
   return (
     <section className="mx-auto max-w-4xl space-y-4 px-4 pb-10 sm:px-6">
+      <h3 className="text-2xl font-semibold" style={{ color: "#000000" }}>
+        De seneste lovændringer
+      </h3>
       <div className="space-y-4">{boxes}</div>
     </section>
   );

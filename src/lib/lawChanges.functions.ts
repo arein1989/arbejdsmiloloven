@@ -14,8 +14,9 @@ export const getLatestLawChanges = createServerFn({ method: "GET" }).handler(
     const { data, error } = await supabaseAdmin
       .from("law_changes")
       .select("document_id, short_name, change_date, href, reason")
+      .ilike("document_id", "YEAR_SUMMARY_%")
       .order("change_date", { ascending: false, nullsFirst: false })
-      .limit(5);
+      .limit(4);
     if (error) {
       console.error("[lawChanges] read failed", error);
       return [];
