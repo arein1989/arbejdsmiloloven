@@ -97,7 +97,7 @@ function LatestLawChanges() {
     return d.toLocaleDateString("da-DK", { day: "2-digit", month: "2-digit", year: "numeric" });
   };
 
-  const boxes = Array.from({ length: 3 }).map((_, idx) => {
+  const boxes = Array.from({ length: 5 }).map((_, idx) => {
     const item = items[idx];
     if (item) {
       return (
