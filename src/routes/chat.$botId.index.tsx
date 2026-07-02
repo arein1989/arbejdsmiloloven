@@ -125,7 +125,7 @@ function LatestLawChanges() {
 
   return (
     <section className="mx-auto max-w-4xl space-y-4 px-4 pb-10 sm:px-6">
-      <h3 className="text-2xl font-semibold" style={{ color: "#000000" }}>
+      <h3 className="text-xl font-semibold" style={{ color: "#000000" }}>
         De seneste lovændringer
       </h3>
       <div className="space-y-4">{boxes}</div>
