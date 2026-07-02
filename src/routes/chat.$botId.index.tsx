@@ -97,7 +97,7 @@ function LatestLawChanges() {
     return d.toLocaleDateString("da-DK", { day: "2-digit", month: "2-digit", year: "numeric" });
   };
 
-  const boxes = Array.from({ length: 5 }).map((_, idx) => {
+  const boxes = Array.from({ length: 4 }).map((_, idx) => {
     const item = items[idx];
     if (item) {
       return (
@@ -117,7 +117,7 @@ function LatestLawChanges() {
         reason={
           isLoading
             ? "Henter de seneste arbejdsmiljø-ændringer fra Retsinformation.dk."
-            : "Der er endnu ikke registreret nye ændringer. Listen opdateres automatisk hver 24. time."
+            : "Der er endnu ikke registreret nye ændringer."
         }
       />
     );
