@@ -15,7 +15,7 @@ export const getLatestLawChanges = createServerFn({ method: "GET" }).handler(
       .from("law_changes")
       .select("document_id, short_name, change_date, href, reason")
       .order("change_date", { ascending: false, nullsFirst: false })
-      .limit(5);
+      .limit(4);
     if (error) {
       console.error("[lawChanges] read failed", error);
       return [];
