@@ -48,6 +48,9 @@ function Home() {
           />
         </div>
         <div className="mx-auto max-w-6xl px-4 pb-10 pt-8 sm:px-6">
+        <h1 className="mt-8 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          Velkommen til Arbejdsmiljøloven.dk!
+        </h1>
         <div className="mt-8 flex flex-col items-start gap-8 md:flex-row md:items-center">
           <FlipCard />
           <div className="max-w-3xl">
