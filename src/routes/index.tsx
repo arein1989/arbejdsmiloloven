@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { FlipCard } from "@/components/FlipCard";
 import { BOT_LIST } from "@/lib/bots";
 import heroAsset from "@/assets/hero-forside.jpg.asset.json";
 import robotMascot from "@/assets/chatbot.png.asset.json";
@@ -47,11 +48,13 @@ function Home() {
           />
         </div>
         <div className="mx-auto max-w-6xl px-4 pb-10 pt-8 sm:px-6">
-        <div className="mt-8 max-w-3xl">
-            <h1 className="font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Velkommen til Arbejdsmiljøloven.dk!
-            </h1>
-            <h3 className="mt-6 text-base font-semibold text-black sm:text-lg">
+        <h1 className="mt-8 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          Velkommen til Arbejdsmiljøloven.dk!
+        </h1>
+        <div className="mt-8 flex flex-col items-start gap-8 md:flex-row md:items-center">
+          <FlipCard />
+          <div className="max-w-3xl">
+            <h3 className="text-base font-semibold text-black sm:text-lg">
               Arbejdsmiljøloven.dk har – 4 AI assistenter på samme hjemmeside
             </h3>
             <p className="mt-4 text-base text-black sm:text-lg">
@@ -59,6 +62,7 @@ function Home() {
               Brug de 4 forskellige AI-assistenter, en på hver side, der har 4 forskellige formål, og få svar på specifikke arbejdsmiljøspørgsmål eller få fat i det materiale som I har brug for i jeres videre arbejde.
             </p>
           </div>
+        </div>
         </div>
       </section>
 
