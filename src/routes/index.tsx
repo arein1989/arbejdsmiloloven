@@ -51,7 +51,7 @@ function Home() {
         <h1 className="mt-8 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
           Velkommen til Arbejdsmiljøloven.dk!
         </h1>
-        <div className="mt-8 flex flex-col items-start gap-8 md:flex-row md:items-center">
+        <div className="mt-8 flex flex-col items-start gap-8 md:flex-row md:items-stretch">
           <div className="max-w-3xl md:flex md:flex-col md:justify-center">
             <h3 className="text-base font-semibold text-black sm:text-lg">
               Arbejdsmiljøloven.dk har – 4 AI assistenter på samme hjemmeside
