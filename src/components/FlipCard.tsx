@@ -6,7 +6,7 @@ export function FlipCard() {
 
   return (
     <div
-      className="relative aspect-[3/4] w-full max-w-[380px] shrink-0 cursor-pointer select-none md:w-[340px] md:max-w-none"
+      className="relative aspect-[3/4] w-full max-w-[380px] shrink-0 cursor-pointer select-none self-stretch md:aspect-auto md:w-[340px] md:max-w-none"
       style={{ perspective: "1200px" }}
       onClick={() => setFlipped((f) => !f)}
       onMouseEnter={() => setFlipped(true)}
@@ -40,7 +40,7 @@ export function FlipCard() {
           <img
             src={frontAsset.url}
             alt="Thomas Weyse"
-            className="h-full w-full object-cover object-top"
+            className="h-full w-full object-cover object-[50%_35%]"
             style={{ borderRadius: "20px" }}
           />
         </div>
