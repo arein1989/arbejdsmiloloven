@@ -40,7 +40,7 @@ export function FlipCard() {
           <img
             src={frontAsset.url}
             alt="Thomas Weyse"
-            className="h-full w-full object-cover object-top"
+            className="h-full w-full object-cover object-[50%_35%]"
             style={{ borderRadius: "20px" }}
           />
         </div>
