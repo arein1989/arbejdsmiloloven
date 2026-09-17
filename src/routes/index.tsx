@@ -90,16 +90,16 @@ function Home() {
       {/* Bot grid */}
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {BOT_LIST.map((b) => {
+          {BOT_LIST.map((b, i) => {
             const data = cardData[b.id];
             return (
               <Link
-                ref={firstBotRef}
+                ref={i === 0 ? firstBotRef : undefined}
                 key={b.id}
                 to="/chat/$botId"
                 params={{ botId: b.id }}
-
                 className="group flex flex-col items-center rounded-2xl p-6 text-center text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+
                 style={{ background: data.gradient }}
               >
                 <img
