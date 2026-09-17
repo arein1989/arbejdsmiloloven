@@ -53,7 +53,7 @@ export function FlipCard({ height }: { height?: number | null }) {
             borderRadius: "20px",
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
-            background: "linear-gradient(180deg, #2E5F0D 0%, #1F4207 100%)",
+            background: "linear-gradient(180deg, #3E7C18 0%, #2B5710 100%)",
             boxShadow: "0 4px 24px rgba(0, 0, 0, 0.35)",
           }}
         >
