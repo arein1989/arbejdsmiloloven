@@ -1,8 +1,10 @@
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { FlipCard } from "@/components/FlipCard";
 import { BOT_LIST } from "@/lib/bots";
+
 import heroAsset from "@/assets/hero-forside.jpg.asset.json";
 import robotMascot from "@/assets/chatbot.png.asset.json";
 
@@ -34,9 +36,25 @@ const cardData: Record<string, { label: string; title: string; description: stri
 };
 
 function Home() {
+  const firstBotRef = useRef<HTMLAnchorElement | null>(null);
+  const [botBoxHeight, setBotBoxHeight] = useState<number | null>(null);
+
+  useEffect(() => {
+    const el = firstBotRef.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setBotBoxHeight(entry.contentRect.height);
+      }
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <SiteHeader />
+
 
       {/* Hero */}
       <section className="bg-white">
