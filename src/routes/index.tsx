@@ -44,9 +44,11 @@ function Home() {
     if (!el || typeof ResizeObserver === "undefined") return;
     const ro = new ResizeObserver((entries) => {
       for (const entry of entries) {
-        setBotBoxHeight(entry.contentRect.height);
+        const border = entry.borderBoxSize?.[0];
+        setBotBoxHeight(border ? border.blockSize : el.getBoundingClientRect().height);
       }
     });
+
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
