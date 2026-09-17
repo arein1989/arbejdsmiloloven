@@ -1,8 +1,10 @@
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { FlipCard } from "@/components/FlipCard";
 import { BOT_LIST } from "@/lib/bots";
+
 import heroAsset from "@/assets/hero-forside.jpg.asset.json";
 import robotMascot from "@/assets/chatbot.png.asset.json";
 
@@ -34,9 +36,27 @@ const cardData: Record<string, { label: string; title: string; description: stri
 };
 
 function Home() {
+  const firstBotRef = useRef<HTMLAnchorElement | null>(null);
+  const [botBoxHeight, setBotBoxHeight] = useState<number | null>(null);
+
+  useEffect(() => {
+    const el = firstBotRef.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const border = entry.borderBoxSize?.[0];
+        setBotBoxHeight(border ? border.blockSize : el.getBoundingClientRect().height);
+      }
+    });
+
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <SiteHeader />
+
 
       {/* Hero */}
       <section className="bg-white">
@@ -61,7 +81,8 @@ function Home() {
               Brug de 4 forskellige AI-assistenter, en på hver side, der har 4 forskellige formål, og få svar på specifikke arbejdsmiljøspørgsmål eller få fat i det materiale som I har brug for i jeres videre arbejde.
             </p>
           </div>
-          <FlipCard />
+          <FlipCard height={botBoxHeight} />
+
         </div>
         </div>
       </section>
@@ -69,14 +90,16 @@ function Home() {
       {/* Bot grid */}
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {BOT_LIST.map((b) => {
+          {BOT_LIST.map((b, i) => {
             const data = cardData[b.id];
             return (
               <Link
+                ref={i === 0 ? firstBotRef : undefined}
                 key={b.id}
                 to="/chat/$botId"
                 params={{ botId: b.id }}
                 className="group flex flex-col items-center rounded-2xl p-6 text-center text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+
                 style={{ background: data.gradient }}
               >
                 <img
