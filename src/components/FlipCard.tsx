@@ -1,13 +1,13 @@
 import { useState } from "react";
 import frontAsset from "@/assets/thomas-weyse.jpeg.asset.json";
 
-export function FlipCard() {
+export function FlipCard({ height }: { height?: number | null }) {
   const [flipped, setFlipped] = useState(false);
 
   return (
     <div
       className="relative aspect-[3/4] w-full max-w-[380px] shrink-0 cursor-pointer select-none self-stretch md:aspect-auto md:w-[340px] md:max-w-none"
-      style={{ perspective: "1200px" }}
+      style={{ perspective: "1200px", height: height ? `${height}px` : undefined }}
       onClick={() => setFlipped((f) => !f)}
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
@@ -21,6 +21,7 @@ export function FlipCard() {
         }
       }}
     >
+
       <div
         className="relative h-full w-full transition-transform duration-700"
         style={{
