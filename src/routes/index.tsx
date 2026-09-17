@@ -79,7 +79,8 @@ function Home() {
               Brug de 4 forskellige AI-assistenter, en på hver side, der har 4 forskellige formål, og få svar på specifikke arbejdsmiljøspørgsmål eller få fat i det materiale som I har brug for i jeres videre arbejde.
             </p>
           </div>
-          <FlipCard />
+          <FlipCard height={botBoxHeight} />
+
         </div>
         </div>
       </section>
@@ -91,9 +92,11 @@ function Home() {
             const data = cardData[b.id];
             return (
               <Link
+                ref={firstBotRef}
                 key={b.id}
                 to="/chat/$botId"
                 params={{ botId: b.id }}
+
                 className="group flex flex-col items-center rounded-2xl p-6 text-center text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
                 style={{ background: data.gradient }}
               >
