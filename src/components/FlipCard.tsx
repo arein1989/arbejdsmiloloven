@@ -7,7 +7,7 @@ export function FlipCard({ height }: { height?: number | null }) {
   return (
     <div
       className="relative aspect-[3/4] w-full max-w-[380px] shrink-0 cursor-pointer select-none self-stretch md:aspect-auto md:w-[340px] md:max-w-none"
-      style={{ perspective: "1200px", height: height ? `${height + 3}px` : undefined }}
+      style={{ perspective: "1200px", height: height ? `${height + 6}px` : undefined }}
       onClick={() => setFlipped((f) => !f)}
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
