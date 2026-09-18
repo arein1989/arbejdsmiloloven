@@ -727,6 +727,7 @@ function BotEntry() {
                 </ul>
               </div>
             </div>
+          </LawSection>
         </section>
 
         <LatestLawChanges />
