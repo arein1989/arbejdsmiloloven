@@ -42,7 +42,7 @@ export function SiteFooter() {
         <div className="flex min-w-0 flex-col items-center gap-3 md:items-end">
           <span className="text-sm font-semibold sm:text-base">Følge os på</span>
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/company/adweyse/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
