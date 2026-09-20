@@ -23,7 +23,11 @@ export const Route = createFileRoute("/")({
         content:
           "4 AI-assistenter til arbejdsmiljø: problemløsning, juridisk opslag, vidensøgning og handlingsplaner.",
       },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Home,
 });

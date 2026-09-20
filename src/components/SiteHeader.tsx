@@ -38,6 +38,12 @@ export function SiteHeader() {
               {l.label}
             </Link>
           ))}
+          <Link
+            to="/nyheder"
+            className="font-display text-lg font-semibold text-white transition-opacity hover:opacity-80"
+          >
+            Nyheder
+          </Link>
         </nav>
 
         <div className="ml-auto hidden items-center gap-3 lg:flex">
@@ -96,6 +102,13 @@ export function SiteHeader() {
                   {l.label}
                 </Link>
               ))}
+              <Link
+                to="/nyheder"
+                onClick={close}
+                className="font-display border-b border-white/15 py-3 text-base font-semibold text-white"
+              >
+                Nyheder
+              </Link>
             </nav>
             <div className="mt-3 flex flex-col gap-3 sm:flex-row">
               <Link
