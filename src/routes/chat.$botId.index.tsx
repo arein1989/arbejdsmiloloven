@@ -710,7 +710,6 @@ function BotEntry() {
           />
         </section>
 
-        <LatestLawChanges />
 
         <SiteFooter />
 
