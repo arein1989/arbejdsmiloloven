@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { LatestLawChanges } from "@/components/LatestLawChanges";
 import heroAsset from "@/assets/arbejdsmiljøloven.jpg.asset.json";
 
 export const Route = createFileRoute("/nyheder")({
@@ -43,6 +44,8 @@ function NewsPage() {
             Her finder du nyheder om arbejdsmiljø, lovændringer og nye regler.
           </p>
         </section>
+
+        <LatestLawChanges />
       </main>
 
       <SiteFooter />
