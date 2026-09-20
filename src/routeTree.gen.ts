@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as NyhederRouteImport } from './routes/nyheder'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ChatBotIdRouteImport } from './routes/chat.$botId'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
@@ -16,6 +17,11 @@ import { Route as ChatBotIdIndexRouteImport } from './routes/chat.$botId.index'
 import { Route as ChatBotIdThreadIdRouteImport } from './routes/chat.$botId.$threadId'
 import { Route as ApiPublicHooksRefreshLawChangesRouteImport } from './routes/api/public/hooks/refresh-law-changes'
 
+const NyhederRoute = NyhederRouteImport.update({
+  id: '/nyheder',
+  path: '/nyheder',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -50,6 +56,7 @@ const ApiPublicHooksRefreshLawChangesRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/nyheder': typeof NyhederRoute
   '/api/chat': typeof ApiChatRoute
   '/chat/$botId': typeof ChatBotIdRouteWithChildren
   '/chat/$botId/$threadId': typeof ChatBotIdThreadIdRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/nyheder': typeof NyhederRoute
   '/api/chat': typeof ApiChatRoute
   '/chat/$botId/$threadId': typeof ChatBotIdThreadIdRoute
   '/chat/$botId': typeof ChatBotIdIndexRoute
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/nyheder': typeof NyhederRoute
   '/api/chat': typeof ApiChatRoute
   '/chat/$botId': typeof ChatBotIdRouteWithChildren
   '/chat/$botId/$threadId': typeof ChatBotIdThreadIdRoute
@@ -76,6 +85,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/nyheder'
     | '/api/chat'
     | '/chat/$botId'
     | '/chat/$botId/$threadId'
@@ -84,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/nyheder'
     | '/api/chat'
     | '/chat/$botId/$threadId'
     | '/chat/$botId'
@@ -91,6 +102,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/nyheder'
     | '/api/chat'
     | '/chat/$botId'
     | '/chat/$botId/$threadId'
@@ -100,6 +112,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  NyhederRoute: typeof NyhederRoute
   ApiChatRoute: typeof ApiChatRoute
   ChatBotIdRoute: typeof ChatBotIdRouteWithChildren
   ApiPublicHooksRefreshLawChangesRoute: typeof ApiPublicHooksRefreshLawChangesRoute
@@ -107,6 +120,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/nyheder': {
+      id: '/nyheder'
+      path: '/nyheder'
+      fullPath: '/nyheder'
+      preLoaderRoute: typeof NyhederRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -168,6 +188,7 @@ const ChatBotIdRouteWithChildren = ChatBotIdRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  NyhederRoute: NyhederRoute,
   ApiChatRoute: ApiChatRoute,
   ChatBotIdRoute: ChatBotIdRouteWithChildren,
   ApiPublicHooksRefreshLawChangesRoute: ApiPublicHooksRefreshLawChangesRoute,
