@@ -593,7 +593,40 @@ function BotEntry() {
           <LawSection
             title="AT-vejledninger"
             description="En AT-vejledning er siden 15. december 2025 blevet såkaldte “juridiske dokumenter” som fokuserer på forklaringen af det retslige grundlag for arbejdsgiverne. En AT-vejledning kan dække mange bekendtgørelser og det der står i en AT-vejledning er nu lige så bindende som en bekendtgørelse."
-          />
+          >
+            <div className="space-y-5" style={{ color: "#000000" }}>
+              <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base">
+                {[
+                  { label: "AT-vejledning om Arbejdsstedets indretning", url: "https://www.retsinformation.dk/eli/retsinfo/2025/10207" },
+                  { label: "AT-vejledning om Skærmarbejde", url: "https://www.retsinformation.dk/eli/retsinfo/2025/10208" },
+                  { label: "AT-vejledning om Systematisk arbejdsmiljøarbejde, herunder samarbejde om arbejdsmiljø", url: "https://www.retsinformation.dk/eli/retsinfo/2025/10209" },
+                  { label: "AT-vejledning om Psykisk arbejdsmiljø", url: "https://www.retsinformation.dk/eli/retsinfo/2025/10217" },
+                  { label: "AT-vejledning om Ergonomisk arbejdsmiljø", url: "https://www.retsinformation.dk/eli/retsinfo/2026/9207" },
+                  { label: "AT-vejledning om Kemi og biologi i arbejdsmiljøet – udvalgte emner", url: "https://www.retsinformation.dk/eli/retsinfo/2025/10210" },
+                  { label: "AT-vejledning om Bygge- og anlægsarbejde", url: "https://www.retsinformation.dk/eli/retsinfo/2025/10211" },
+                  { label: "AT-vejledning om Bygherrens pligter", url: "https://www.retsinformation.dk/eli/retsinfo/2025/10212" },
+                  { label: "AT-vejledning om unges arbejde, elevers praktiske øvelser samt gravide og ammendes arbejde", url: "https://www.retsinformation.dk/eli/retsinfo/2026/9111" },
+                  { label: "AT-vejledning om Pligter ved udbud af tjenesteydelser", url: "https://www.retsinformation.dk/eli/retsinfo/2025/10213" },
+                  { label: "AT-vejledning om Egentlig militærtjeneste", url: "https://www.retsinformation.dk/eli/retsinfo/2025/10214" },
+                  { label: "AT-vejledning om Aftaler, der begrænser Arbejdstilsynets tilsyn med overholdelsen af arbejdsmiljølovgivningen", url: "https://www.retsinformation.dk/eli/retsinfo/2025/10215" },
+                  { label: "AT-vejledning om Psykisk førstehjælp", url: "https://www.retsinformation.dk/eli/retsinfo/2025/10216" },
+                  { label: "Oversigt over ophævede AT-vejledninger", url: "https://www.retsinformation.dk/eli/retsinfo/2025/10233" },
+                ].map((item) => (
+                  <li key={item.url}>
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline"
+                      style={{ color: "#0C6B3B" }}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </LawSection>
         </section>
 
 
