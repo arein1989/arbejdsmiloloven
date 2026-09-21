@@ -588,7 +588,112 @@ function BotEntry() {
           <LawSection
             title="Bekendtgørelser"
             description="En bekendtgørelse er de bindende regler på arbejdsmiljøområdet. En bekendtgørelse har samme betydning som arbejdsmiljøloven, men de er ofte mere detaljeret og forklarende end arbejdsmiljøloven og hoved-bekendtgørelserne."
-          />
+          >
+            <div className="space-y-5" style={{ color: "#000000" }}>
+              <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed sm:text-base">
+                {[
+                  { label: "Bekendtgørelse nr. 594 af 2026 - Adgangsveje til elevatorer, rulletrapper og lignende maskiner", url: "https://www.retsinformation.dk/eli/lta/2026/594" },
+                  { label: "Bekendtgørelse nr. 1295 af 2021 - Anerkendelse af erhvervsmæssige kvalifikationer erhvervet i udlandet", url: "https://www.retsinformation.dk/eli/lta/2021/1295" },
+                  { label: "Bekendtgørelse nr. 565 af 2026 - Anmeldelse af arbejdsulykker m.v. til Arbejdstilsynet", url: "https://www.retsinformation.dk/eli/lta/2026/565" },
+                  { label: "Bekendtgørelse nr. 564 af 2026 - Anmeldelse af ulykker efter arbejdsskadesikringsloven", url: "https://www.retsinformation.dk/eli/lta/2026/564" },
+                  { label: "Bekendtgørelse nr. 2162 af 2020 - Anmeldelsespligt til Registret for Udenlandske Tjenesteydere (RUT) for selvstændigt erhvervsdrivende uden ansatte", url: "https://www.retsinformation.dk/eli/lta/2020/2162" },
+                  { label: "Bekendtgørelse nr. 295 af 2026 - Anvendelse af administrativt bødeforelæg ved overtrædelse af arbejdsmiljølovgivningen", url: "https://www.retsinformation.dk/eli/lta/2026/295" },
+                  { label: "Bekendtgørelse nr. 612 af 2026 - Anvendelse af personlige værnemidler", url: "https://www.retsinformation.dk/eli/lta/2026/612" },
+                  { label: "Bekendtgørelse nr. 428 af 2022 - Anvendelse af tekniske hjælpemidler", url: "https://www.retsinformation.dk/eli/lta/2022/428" },
+                  { label: "Bekendtgørelse nr. 498 af 2024 - Anvendelse af trykbærende udstyr", url: "https://www.retsinformation.dk/eli/lta/2024/498" },
+                  { label: "Bekendtgørelse nr. 461 af 2016 - Anvendelse m.v. af elevatorer, rulletrapper og lignende maskiner", url: "https://www.retsinformation.dk/eli/lta/2016/461" },
+                  { label: "Bekendtgørelse nr. 478 af 2003 - Arbejde i forbindelse med eksplosiv atmosfære", url: "https://www.retsinformation.dk/eli/lta/2003/478" },
+                  { label: "Bekendtgørelse nr. 302 af 1993 - Arbejde med kodenummererede produkter", url: "https://www.retsinformation.dk/eli/lta/1993/302" },
+                  { label: "Bekendtgørelse nr. 1399 af 2021 - Arbejde med montering og nedrivning af isoleringsmaterialer med indhold af syntetiske mineralfibre", url: "https://www.retsinformation.dk/eli/lta/2021/1399" },
+                  { label: "Bekendtgørelse nr. 581 af 2026 - Arbejde med stoffer og materialer (kemiske agenser)", url: "https://www.retsinformation.dk/eli/lta/2026/581" },
+                  { label: "Bekendtgørelse nr. 603 af 2026 - Arbejde med udvinding af mineralske materialer", url: "https://www.retsinformation.dk/eli/lta/2026/603" },
+                  { label: "Bekendtgørelse nr. 1108 af 1992 - Arbejde ved skærmterminaler", url: "https://www.retsinformation.dk/eli/lta/1992/1108" },
+                  { label: "Bekendtgørelse nr. 609 af 2026 - Arbejdets udførelse", url: "https://www.retsinformation.dk/eli/lta/2026/609" },
+                  { label: "Bekendtgørelse nr. 1165 af 1992 - Arbejdsmedicinske undersøgelser efter lov om arbejdsmiljø", url: "https://www.retsinformation.dk/eli/lta/1992/1165" },
+                  { label: "Bekendtgørelse nr. 1978 af 2021 - Arbejdsmiljøfaglige uddannelser", url: "https://www.retsinformation.dk/eli/lta/2021/1978" },
+                  { label: "Bekendtgørelse nr. 599 af 2026 - Arbejdsrelateret vold uden for arbejdstid", url: "https://www.retsinformation.dk/eli/lta/2026/599" },
+                  { label: "Bekendtgørelse nr. 133 af 2017 - Arbejdstilsynets undersøgelse af udenlandske virksomheders reelle etablering", url: "https://www.retsinformation.dk/eli/lta/2017/133" },
+                  { label: "Bekendtgørelse nr. 986 af 2018 - Arbejdstilsynets videregivelse af oplysninger om virksomheder, som er pålagt anmeldelse i Registret for Udenlandske Tjenesteydere (RUT)", url: "https://www.retsinformation.dk/eli/lta/2018/986" },
+                  { label: "Bekendtgørelse nr. 1328 af 2025 - Asbest i arbejdsmiljøet", url: "https://www.retsinformation.dk/eli/lta/2025/1328" },
+                  { label: "Bekendtgørelse nr. 1867 af 2023 - Autorisation af rådgivningsvirksomheder på arbejdsmiljøområdet", url: "https://www.retsinformation.dk/eli/lta/2023/1867" },
+                  { label: "Bekendtgørelse nr. 723 af 2024 - Autorisation og godkendelse af fagligt ansvarlige på asbestområdet", url: "https://www.retsinformation.dk/eli/lta/2024/723" },
+                  { label: "Bekendtgørelse nr. 1410 af 2020 - Begrænsning af Arbejdstilsynets tilsyn med overholdelse af visse arbejdsmiljøregler", url: "https://www.retsinformation.dk/eli/lta/2020/1410" },
+                  { label: "Bekendtgørelse nr. 597 af 2026 - Begrænsninger i anvendelsen af lov om arbejdsmiljø på arbejde, som udføres i den ansattes hjem", url: "https://www.retsinformation.dk/eli/lta/2026/597" },
+                  { label: "Bekendtgørelse nr. 562 af 2010 - Beskyttelse mod udsættelse for kunstig optisk stråling i forbindelse med arbejdet", url: "https://www.retsinformation.dk/eli/lta/2010/562" },
+                  { label: "Bekendtgørelse nr. 63 af 2006 - Beskyttelse mod udsættelse for støj i forbindelse med arbejdet", url: "https://www.retsinformation.dk/eli/lta/2006/63" },
+                  { label: "Bekendtgørelse nr. 682 af 2005 - Beskyttelse mod udsættelse for vibrationer ifm. Arbejdet", url: "https://www.retsinformation.dk/eli/lta/2005/682" },
+                  { label: "Bekendtgørelse nr. 1270 af 2024 - Biologiske agenser og arbejdsmiljø", url: "https://www.retsinformation.dk/eli/lta/2024/1270" },
+                  { label: "Bekendtgørelse nr. 209 af 2025 - Branchefællesskaber for arbejdsmiljø", url: "https://www.retsinformation.dk/eli/lta/2025/209" },
+                  { label: "Bekendtgørelse nr. 2107 af 2021 - Bygge- og anlægsarbejde", url: "https://www.retsinformation.dk/eli/lta/2021/2107" },
+                  { label: "Bekendtgørelse nr. 117 af 2013 - Bygherrens pligter", url: "https://www.retsinformation.dk/eli/lta/2013/117" },
+                  { label: "Bekendtgørelse nr. 1076 af 2011 - Delegation til Miljøstyrelsen af opgaver efter lov om arbejdsmiljø vedrørende periodisk funktionskontrol af pesticidudbringningsudstyr i henhold til Europa-Parlamentets og Rådets direktiv 2009/128/EF", url: "https://www.retsinformation.dk/eli/lta/2011/1076" },
+                  { label: "Bekendtgørelse nr. 708 af 2024 - Den fagligt ansvarliges kvalifikationer og uddannelse under autorisationsordning for nedrivning af asbestholdigt materiale", url: "https://www.retsinformation.dk/eli/lta/2024/708" },
+                  { label: "Bekendtgørelse nr. 475 af 1975 - EF-direktiver om landbrugs- og   skovbrugshjultraktorer", url: "https://www.retsinformation.dk/eli/lta/1975/475" },
+                  { label: "Bekendtgørelse nr. 564 af 1997 - EF-direktiver om trykbeholdere", url: "https://www.retsinformation.dk/eli/lta/1997/564" },
+                  { label: "Bekendtgørelse nr. 472 af 2016 - Eksponering for elektromagnetiske felter i forbindelse med arbejdet", url: "https://www.retsinformation.dk/eli/lta/2016/472" },
+                  { label: "Bekendtgørelse nr. 607 af 2026 - Faste arbejdssteders indretning", url: "https://www.retsinformation.dk/eli/lta/2026/607" },
+                  { label: "Bekendtgørelse nr. 301 af 1993 - Fastsættelse af kodenumre", url: "https://www.retsinformation.dk/eli/lta/1993/301" },
+                  { label: "Bekendtgørelse nr. 582 af 2026 - Foranstaltninger til forebyggelse af risikoen ved arbejde med kræftfremkaldende, mutagene eller reproduktionstoksiske stoffer og materialer", url: "https://www.retsinformation.dk/eli/lta/2026/582" },
+                  { label: "Bekendtgørelse nr. 25 af 2026 - Forretningsorden for Arbejdsmiljøklagenævnet", url: "https://www.retsinformation.dk/eli/lta/2026/25" },
+                  { label: "Bekendtgørelse nr. 601 af 2026 - Genteknologi og arbejdsmiljø", url: "https://www.retsinformation.dk/eli/lta/2026/601" },
+                  { label: "Bekendtgørelse nr. 348 af 2026 - Godkendelse af udbydere af de obligatoriske arbejdsmiljøuddannelser", url: "https://www.retsinformation.dk/eli/lta/2026/348" },
+                  { label: "Bekendtgørelse nr. 613 af 2026 - Grænseværdier for stoffer og materialer (kemiske agenser) i arbejdsmiljøet", url: "https://www.retsinformation.dk/eli/lta/2026/613" },
+                  { label: "Bekendtgørelse nr. 606 af 2026 - Hvileperiode og fridøgn", url: "https://www.retsinformation.dk/eli/lta/2026/606" },
+                  { label: "Bekendtgørelse nr. 604 af 2026 - Indretning af skurvogne og lignende", url: "https://www.retsinformation.dk/eli/lta/2026/604" },
+                  { label: "Bekendtgørelse nr. 595 af 2026 - Indretning af tekniske hjælpemidler", url: "https://www.retsinformation.dk/eli/lta/2026/595" },
+                  { label: "Bekendtgørelse nr. 99 af 2007 - Indretning, ombygning og reparation af trykbærende udstyr", url: "https://www.retsinformation.dk/eli/lta/2007/99" },
+                  { label: "Bekendtgørelse nr. 1448 af 2021 - Indretningskrav til eksisterende elevatorer m.v., der ikke er CE-mærket", url: "https://www.retsinformation.dk/eli/lta/2021/1448" },
+                  { label: "Bekendtgørelse nr. 358 af 1974 - Internt sikkerhedsarbejde ved bygge- og anlægsarbejde", url: "https://www.retsinformation.dk/eli/lta/1974/358" },
+                  { label: "Bekendtgørelse nr. 473 af 1983 - Kloakarbejde m.v", url: "https://www.retsinformation.dk/eli/lta/1983/473" },
+                  { label: "Bekendtgørelse nr. 600 af 2026 - Kontrol med arbejdsmiljøet ved risiko for større uheld med farlige stoffer", url: "https://www.retsinformation.dk/eli/lta/2026/600" },
+                  { label: "Bekendtgørelse nr. 372 af 2016 - Kontrol med risikoen for større uheld med farlige stoffer", url: "https://www.retsinformation.dk/eli/lta/2016/372" },
+                  { label: "Bekendtgørelse nr. 70 af 1980 - Konvention om sikre containere", url: "https://www.retsinformation.dk/eli/lta/1980/70" },
+                  { label: "Bekendtgørelse nr. 1445 af 2024 - Lov om indkvartering af ansatte (Lov 1445)", url: "https://www.retsinformation.dk/eli/lta/2024/1445" },
+                  { label: "Bekendtgørelse nr. 681 af 2026 - Lov om udstationering af lønmodtagere m.v. (LBK 681)", url: "https://www.retsinformation.dk/eli/lta/2026/681" },
+                  { label: "Bekendtgørelse nr. 486 af 2024 - Lægers og tandlægers pligt til at anmelde erhvervssygdomme til Arbejdstilsynet og Arbejdsmarkedets Erhvervssikring", url: "https://www.retsinformation.dk/eli/lta/2024/486" },
+                  { label: "Bekendtgørelse nr. 598 af 2026 - Lægeundersøgelser ved arbejde, der kan medføre ioniserende stråling", url: "https://www.retsinformation.dk/eli/lta/2026/598" },
+                  { label: "Bekendtgørelse nr. 1164 af 1992 - Manuel håndtering", url: "https://www.retsinformation.dk/eli/lta/1992/1164" },
+                  { label: "Bekendtgørelse nr. 1203 af 2017 - Obligatorisk digital kommunikation til Arbejdstilsynet", url: "https://www.retsinformation.dk/eli/lta/2017/1203" },
+                  { label: "Bekendtgørelse nr. 611 af 2026 - Offentliggørelse af oplysninger om virksomheders arbejdsmiljø", url: "https://www.retsinformation.dk/eli/lta/2026/611" },
+                  { label: "Bekendtgørelse nr. 1997 af 2020 - Ombygning og væsentlig reparation af elevatorer m.v", url: "https://www.retsinformation.dk/eli/lta/2020/1997" },
+                  { label: "Bekendtgørelse nr. 1994 af 2020 - Pligter efter lov om arbejdsmiljø i forbindelse med udbud af tjenesteydelser", url: "https://www.retsinformation.dk/eli/lta/2020/1994" },
+                  { label: "Bekendtgørelse nr. 103 af 2018 - Produktregistret", url: "https://www.retsinformation.dk/eli/lta/2018/103" },
+                  { label: "Bekendtgørelse nr. 110 af 2013 - Projekterendes og rådgiveres pligter m.v. efter lov om arbejdsmiljø", url: "https://www.retsinformation.dk/eli/lta/2013/110" },
+                  { label: "Bekendtgørelse nr. 605 af 2026 - Psykisk arbejdsmiljø", url: "https://www.retsinformation.dk/eli/lta/2026/605" },
+                  { label: "Bekendtgørelse nr. 1842 af 2023 - Påbud om undersøgelse af det psykiske arbejdsmiljø", url: "https://www.retsinformation.dk/eli/lta/2023/1842" },
+                  { label: "Bekendtgørelse nr. 579 af 1987 - Registret for genteknologi", url: "https://www.retsinformation.dk/eli/lta/1987/579" },
+                  { label: "Bekendtgørelse nr. 611 af 1985 - Regler efter den tidligere arbejderbeskyttelseslovgivning, der med mindre ændringer forbliver i kraft   efter arbejdsmiljølovens ikrafttræden (Ikraftholdelsesbekendtgørelsen) (* 1)", url: "https://www.retsinformation.dk/eli/lta/1985/611" },
+                  { label: "Bekendtgørelse nr. 372 af 1965 - Regler for arbejde på fartøj med tank for olie m.v", url: "https://retsinformation.dk/eli/lta/1965/372" },
+                  { label: "Bekendtgørelse nr. 181 af 1965 - Regulativ for lastning og losning af skibe", url: "https://www.retsinformation.dk/eli/lta/1965/181" },
+                  { label: "Bekendtgørelse nr. 518 af 1994 - Sikkerhedsskiltning og signalgivning og anden form for signalgivning", url: "https://www.retsinformation.dk/eli/lta/1994/518" },
+                  { label: "Bekendtgørelse nr. 618 af 2026 - Skiftende arbejdssteders indretning", url: "https://www.retsinformation.dk/eli/lta/2026/618" },
+                  { label: "Bekendtgørelse nr. 608 af 2026 - Systematisk arbejdsmiljøarbejde", url: "https://www.retsinformation.dk/eli/lta/2026/608" },
+                  { label: "Bekendtgørelse nr. 1794 af 2015 - Særlige pligter for fremstillere, leverandører og importører m.v. af stoffer og materialer efter lov om arbejdsmiljø", url: "https://www.retsinformation.dk/eli/lta/2015/1794" },
+                  { label: "Bekendtgørelse nr. 688 af 2025 - Tilsyn med og offentliggørelse af oplysninger om virksomheder med anerkendt arbejdsmiljøcertifikat efter ISO 45001", url: "https://www.retsinformation.dk/eli/lta/2025/688" },
+                  { label: "Bekendtgørelse nr. 289 af 2001 - Transportabelt trykbærende udstyr", url: "https://www.retsinformation.dk/eli/lta/2001/289" },
+                  { label: "Bekendtgørelse nr. 610 af 2026 - Udstedelse af administrative bødeforelæg for visse overtrædelser af anmeldepligten til Registret for Udenlandske Tjenesteydere (RUT)", url: "https://www.retsinformation.dk/eli/lta/2026/610" },
+                  { label: "Bekendtgørelse nr. 799 af 2013 - Udvidelse af pligten for tjenesteydere og hvervgivere til at sikre anmeldelse til Registret for Udenlandske Tjenesteydere (RUT)", url: "https://www.retsinformation.dk/eli/lta/2013/799" },
+                  { label: "Bekendtgørelse nr. 1727 af 2023 - Underretning af Arbejdsmarkedets Erhvervssikring om visse kræftformer, der kan være erhvervsbetingede", url: "https://www.retsinformation.dk/eli/lta/2023/1727" },
+                  { label: "Bekendtgørelse nr. 1517 af 2010 - Undtagelser fra anmeldelsespligten til Registret for Udenlandske Tjenesteydere (RUT) (Kortvarige udstationeringer)", url: "https://www.retsinformation.dk/eli/lta/2010/1517" },
+                  { label: "Bekendtgørelse nr. 1713 af 2025 - Unges arbejde", url: "https://www.retsinformation.dk/eli/lta/2025/1713" },
+                  { label: "Bekendtgørelse nr. 517 af 2025 - Voldsskadeforsikring", url: "https://www.retsinformation.dk/eli/lta/2025/517" },
+                  { label: "Bekendtgørelse nr. 773 af 2025 - Ændring af bekendtgørelse om arbejdsmiljøfaglige uddannelser", url: "https://www.retsinformation.dk/eli/lta/2025/773" },
+                ].map((item) => (
+                  <li key={item.url}>
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline"
+                      style={{ color: "#0C6B3B" }}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </LawSection>
 
           <LawSection
             title="AT-vejledninger"
