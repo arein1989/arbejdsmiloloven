@@ -361,11 +361,11 @@ function BotEntry() {
             },
             {
               title: "Handel, Finans og Kontor",
-              url: "https://www.bfa-hfk.dk/",
+              url: "https://bfahandelfinanskontor.dk/",
             },
             {
               title: "Transport, service og Turisme, samt jord til bord",
-              url: "https://www.handelfinanskontor.dk/",
+              url: "https://bfaportalen.dk/",
             },
             {
               title: "BFA Portalen",
@@ -444,7 +444,7 @@ function BotEntry() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.arbejdsmiljoklagenavnet.dk" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#ffffff" }}>
+                  <a href="https://www.ast.dk/naevn/arbejdsmiljoeklagenaevnet" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#ffffff" }}>
                     arbejdsmiljøklagenævnet
                   </a>
                 </li>
