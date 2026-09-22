@@ -85,31 +85,31 @@ export function LatestLawChanges() {
     return d.toLocaleDateString("da-DK", { day: "2-digit", month: "2-digit", year: "numeric" });
   };
 
-  const boxes = Array.from({ length: 4 }).map((_, idx) => {
-    const item = items[idx];
-    if (item) {
-      return (
+  const boxes = isLoading
+    ? Array.from({ length: 4 }).map((_, idx) => (
         <LawChangeBox
-          key={item.document_id}
-          title={item.short_name ?? item.document_id}
-          date={item.change_date ? formatDate(item.change_date) : undefined}
-          reason={item.reason}
-          href={item.href ? item.href.replace(/\/xml$/, "") : undefined}
+          key={`placeholder-${idx}`}
+          title="Henter seneste lovændringer…"
+          reason="Henter de seneste arbejdsmiljø-ændringer fra Retsinformation.dk."
         />
-      );
-    }
-    return (
-      <LawChangeBox
-        key={`placeholder-${idx}`}
-        title={isLoading ? "Henter seneste lovændringer…" : "Ingen nye lovændringer endnu"}
-        reason={
-          isLoading
-            ? "Henter de seneste arbejdsmiljø-ændringer fra Retsinformation.dk."
-            : "Der er endnu ikke registreret nye ændringer."
-        }
-      />
-    );
-  });
+      ))
+    : items.length > 0
+      ? items.map((item) => (
+          <LawChangeBox
+            key={item.document_id}
+            title={item.short_name ?? item.document_id}
+            date={item.change_date ? formatDate(item.change_date) : undefined}
+            reason={item.reason}
+            href={item.href ? item.href.replace(/\/xml$/, "") : undefined}
+          />
+        ))
+      : [
+          <LawChangeBox
+            key="placeholder-empty"
+            title="Ingen nye lovændringer endnu"
+            reason="Der er endnu ikke registreret nye ændringer."
+          />,
+        ];
 
   return (
     <section className="mx-auto max-w-4xl space-y-4 px-4 pb-10 sm:px-6">
