@@ -66,10 +66,13 @@ export function PlanWelcome() {
             <div className="text-center md:text-left">
               <h1 className="text-3xl font-semibold leading-tight sm:text-4xl">
                 Velkommen!
-                <span className="mt-2 block">Handlingsplan – Din AI-assistent til APV og rapporter</span>
+                <span className="mt-2 block">
+                  Handlingsplan – Din AI-assistent til APV og rapporter
+                </span>
               </h1>
               <p className="mt-4 text-base leading-relaxed text-primary-foreground/90">
-                Upload din PDF, og få hjælp til at identificere løsningsforslag og samle resultatet i en professionel rapport.
+                Upload din PDF, og få hjælp til at identificere løsningsforslag og samle resultatet
+                i en professionel rapport.
               </p>
             </div>
           </section>
@@ -89,9 +92,14 @@ export function PlanWelcome() {
                   <div className="grid h-28 place-items-center rounded-lg bg-card text-plan-ink shadow-lg">
                     <step.icon className="h-10 w-10" strokeWidth={1.4} />
                   </div>
-                  <h3 className="mt-3 text-center text-xl font-semibold text-foreground">{step.label}</h3>
+                  <h3 className="mt-3 text-center text-xl font-semibold text-foreground">
+                    {step.label}
+                  </h3>
                   {index < 2 ? (
-                    <ArrowRight className="absolute -right-4 top-10 z-10 hidden h-8 w-8 text-foreground sm:block" strokeWidth={2.5} />
+                    <ArrowRight
+                      className="absolute -right-4 top-10 z-10 hidden h-8 w-8 text-foreground sm:block"
+                      strokeWidth={2.5}
+                    />
                   ) : null}
                 </div>
               ))}
@@ -115,19 +123,31 @@ export function PlanWelcome() {
                 <Upload className="h-7 w-7" />
               </span>
               <span className="mt-3 font-semibold text-action">Upload PDF</span>
-              <span className="mt-2 text-sm">{file ? file.name : "Træk PDF hertil eller klik for at vælge"}</span>
+              <span className="mt-2 text-sm">
+                {file ? file.name : "Træk PDF hertil eller klik for at vælge"}
+              </span>
               <span className="text-sm">Filen må maksimalt fylde 10 MB</span>
             </button>
-            {error ? <p className="mt-3 text-center text-sm font-medium text-destructive">{error}</p> : null}
+            {error ? (
+              <p className="mt-3 text-center text-sm font-medium text-destructive">{error}</p>
+            ) : null}
           </section>
 
           <section className="mx-auto mt-12 max-w-3xl rounded-lg bg-card p-6 text-plan-ink shadow-lg sm:p-8">
             <div className="flex flex-col gap-5 sm:flex-row">
               <img src={robotMascot} alt="" className="h-16 w-16 shrink-0 object-contain" />
               <div className="text-base leading-relaxed">
-                <p>Jeg hjælper dig med at identificere de bedste løsningsforslag og strukturerer resultatet som en professionel rapport.</p>
-                <p className="mt-3">Upload en PDF – så analyserer jeg den og giver dig konkrete anbefalinger. Du kan derefter stille opfølgende spørgsmål og downloade samtalen som en rapport.</p>
-                <p className="mt-3">Husk, enhver løsning skaber nye vinkler, der skal risikovurderes.</p>
+                <p>
+                  Jeg hjælper dig med at identificere de bedste løsningsforslag og strukturerer
+                  resultatet som en professionel rapport.
+                </p>
+                <p className="mt-3">
+                  Upload en PDF – så analyserer jeg den og giver dig konkrete anbefalinger. Du kan
+                  derefter stille opfølgende spørgsmål og downloade samtalen som en rapport.
+                </p>
+                <p className="mt-3">
+                  Husk, enhver løsning skaber nye vinkler, der skal risikovurderes.
+                </p>
               </div>
             </div>
             <Button
@@ -136,7 +156,13 @@ export function PlanWelcome() {
               disabled={!file || loading}
               className="mt-6 h-12 w-full justify-between rounded-md px-5 text-base"
             >
-              <span>{loading ? "Åbner din handlingsplan…" : file ? "Analysér den valgte PDF" : "Upload din PDF først"}</span>
+              <span>
+                {loading
+                  ? "Åbner din handlingsplan…"
+                  : file
+                    ? "Analysér den valgte PDF"
+                    : "Upload din PDF først"}
+              </span>
               <ArrowRight className="h-5 w-5" />
             </Button>
           </section>
