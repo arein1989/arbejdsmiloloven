@@ -4,7 +4,7 @@ import { ArrowRight, Bot, Download, FileText, Upload } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
-import robotMascot from "@/assets/robot-mascot.png";
+import robotMascot from "@/assets/Chatbot4_1.png.asset.json";
 import { createThread } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
 import { savePendingPlanFile } from "@/lib/pending-plan-file";
@@ -59,7 +59,7 @@ export function PlanWelcome() {
         <div className="mx-auto max-w-5xl px-5 py-10 sm:px-8 sm:py-14">
           <section className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.8fr)]">
             <img
-              src={robotMascot}
+              src={robotMascot.url}
               alt="Handlingsplan-assistenten"
               className="mx-auto h-64 w-64 object-contain sm:h-80 sm:w-80"
             />
@@ -136,7 +136,7 @@ export function PlanWelcome() {
 
           <section className="mx-auto mt-12 max-w-3xl rounded-lg bg-card p-6 text-plan-ink shadow-lg sm:p-8">
             <div className="flex flex-col gap-5 sm:flex-row">
-              <img src={robotMascot} alt="" className="h-16 w-16 shrink-0 object-contain" />
+              <img src={robotMascot.url} alt="" className="h-16 w-16 shrink-0 object-contain" />
               <div className="text-base leading-relaxed">
                 <p>
                   Jeg hjælper dig med at identificere de bedste løsningsforslag og strukturerer
