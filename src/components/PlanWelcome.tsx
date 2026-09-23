@@ -76,7 +76,7 @@ export function PlanWelcome() {
           <section className="mt-12 sm:mt-16">
             <h2 className="text-2xl font-semibold">Sådan fungerer Handlingsplan</h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-primary-foreground/90 sm:text-base">
-              Her er en kort guide til, hvordan AI-assistenten fører dig gennem processen.
+              Her er en kort guide til, hvordan AI-assistenten ‘Handlingsplan’ fungerer, og hvordan processen forløber.
             </p>
             <div className="mt-7 grid gap-5 sm:grid-cols-3">
               {[
