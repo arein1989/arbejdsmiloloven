@@ -114,10 +114,11 @@ export function PlanWelcome() {
               className="sr-only"
               onChange={chooseFile}
             />
-            <button
+            <Button
               type="button"
+              variant="ghost"
               onClick={() => fileInputRef.current?.click()}
-              className="flex w-full cursor-pointer flex-col items-center rounded-lg bg-card px-6 py-7 text-center text-plan-ink shadow-lg transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="h-auto w-full flex-col rounded-lg bg-card px-6 py-7 text-center text-plan-ink shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-card hover:text-plan-ink"
             >
               <span className="grid h-14 w-14 place-items-center rounded-lg bg-primary text-primary-foreground">
                 <Upload className="h-7 w-7" />
@@ -127,7 +128,7 @@ export function PlanWelcome() {
                 {file ? file.name : "Træk PDF hertil eller klik for at vælge"}
               </span>
               <span className="text-sm">Filen må maksimalt fylde 10 MB</span>
-            </button>
+            </Button>
             {error ? (
               <p className="mt-3 text-center text-sm font-medium text-destructive">{error}</p>
             ) : null}
