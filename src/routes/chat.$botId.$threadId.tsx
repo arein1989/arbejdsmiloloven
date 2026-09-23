@@ -63,17 +63,8 @@ function ChatPage() {
   const navigate = useNavigate();
   const botId = params.botId;
   const threadId = params.threadId;
-
-  if (!isBotId(botId)) {
-    return (
-      <div className="grid min-h-screen place-items-center">
-        <Link to="/" className="text-primary underline">
-          Tilbage til forsiden
-        </Link>
-      </div>
-    );
-  }
-  const bot = BOTS[botId];
+  const validBotId = isBotId(botId) ? botId : "plan";
+  const bot = BOTS[validBotId];
 
   const [sessionId, setSessionId] = useState<string>("");
   const [threads, setThreads] = useState<ThreadRow[]>([]);
@@ -108,13 +99,23 @@ function ChatPage() {
 
   // Load thread list
   const refreshThreads = (sid: string) =>
-    listThreads({ data: { sessionId: sid, botId } })
+    listThreads({ data: { sessionId: sid, botId: validBotId } })
       .then((rows) => setThreads(rows as ThreadRow[]))
       .catch(console.error);
   useEffect(() => {
     if (sessionId) refreshThreads(sessionId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionId, botId, threadId]);
+
+  if (!isBotId(botId)) {
+    return (
+      <div className="grid min-h-screen place-items-center">
+        <Link to="/" className="text-primary underline">
+          Tilbage til forsiden
+        </Link>
+      </div>
+    );
+  }
 
   if (initialMessages === null) {
     return (
