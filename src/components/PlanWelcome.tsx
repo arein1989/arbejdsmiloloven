@@ -155,6 +155,18 @@ export function PlanWelcome() {
                   derefter stille opfølgende spørgsmål og downloade samtalen som en rapport.
                 </p>
                 <p className="mt-3">
+                  Har du brug for hjælp til afdækning? Gå ind på{" "}
+                  <a
+                    href="https://www.gratisapv.dk"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-medium underline underline-offset-2"
+                  >
+                    www.gratisapv.dk
+                  </a>{" "}
+                  og lav din egen rapport.
+                </p>
+                <p className="mt-3">
                   Husk, enhver løsning skaber nye vinkler, der skal risikovurderes.
                 </p>
               </div>
