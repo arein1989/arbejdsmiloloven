@@ -193,7 +193,7 @@ export function PlanWelcome() {
             <Button
               type="button"
               onClick={() => (file ? beginAnalysis() : fileInputRef.current?.click())}
-              className={`ml-auto flex h-auto w-full flex-col rounded-md px-6 py-3 text-center text-white transition-colors sm:w-64 ${
+              className={`ml-auto flex h-auto w-full flex-col rounded-[15px] px-6 py-3 text-center text-white transition-colors sm:w-56 ${
                 file
                   ? "bg-[#F78D0B] shadow-download hover:bg-[#F78D0B]/90"
                   : "bg-download-muted shadow-none hover:bg-download-muted/90"
