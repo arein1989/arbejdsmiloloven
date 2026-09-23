@@ -37,7 +37,9 @@
   --color-plan-bottom: var(--plan-bottom);
   --color-plan-ink: var(--plan-ink);
   --color-plan-stroke: var(--plan-stroke);
+  --color-download-muted: var(--download-muted);
   --shadow-plan: 0 1px 0 0 #0C6B3B;
+  --shadow-download: 0 1px 0 0 #F78D0B;
   --font-display: "Source Serif 4", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
@@ -81,6 +83,7 @@
   --plan-bottom: #8CC63E;
   --plan-ink: oklch(0.29 0.1 153);
   --plan-stroke: #0C6B3B;
+  --download-muted: #B6AF45;
 }
 
 .dark {
