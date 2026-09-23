@@ -126,14 +126,16 @@ export function PlanWelcome() {
               onClick={() => fileInputRef.current?.click()}
               className="h-auto w-full flex-col rounded-lg bg-card px-6 py-7 text-center text-plan-ink shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-card hover:text-plan-ink"
             >
-              <span className="grid h-14 w-14 place-items-center rounded-lg bg-primary text-primary-foreground">
-                <Upload className="h-7 w-7" />
-              </span>
+              <img
+                src={uploadIcon.url}
+                alt=""
+                className="h-14 w-14 object-contain"
+              />
               <span className="mt-3 font-semibold text-action">Upload PDF</span>
-              <span className="mt-2 text-sm">
+              <span className="mt-2 text-sm font-medium">
                 {file ? file.name : "Træk PDF hertil eller klik for at vælge"}
               </span>
-              <span className="text-sm">Filen må maksimalt fylde 10 MB</span>
+              <span className="text-sm font-medium">Filen må maksimalt fylde 10 MB</span>
             </Button>
             {error ? (
               <p className="mt-3 text-center text-sm font-medium text-destructive">{error}</p>
