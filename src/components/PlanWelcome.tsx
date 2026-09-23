@@ -1,10 +1,13 @@
 import { useRef, useState, type ChangeEvent } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { ArrowRight, Bot, Download, FileText, Upload } from "lucide-react";
+import { ArrowRight, Upload } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
 import robotMascot from "@/assets/Chatbot4_1.png.asset.json";
+import pdfIcon from "@/assets/pdf-icon.png.asset.json";
+import robotIcon from "@/assets/robot-icon.png.asset.json";
+import downloadIcon from "@/assets/download-icon.png.asset.json";
 import { createThread } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
 import { savePendingPlanFile } from "@/lib/pending-plan-file";
@@ -80,20 +83,24 @@ export function PlanWelcome() {
             </p>
             <div className="mt-7 grid gap-5 sm:grid-cols-3">
               {[
-                { icon: FileText, label: "Upload PDF" },
-                { icon: Bot, label: "AI’en analyserer" },
-                { icon: Download, label: "Download PDF" },
+                { icon: pdfIcon, label: "Upload PDF" },
+                { icon: robotIcon, label: "AI’en analyserer" },
+                { icon: downloadIcon, label: "Download PDF" },
               ].map((step, index) => (
                 <div className="relative" key={step.label}>
-                  <div className="grid h-28 place-items-center rounded-lg bg-card text-plan-ink shadow-lg">
-                    <step.icon className="h-10 w-10" strokeWidth={1.4} />
+                  <div className="grid h-20 place-items-center rounded-lg bg-card shadow-plan ring-2 ring-inset ring-plan-stroke">
+                    <img
+                      src={step.icon.url}
+                      alt=""
+                      className="h-10 w-10 object-contain"
+                    />
                   </div>
                   <h3 className="mt-3 text-center text-xl font-semibold text-foreground">
                     {step.label}
                   </h3>
                   {index < 2 ? (
                     <ArrowRight
-                      className="absolute -right-4 top-10 z-10 hidden h-8 w-8 text-foreground sm:block"
+                      className="absolute -right-4 top-8 z-10 hidden h-8 w-8 text-foreground sm:block"
                       strokeWidth={2.5}
                     />
                   ) : null}

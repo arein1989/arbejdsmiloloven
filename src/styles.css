@@ -36,6 +36,8 @@
   --color-plan-top: var(--plan-top);
   --color-plan-bottom: var(--plan-bottom);
   --color-plan-ink: var(--plan-ink);
+  --color-plan-stroke: var(--plan-stroke);
+  --shadow-plan: 0 5px 14px rgba(12, 107, 59, 0.35);
   --font-display: "Source Serif 4", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
@@ -78,6 +80,7 @@
   --plan-top: oklch(0.46 0.13 150);
   --plan-bottom: oklch(0.78 0.18 125);
   --plan-ink: oklch(0.29 0.1 153);
+  --plan-stroke: #0C6B3B;
 }
 
 .dark {
