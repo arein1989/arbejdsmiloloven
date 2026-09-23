@@ -176,16 +176,16 @@ export function PlanWelcome() {
               type="button"
               onClick={beginAnalysis}
               disabled={!file || loading}
-              className="mt-6 h-12 w-full justify-between rounded-md bg-plan-stroke px-5 text-base shadow hover:bg-plan-stroke/90"
+              className="mt-6 h-14 w-full justify-between rounded-xl bg-[#2E6B44] px-6 text-base font-bold text-white shadow-none hover:bg-[#2E6B44]/90 disabled:opacity-100"
             >
               <span>
                 {loading
                   ? "Åbner din handlingsplan…"
                   : file
                     ? "Analysér den valgte PDF"
-                    : "Upload din PDF først"}
+                    : "Upload din pdf først ......"}
               </span>
-              <ArrowRight className="h-5 w-5" />
+              <Send className="h-6 w-6 shrink-0" strokeWidth={1.5} />
             </Button>
           </section>
         </div>
