@@ -70,10 +70,6 @@ export function PlanWelcome() {
                   Handlingsplan – Din AI-assistent til APV og rapporter
                 </span>
               </h1>
-              <p className="mt-4 text-base leading-relaxed text-primary-foreground/90">
-                Upload din PDF, og få hjælp til at identificere løsningsforslag og samle resultatet
-                i en professionel rapport.
-              </p>
             </div>
           </section>
 
