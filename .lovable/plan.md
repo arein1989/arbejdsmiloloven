@@ -1,21 +1,28 @@
-# Stil spørgsmål uden at uploade en PDF
+# Plan: Robot-størrelse og tekst-alignering som billedet (PlanWelcome)
 
-I dag kræver Handlingsplan-siden en PDF, før man kan komme videre: knappen er slukket, og den hvide boks er kun tekst. Planen gør det muligt at skrive et spørgsmål med det samme.
+## Hvad brugeren vil have
+Velkomstsektionen på /chat/plan skal se ud som det uploadede billede:
+- Robotten står til venstre og er stor (fylder næsten hele højden af sektionen).
+- Teksten står til højre for robotten, lodret centreret, og er **centreret** i sin egen blok – ikke venstrejusteret.
+- Titlen brydes i tre linjer som på billedet:
+  1. "Velkommen !"
+  2. "Handlingsplan – Din AI-assistent til"
+  3. "APV og rapporter"
 
-## Det brugeren får
+## Ændringer (kun `src/components/PlanWelcome.tsx`)
 
-1. **Spørgsmålsfelt på velkomstskærmen**
-   I den hvide boks kommer et skrivefelt med teksten "Spørg om APV, handlingsplaner eller rapporter …" og en send-knap. Skriver man et spørgsmål og trykker send, åbner samtalen, og assistenten svarer med det samme — uden upload.
+1. **Robotten større** ( behold responsiv skalering ):
+   - Fra `h-[280px] w-[280px] sm:h-[344px] sm:w-[344px] lg:h-[408px] lg:w-[408px]`
+   - Til `h-[300px] w-[300px] sm:h-[380px] sm:w-[380px] lg:h-[460px] lg:w-[460px]`
+2. **Tekst-alignering**:
+   - Tekstblokken: `text-center` på alle skærmstørrelser (fjern `md:text-left`).
+   - Grid'et beholdes (`items-center`, robot i venstre kolonne, tekst i højre) så det matcher billedets opstilling.
+3. **Linjeskift som billedet**:
+   - "Velkommen&nbsp;!" + linjeskift + "Handlingsplan – Din AI-assistent til" + linjeskift + "APV og rapporter".
+   - Linjeskift efter "til" sættes synligt fra `sm:` og opefter (på mobil ombryder teksten naturligt i stedet, så den ikke flyder ud over skærmen).
 
-2. **Upload bliver valgfrit**
-   Uploader man en PDF, fungerer alt som i dag. Gør man ikke, blokerer intet længere. Den store knap skifter tekst efter situationen: "Upload din pdf først ……" kun når både felt og fil er tomme, ellers "Send mit spørgsmål" eller "Analysér den valgte PDF". Skriver man både spørgsmål og vælger fil, sendes begge dele i samme besked.
-
-## Teknisk
-
-- `src/components/PlanWelcome.tsx`: nyt kontrolleret `question`-state med textarea + send (Enter sender, Shift+Enter ny linje). Ved afsendelse oprettes tråden via `createThread`, spørgsmålet gemmes som pending, og der navigeres til `/chat/plan/$threadId`. `disabled`-logikken bliver `!file && !question.trim()`.
-- `src/lib/pending-plan-file.ts`: tilføj `savePendingPlanQuestion` / `takePendingPlanQuestion` i samme IndexedDB-store (nøgle `question:<threadId>`).
-- `src/routes/chat.$botId.$threadId.tsx`: den eksisterende pending-effekt udvides til også at hente en ventende tekst; fil og spørgsmål sendes i ét `sendMessage`-kald (standardtekst bruges kun, hvis der ingen spørgsmål er).
+## Ikke berørt
+- Guide-boksene, upload-boks, chatbot-boks, knapper og farver ændres ikke.
 
 ## Verificering
-
-Playwright på `/chat/plan`: skriv et spørgsmål uden at vælge fil, send, og bekræft at samtalen åbner og assistenten svarer. Desktop og mobil.
+- Playwright på desktop (1280px) og mobil (390px): robot til venstre, tre-linjers centreret titel til højre, ingen layoutfejl i konsollen.
