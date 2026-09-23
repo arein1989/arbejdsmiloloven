@@ -14,6 +14,22 @@ import {
 } from "lucide-react";
 
 import { SiteHeader } from "@/components/SiteHeader";
+import {
+  Conversation,
+  ConversationContent,
+  ConversationEmptyState,
+  ConversationScrollButton,
+} from "@/components/ai-elements/conversation";
+import { Message, MessageContent, MessageResponse } from "@/components/ai-elements/message";
+import {
+  PromptInput,
+  PromptInputFooter,
+  PromptInputSubmit,
+  PromptInputTextarea,
+  type PromptInputMessage,
+} from "@/components/ai-elements/prompt-input";
+import { Shimmer } from "@/components/ai-elements/shimmer";
+import { takePendingPlanFile } from "@/lib/pending-plan-file";
 import { BOTS, isBotId } from "@/lib/bots";
 import {
   createThread,
@@ -34,6 +50,15 @@ type ThreadRow = {
   expires_at: string;
   bot_id: string;
 };
+
+function fileToDataUrl(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => typeof reader.result === "string" ? resolve(reader.result) : reject(new Error("Filen kunne ikke læses"));
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
 
 function ChatPage() {
   const params = Route.useParams();
@@ -156,6 +181,22 @@ function ChatInner({
   });
 
   const isLoading = status === "submitted" || status === "streaming";
+  const pendingFileHandled = useRef(false);
+
+  useEffect(() => {
+    if (botId !== "plan" || pendingFileHandled.current || messages.length > 0 || status !== "ready") return;
+    pendingFileHandled.current = true;
+    takePendingPlanFile(threadId)
+      .then(async (file) => {
+        if (!file) return;
+        const url = await fileToDataUrl(file);
+        await sendMessage({
+          text: "Analysér den vedhæftede PDF og hjælp mig med at udarbejde en konkret handlingsplan.",
+          files: [{ type: "file", mediaType: "application/pdf", filename: file.name, url }],
+        });
+      })
+      .catch((uploadError) => console.error("PDF upload error", uploadError));
+  }, [botId, messages.length, sendMessage, status, threadId]);
 
   // Auto-scroll & focus
   useEffect(() => {
@@ -180,6 +221,13 @@ function ChatInner({
     if (!text || isLoading) return;
     setInput("");
     sendMessage({ text });
+  };
+
+  const handlePlanSubmit = ({ text }: PromptInputMessage) => {
+    const message = text.trim();
+    if (!message || isLoading) return;
+    setInput("");
+    sendMessage({ text: message });
   };
 
   const handleNewThread = async () => {
@@ -246,7 +294,7 @@ function ChatInner({
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <SiteHeader />
-      <div className="mx-auto flex w-full max-w-6xl flex-1 gap-6 px-4 py-6 sm:px-6">
+      <div className={`mx-auto flex w-full max-w-6xl flex-1 gap-6 px-4 py-6 sm:px-6 ${botId === "plan" ? "bg-gradient-to-b from-plan-top to-plan-bottom" : ""}`}>
         {/* Sidebar */}
         <aside className="hidden w-64 shrink-0 flex-col md:flex">
           <Link
@@ -303,7 +351,7 @@ function ChatInner({
         </aside>
 
         {/* Main */}
-        <main className="flex min-w-0 flex-1 flex-col rounded-2xl border border-border bg-card shadow-sm">
+        <main className={`flex min-w-0 flex-1 flex-col rounded-2xl border border-border bg-card shadow-sm ${botId === "plan" ? "min-h-[720px] overflow-hidden" : ""}`}>
           <div className="flex items-center justify-between border-b border-border px-5 py-4">
             <div className="min-w-0">
               <div className="text-xs font-medium uppercase tracking-wider text-primary/80">
@@ -320,6 +368,33 @@ function ChatInner({
             </button>
           </div>
 
+          {botId === "plan" ? (
+            <Conversation className="min-h-0">
+              <ConversationContent className="px-5 py-7 sm:px-8">
+                {messages.length === 0 ? (
+                  <ConversationEmptyState
+                    icon={<MessageSquarePlus className="h-6 w-6" />}
+                    title="Gør din PDF klar"
+                    description="Din fil bliver analyseret, og derefter kan du stille opfølgende spørgsmål."
+                    className="min-h-72"
+                  />
+                ) : null}
+                {messages.map((message) => {
+                  const text = message.parts.map((part) => part.type === "text" ? part.text : "").join("");
+                  return (
+                    <Message from={message.role} key={message.id}>
+                      <MessageContent className={message.role === "user" ? "bg-primary text-primary-foreground" : ""}>
+                        <MessageResponse>{text}</MessageResponse>
+                      </MessageContent>
+                    </Message>
+                  );
+                })}
+                {status === "submitted" ? <Shimmer className="text-sm">Analyserer din handlingsplan…</Shimmer> : null}
+                {error ? <p className="text-sm text-destructive">Der opstod en fejl. Prøv igen.</p> : null}
+              </ConversationContent>
+              <ConversationScrollButton />
+            </Conversation>
+          ) : (
           <div ref={scrollRef} className="flex-1 space-y-6 overflow-y-auto px-4 py-6 sm:px-8">
             {messages.length === 0 && (
               <div className="mx-auto max-w-md py-12 text-center">
@@ -378,7 +453,24 @@ function ChatInner({
               </div>
             )}
           </div>
+          )}
 
+          {botId === "plan" ? (
+            <div className="border-t border-border bg-background/50 px-4 py-3 sm:px-6">
+              <PromptInput onSubmit={handlePlanSubmit} className="rounded-xl border-primary/50 bg-card shadow-sm">
+                <PromptInputTextarea
+                  value={input}
+                  onChange={(event) => setInput(event.target.value)}
+                  placeholder="Stil et opfølgende spørgsmål…"
+                  disabled={isLoading}
+                />
+                <PromptInputFooter className="justify-end">
+                  <PromptInputSubmit status={status} disabled={!input.trim() || isLoading} />
+                </PromptInputFooter>
+              </PromptInput>
+              <p className="mt-2 text-center text-[11px] text-muted-foreground">Samtalen gemmes i 1 time</p>
+            </div>
+          ) : (
           <form
             onSubmit={handleSubmit}
             className="border-t border-border bg-background/50 px-4 py-3 sm:px-6"
@@ -412,6 +504,7 @@ function ChatInner({
               Tryk Enter for at sende · Shift+Enter for ny linje · Samtaler gemmes i 1 time
             </p>
           </form>
+          )}
         </main>
       </div>
     </div>

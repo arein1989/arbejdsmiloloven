@@ -12,6 +12,7 @@ import { getSessionId } from "@/lib/session";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { BfaLogo } from "@/components/BfaLogo";
+import { PlanWelcome } from "@/components/PlanWelcome";
 import videnHeroAsset from "@/assets/arbejdsmiljøloven.jpg.asset.json";
 import chatbotAsset from "@/assets/Chatbot2.png.asset.json";
 import atLogoAsset from "@/assets/arbejdstilsynet-logo.png.asset.json";
@@ -89,10 +90,14 @@ function BotEntry() {
 
   useEffect(() => {
     if (!isBotId(botId)) return;
-    if (botId === "viden" || botId === "regler" || botId === "problem") return; // show welcome screen
+    if (botId === "viden" || botId === "regler" || botId === "problem" || botId === "plan") return; // show welcome screen
     startThread();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [botId]);
+
+  if (botId === "plan" && isBotId(botId)) {
+    return <PlanWelcome />;
+  }
 
   if (botId === "problem" && isBotId(botId)) {
     return (
