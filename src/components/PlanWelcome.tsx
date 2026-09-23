@@ -103,7 +103,7 @@ export function PlanWelcome() {
                     <img
                       src={arrowIcon.url}
                       alt=""
-                      className="absolute -right-[34px] top-[26px] z-10 hidden h-8 w-8 object-contain sm:block"
+                      className="absolute -right-[30px] top-[26px] z-10 hidden h-8 w-8 object-contain sm:block"
                     />
                   ) : null}
                 </div>
