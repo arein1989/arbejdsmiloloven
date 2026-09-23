@@ -255,30 +255,30 @@ function ChatInner({
     const width = doc.internal.pageSize.getWidth() - margin * 2;
     let y = margin;
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(16);
-    doc.text(`${botName} — samtale`, margin, y);
-    y += 22;
+    doc.setFontSize(20);
+    doc.text(`${botName} — rapport`, margin, y);
+    y += 26;
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(10);
+    doc.setFontSize(12);
     doc.setTextColor(100);
     doc.text(new Date().toLocaleString("da-DK"), margin, y);
-    y += 22;
+    y += 28;
     doc.setTextColor(20);
 
     for (const m of messages) {
       const text = m.parts.map((p) => (p.type === "text" ? p.text : "")).join("");
       if (!text) continue;
       doc.setFont("helvetica", "bold");
-      doc.setFontSize(11);
+      doc.setFontSize(14);
       const label = m.role === "user" ? "Du" : botName;
       if (y > doc.internal.pageSize.getHeight() - margin) {
         doc.addPage();
         y = margin;
       }
       doc.text(label, margin, y);
-      y += 14;
+      y += 18;
       doc.setFont("helvetica", "normal");
-      doc.setFontSize(11);
+      doc.setFontSize(14);
       const lines = doc.splitTextToSize(text, width) as string[];
       for (const line of lines) {
         if (y > doc.internal.pageSize.getHeight() - margin) {
@@ -286,9 +286,9 @@ function ChatInner({
           y = margin;
         }
         doc.text(line, margin, y);
-        y += 14;
+        y += 18;
       }
-      y += 8;
+      y += 10;
     }
     doc.save(`samtale-${botId}.pdf`);
   };
