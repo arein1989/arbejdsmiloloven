@@ -8,6 +8,7 @@ import robotMascot from "@/assets/Chatbot4_1.png.asset.json";
 import pdfIcon from "@/assets/pdf-icon.png.asset.json";
 import robotIcon from "@/assets/robot-icon.png.asset.json";
 import downloadIcon from "@/assets/download-icon.png.asset.json";
+import arrowIcon from "@/assets/arrow-right-solid.png.asset.json";
 import { createThread } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
 import { savePendingPlanFile } from "@/lib/pending-plan-file";
@@ -81,14 +82,14 @@ export function PlanWelcome() {
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-primary-foreground/90 sm:text-base">
               Her er en kort guide til, hvordan AI-assistenten ‘Handlingsplan’ fungerer, og hvordan processen forløber.
             </p>
-            <div className="mt-7 grid gap-5 sm:grid-cols-3">
+            <div className="mt-7 grid gap-7 sm:grid-cols-3">
               {[
                 { icon: pdfIcon, label: "Upload PDF" },
                 { icon: robotIcon, label: "AI’en analyserer" },
                 { icon: downloadIcon, label: "Download PDF" },
               ].map((step, index) => (
                 <div className="relative" key={step.label}>
-                  <div className="grid h-20 place-items-center rounded-lg bg-card shadow-plan ring-2 ring-inset ring-plan-stroke">
+                  <div className="grid h-[85px] place-items-center rounded-lg bg-card shadow-plan ring-2 ring-inset ring-plan-stroke">
                     <img
                       src={step.icon.url}
                       alt=""
@@ -99,9 +100,10 @@ export function PlanWelcome() {
                     {step.label}
                   </h3>
                   {index < 2 ? (
-                    <ArrowRight
-                      className="absolute -right-4 top-8 z-10 hidden h-8 w-8 text-foreground sm:block"
-                      strokeWidth={2.5}
+                    <img
+                      src={arrowIcon.url}
+                      alt=""
+                      className="absolute -right-[30px] top-[26px] z-10 hidden h-8 w-8 object-contain sm:block"
                     />
                   ) : null}
                 </div>
