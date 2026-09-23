@@ -9,7 +9,6 @@ import {
   Download,
   Loader2,
   MessageSquarePlus,
-  SendHorizontal,
   Trash2,
 } from "lucide-react";
 
@@ -33,6 +32,7 @@ import { takePendingPlanFile } from "@/lib/pending-plan-file";
 import { BOTS, isBotId } from "@/lib/bots";
 import { createThread, deleteThread, getThreadMessages, listThreads } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
+import sendIcon from "@/assets/send-icon.png.asset.json";
 
 export const Route = createFileRoute("/chat/$botId/$threadId")({
   component: ChatPage,
@@ -519,7 +519,7 @@ function ChatInner({
                   {isLoading ? (
                     <Loader2 size={16} className="animate-spin" />
                   ) : (
-                    <SendHorizontal size={16} />
+                    <img src={sendIcon.url} alt="" className="h-4 w-4 object-contain" />
                   )}
                 </button>
               </div>
