@@ -9,6 +9,7 @@ import pdfIcon from "@/assets/pdf-icon.png.asset.json";
 import robotIcon from "@/assets/robot-icon.png.asset.json";
 import downloadIcon from "@/assets/download-icon.png.asset.json";
 import arrowIcon from "@/assets/arrow-right-solid.png.asset.json";
+import uploadIcon from "@/assets/uploading-loop.png.asset.json";
 import { createThread } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
 import { savePendingPlanFile } from "@/lib/pending-plan-file";
