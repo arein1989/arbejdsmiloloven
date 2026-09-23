@@ -124,7 +124,7 @@ export function PlanWelcome() {
               type="button"
               variant="ghost"
               onClick={() => fileInputRef.current?.click()}
-              className="h-auto w-full flex-col rounded-lg bg-card px-6 py-7 text-center text-plan-ink shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-card hover:text-plan-ink"
+              className="mx-1 h-auto w-full flex-col rounded-lg bg-card px-6 py-7 text-center text-plan-ink shadow-plan transition-transform hover:-translate-y-0.5 hover:bg-card hover:text-plan-ink"
             >
               <img
                 src={uploadIcon.url}
