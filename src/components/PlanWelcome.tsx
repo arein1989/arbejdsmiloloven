@@ -67,18 +67,11 @@ export function PlanWelcome() {
             <img
               src={robotMascot.url}
               alt="Handlingsplan-assistenten"
-              className="mx-auto h-64 w-64 object-contain sm:h-80 sm:w-80"
+              className="mx-auto h-64 w-64 object-contain sm:h-80 sm:w-80 lg:h-96 lg:w-96"
             />
             <div className="text-center md:text-left">
               <h1 className="text-3xl font-semibold leading-tight sm:text-4xl">
-                Velkommen!
-                <span className="mt-2 block">
-                  Handlingsplan – Din{" "}
-                  <span className="block text-4xl font-bold leading-tight sm:text-5xl md:text-[3.25rem]">
-                    AI-assistent
-                  </span>{" "}
-                  til APV og rapporter
-                </span>
+                Velkommen! Handlingsplan – Din AI-assistent til APV og rapporter
               </h1>
             </div>
           </section>
