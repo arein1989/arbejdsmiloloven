@@ -96,7 +96,7 @@ export function PlanWelcome() {
                       className="h-10 w-10 object-contain"
                     />
                   </div>
-                  <h3 className="mt-3 text-center text-xl font-semibold text-foreground">
+                  <h3 className="mt-3 text-center text-lg font-semibold text-foreground">
                     {step.label}
                   </h3>
                   {index < 2 ? (
