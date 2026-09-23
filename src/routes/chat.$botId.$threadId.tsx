@@ -290,7 +290,7 @@ function ChatInner({
       }
       y += 10;
     }
-    doc.save(`samtale-${botId}.pdf`);
+    doc.save(`rapport-${botId}.pdf`);
   };
 
   return (
