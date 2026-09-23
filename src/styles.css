@@ -33,6 +33,9 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-surface: var(--surface);
+  --color-plan-top: var(--plan-top);
+  --color-plan-bottom: var(--plan-bottom);
+  --color-plan-ink: var(--plan-ink);
   --font-display: "Source Serif 4", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
@@ -72,6 +75,9 @@
   --border: oklch(0.9 0.01 120);
   --input: oklch(0.92 0.01 120);
   --ring: oklch(0.42 0.11 155);
+  --plan-top: oklch(0.46 0.13 150);
+  --plan-bottom: oklch(0.78 0.18 125);
+  --plan-ink: oklch(0.29 0.1 153);
 }
 
 .dark {
@@ -96,6 +102,9 @@
   --border: oklch(0.3 0.02 150);
   --input: oklch(0.3 0.02 150);
   --ring: oklch(0.6 0.12 155);
+  --plan-top: oklch(0.34 0.1 150);
+  --plan-bottom: oklch(0.56 0.14 130);
+  --plan-ink: oklch(0.2 0.07 153);
 }
 
 @layer base {
