@@ -82,18 +82,18 @@ export function PlanWelcome() {
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-primary-foreground/90 sm:text-base">
               Her er en kort guide til, hvordan AI-assistenten ‘Handlingsplan’ fungerer, og hvordan processen forløber.
             </p>
-            <div className="mt-7 grid gap-7 sm:grid-cols-3">
+            <div className="mx-auto mt-7 grid max-w-2xl gap-7 sm:grid-cols-3">
               {[
                 { icon: pdfIcon, label: "Upload PDF" },
                 { icon: robotIcon, label: "AI’en analyserer" },
                 { icon: downloadIcon, label: "Download PDF" },
               ].map((step, index) => (
                 <div className="relative" key={step.label}>
-                  <div className="grid h-[85px] place-items-center rounded-lg bg-card shadow-plan ring-2 ring-inset ring-plan-stroke">
+                  <div className="grid h-[90px] place-items-center rounded-lg bg-card shadow-plan ring-2 ring-inset ring-plan-stroke">
                     <img
                       src={step.icon.url}
                       alt=""
-                      className="h-10 w-10 object-contain"
+                      className="h-12 w-12 object-contain"
                     />
                   </div>
                   <h3 className="mt-3 text-center text-lg font-semibold text-foreground">
@@ -103,7 +103,7 @@ export function PlanWelcome() {
                     <img
                       src={arrowIcon.url}
                       alt=""
-                      className="absolute -right-[30px] top-[26px] z-10 hidden h-8 w-8 object-contain sm:block"
+                      className="absolute -right-[30px] top-[29px] z-10 hidden h-8 w-8 object-contain sm:block"
                     />
                   ) : null}
                 </div>
