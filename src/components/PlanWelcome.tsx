@@ -1,6 +1,6 @@
 import { useRef, useState, type ChangeEvent } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { Send } from "lucide-react";
+import sendIcon from "@/assets/send-icon-3.png.asset.json";
 
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -161,7 +161,7 @@ export function PlanWelcome() {
                     href="https://www.gratisapv.dk"
                     target="_blank"
                     rel="noreferrer"
-                    className="font-medium underline underline-offset-2"
+                    className="font-medium"
                   >
                     www.gratisapv.dk
                   </a>{" "}
@@ -185,7 +185,7 @@ export function PlanWelcome() {
                     ? "Analysér den valgte PDF"
                     : "Upload din pdf først ......"}
               </span>
-              <Send className="h-6 w-6 shrink-0" strokeWidth={1.5} />
+              <img src={sendIcon.url} alt="" className="h-6 w-6 shrink-0 object-contain" />
             </Button>
           </section>
         </div>
