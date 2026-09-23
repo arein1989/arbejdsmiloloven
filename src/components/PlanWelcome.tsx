@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
 import robotMascot from "@/assets/Chatbot4_1.png.asset.json";
+import chatbotHelp from "@/assets/chatbot-help.png.asset.json";
 import pdfIcon from "@/assets/pdf-icon.png.asset.json";
 import robotIcon from "@/assets/robot-icon.png.asset.json";
 import downloadIcon from "@/assets/download-icon.png.asset.json";
@@ -144,7 +145,7 @@ export function PlanWelcome() {
 
           <section className="mx-auto mt-12 max-w-3xl rounded-lg bg-card p-6 text-plan-ink shadow-lg sm:p-8">
             <div className="flex flex-col gap-5 sm:flex-row">
-              <img src={robotMascot.url} alt="" className="h-16 w-16 shrink-0 object-contain" />
+              <img src={chatbotHelp.url} alt="" className="h-20 w-20 shrink-0 object-contain" />
               <div className="text-base leading-relaxed">
                 <p>
                   Jeg hjælper dig med at identificere de bedste løsningsforslag og strukturerer
@@ -175,7 +176,7 @@ export function PlanWelcome() {
               type="button"
               onClick={beginAnalysis}
               disabled={!file || loading}
-              className="mt-6 h-12 w-full justify-between rounded-md px-5 text-base"
+              className="mt-6 h-12 w-full justify-between rounded-md bg-plan-stroke px-5 text-base shadow hover:bg-plan-stroke/90"
             >
               <span>
                 {loading
