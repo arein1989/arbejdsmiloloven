@@ -32,7 +32,7 @@ import { takePendingPlanFile } from "@/lib/pending-plan-file";
 import { BOTS, isBotId } from "@/lib/bots";
 import { createThread, deleteThread, getThreadMessages, listThreads } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
-import sendIcon from "@/assets/send-icon.png.asset.json";
+import sendIcon from "@/assets/send-icon-2.png.asset.json";
 
 export const Route = createFileRoute("/chat/$botId/$threadId")({
   component: ChatPage,
