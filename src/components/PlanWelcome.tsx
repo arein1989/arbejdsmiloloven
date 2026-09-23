@@ -70,8 +70,9 @@ export function PlanWelcome() {
               className="mx-auto h-[280px] w-[280px] object-contain sm:h-[344px] sm:w-[344px] lg:h-[408px] lg:w-[408px]"
             />
             <div className="text-center md:text-left">
-              <h1 className="text-3xl font-semibold leading-tight sm:text-4xl">
-                Velkommen! Handlingsplan – Din AI-assistent til APV og rapporter
+              <h1 className="text-3xl font-bold leading-snug sm:text-4xl">
+                Velkommen&nbsp;! <br className="hidden sm:block" />
+                Handlingsplan – Din AI-assistent til APV og rapporter
               </h1>
             </div>
           </section>
