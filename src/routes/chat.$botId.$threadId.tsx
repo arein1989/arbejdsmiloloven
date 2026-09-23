@@ -255,9 +255,12 @@ function ChatInner({
     const width = doc.internal.pageSize.getWidth() - margin * 2;
     let y = margin;
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(20);
-    doc.text(`${botName} — rapport`, margin, y);
-    y += 26;
+    doc.setFontSize(40);
+    const title = doc.splitTextToSize(`${botName} — rapport`, width) as string[];
+    for (const line of title) {
+      doc.text(line, margin, y);
+      y += 44;
+    }
     doc.setFont("helvetica", "normal");
     doc.setFontSize(12);
     doc.setTextColor(100);
