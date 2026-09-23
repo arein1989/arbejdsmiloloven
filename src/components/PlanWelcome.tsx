@@ -1,6 +1,6 @@
 import { useRef, useState, type ChangeEvent } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { ArrowRight, Upload } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -9,6 +9,7 @@ import pdfIcon from "@/assets/pdf-icon.png.asset.json";
 import robotIcon from "@/assets/robot-icon.png.asset.json";
 import downloadIcon from "@/assets/download-icon.png.asset.json";
 import arrowIcon from "@/assets/arrow-right-solid.png.asset.json";
+import uploadIcon from "@/assets/uploading-loop.png.asset.json";
 import { createThread } from "@/lib/chat.functions";
 import { getSessionId } from "@/lib/session";
 import { savePendingPlanFile } from "@/lib/pending-plan-file";
@@ -125,14 +126,16 @@ export function PlanWelcome() {
               onClick={() => fileInputRef.current?.click()}
               className="h-auto w-full flex-col rounded-lg bg-card px-6 py-7 text-center text-plan-ink shadow-lg transition-transform hover:-translate-y-0.5 hover:bg-card hover:text-plan-ink"
             >
-              <span className="grid h-14 w-14 place-items-center rounded-lg bg-primary text-primary-foreground">
-                <Upload className="h-7 w-7" />
-              </span>
+              <img
+                src={uploadIcon.url}
+                alt=""
+                className="h-14 w-14 object-contain"
+              />
               <span className="mt-3 font-semibold text-action">Upload PDF</span>
-              <span className="mt-2 text-sm">
+              <span className="mt-2 text-sm font-medium">
                 {file ? file.name : "Træk PDF hertil eller klik for at vælge"}
               </span>
-              <span className="text-sm">Filen må maksimalt fylde 10 MB</span>
+              <span className="text-sm font-medium">Filen må maksimalt fylde 10 MB</span>
             </Button>
             {error ? (
               <p className="mt-3 text-center text-sm font-medium text-destructive">{error}</p>
