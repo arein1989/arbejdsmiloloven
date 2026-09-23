@@ -105,8 +105,8 @@
   --border: oklch(0.3 0.02 150);
   --input: oklch(0.3 0.02 150);
   --ring: oklch(0.6 0.12 155);
-  --plan-top: oklch(0.34 0.1 150);
-  --plan-bottom: oklch(0.56 0.14 130);
+  --plan-top: #0C6B3B;
+  --plan-bottom: #8CC63E;
   --plan-ink: oklch(0.2 0.07 153);
 }
 
