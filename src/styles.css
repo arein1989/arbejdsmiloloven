@@ -33,6 +33,9 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-surface: var(--surface);
+  --color-plan-top: var(--plan-top);
+  --color-plan-bottom: var(--plan-bottom);
+  --color-plan-ink: var(--plan-ink);
   --font-display: "Source Serif 4", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
@@ -72,6 +75,9 @@
   --border: oklch(0.9 0.01 120);
   --input: oklch(0.92 0.01 120);
   --ring: oklch(0.42 0.11 155);
+  --plan-top: oklch(0.46 0.13 150);
+  --plan-bottom: oklch(0.78 0.18 125);
+  --plan-ink: oklch(0.29 0.1 153);
 }
 
 .dark {
@@ -96,28 +102,91 @@
   --border: oklch(0.3 0.02 150);
   --input: oklch(0.3 0.02 150);
   --ring: oklch(0.6 0.12 155);
+  --plan-top: oklch(0.34 0.1 150);
+  --plan-bottom: oklch(0.56 0.14 130);
+  --plan-ink: oklch(0.2 0.07 153);
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html, body { background-color: var(--color-background); color: var(--color-foreground); }
-  body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+  * {
+    border-color: var(--color-border);
+  }
+  html,
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
 }
 
 /* Markdown styles for assistant messages */
-.prose-chat { line-height: 1.65; }
-.prose-chat p { margin: 0.5rem 0; }
-.prose-chat ul, .prose-chat ol { margin: 0.5rem 0 0.5rem 1.25rem; }
-.prose-chat ul { list-style: disc; }
-.prose-chat ol { list-style: decimal; }
-.prose-chat li { margin: 0.2rem 0; }
-.prose-chat h1, .prose-chat h2, .prose-chat h3 { font-weight: 600; margin: 0.9rem 0 0.4rem; }
-.prose-chat h1 { font-size: 1.25rem; }
-.prose-chat h2 { font-size: 1.1rem; }
-.prose-chat h3 { font-size: 1rem; }
-.prose-chat a { color: var(--color-primary); text-decoration: underline; }
-.prose-chat code { background: var(--color-muted); padding: 0.1rem 0.35rem; border-radius: 0.25rem; font-size: 0.9em; }
-.prose-chat pre { background: var(--color-muted); padding: 0.75rem; border-radius: 0.5rem; overflow-x: auto; margin: 0.5rem 0; }
-.prose-chat strong { font-weight: 600; }
-.prose-chat blockquote { border-left: 3px solid var(--color-primary); padding-left: 0.75rem; color: var(--color-muted-foreground); margin: 0.5rem 0; }
+.prose-chat {
+  line-height: 1.65;
+}
+.prose-chat p {
+  margin: 0.5rem 0;
+}
+.prose-chat ul,
+.prose-chat ol {
+  margin: 0.5rem 0 0.5rem 1.25rem;
+}
+.prose-chat ul {
+  list-style: disc;
+}
+.prose-chat ol {
+  list-style: decimal;
+}
+.prose-chat li {
+  margin: 0.2rem 0;
+}
+.prose-chat h1,
+.prose-chat h2,
+.prose-chat h3 {
+  font-weight: 600;
+  margin: 0.9rem 0 0.4rem;
+}
+.prose-chat h1 {
+  font-size: 1.25rem;
+}
+.prose-chat h2 {
+  font-size: 1.1rem;
+}
+.prose-chat h3 {
+  font-size: 1rem;
+}
+.prose-chat a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+.prose-chat code {
+  background: var(--color-muted);
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+}
+.prose-chat pre {
+  background: var(--color-muted);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+.prose-chat strong {
+  font-weight: 600;
+}
+.prose-chat blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding-left: 0.75rem;
+  color: var(--color-muted-foreground);
+  margin: 0.5rem 0;
+}
