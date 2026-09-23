@@ -59,7 +59,7 @@ export function PlanWelcome() {
   return (
     <div className="min-h-screen bg-plan-top text-primary-foreground">
       <SiteHeader />
-      <main className="bg-gradient-to-b from-plan-top via-plan-top to-plan-bottom">
+      <main className="bg-gradient-to-b from-plan-top to-plan-bottom">
         <div className="mx-auto max-w-5xl px-5 py-10 sm:px-8 sm:py-14">
           <section className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.8fr)]">
             <img
