@@ -73,7 +73,11 @@ export function PlanWelcome() {
               <h1 className="text-3xl font-semibold leading-tight sm:text-4xl">
                 Velkommen!
                 <span className="mt-2 block">
-                  Handlingsplan – Din AI-assistent til APV og rapporter
+                  Handlingsplan – Din{" "}
+                  <span className="block text-4xl font-bold leading-tight sm:text-5xl md:text-[3.25rem]">
+                    AI-assistent
+                  </span>{" "}
+                  til APV og rapporter
                 </span>
               </h1>
             </div>
