@@ -300,7 +300,7 @@ function ChatInner({
     <div className="flex min-h-screen flex-col bg-background">
       <SiteHeader />
       <div
-        className={`mx-auto flex w-full max-w-6xl flex-1 gap-6 px-4 py-6 sm:px-6 ${botId === "plan" ? "bg-gradient-to-b from-plan-top to-plan-bottom" : ""}`}
+        className="mx-auto flex w-full max-w-6xl flex-1 gap-6 px-4 py-6 sm:px-6"
       >
         {/* Sidebar */}
         <aside className="hidden w-64 shrink-0 flex-col md:flex">
