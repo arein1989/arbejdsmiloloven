@@ -161,7 +161,7 @@ export function PlanWelcome() {
                     href="https://www.gratisapv.dk"
                     target="_blank"
                     rel="noreferrer"
-                    className="font-medium"
+                    className="font-medium text-[#F78D0B]"
                   >
                     www.gratisapv.dk
                   </a>{" "}
