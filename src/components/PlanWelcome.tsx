@@ -59,7 +59,10 @@ export function PlanWelcome() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-foreground">
+    <div
+      className="min-h-screen text-white"
+      style={{ background: "linear-gradient(180deg, #0C6B3B 0%, #8CC63E 100%)" }}
+    >
       <SiteHeader />
       <main>
         <div className="mx-auto max-w-5xl px-5 py-10 sm:px-8 sm:py-14">
@@ -81,7 +84,7 @@ export function PlanWelcome() {
 
           <section className="mt-12 sm:mt-16">
             <h2 className="text-2xl font-semibold">Sådan fungerer Handlingsplan</h2>
-            <p className="mt-2 max-w-xl text-sm leading-relaxed text-foreground/80 sm:text-base">
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base">
               Her er en kort guide til, hvordan AI-assistenten ‘Handlingsplan’ fungerer, og hvordan processen forløber.
             </p>
             <div className="mx-auto mt-7 grid max-w-2xl gap-7 sm:grid-cols-3">
@@ -98,7 +101,7 @@ export function PlanWelcome() {
                       className="h-12 w-12 object-contain"
                     />
                   </div>
-                  <h3 className="mt-3 text-center text-lg font-semibold text-foreground">
+                  <h3 className="mt-3 text-center text-lg font-semibold text-white">
                     {step.label}
                   </h3>
                   {index < 2 ? (
