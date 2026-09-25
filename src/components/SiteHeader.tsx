@@ -18,14 +18,15 @@ export function SiteHeader() {
       className="sticky top-0 z-30 w-full"
       style={{ backgroundColor: "#0C6B3B", color: "#ffffff" }}
     >
-      <div className="mx-auto flex h-24 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-28 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex shrink-0 items-center" onClick={close}>
           <img
             src={logoAsset.url}
             alt="Arbejdsmiljøloven Adweyse"
-            className="h-16 w-auto sm:h-20"
+            className="h-20 w-auto object-contain sm:h-24 lg:h-[104px]"
           />
         </Link>
+
 
 
         <nav className="hidden flex-1 items-center justify-center gap-8 lg:flex">
