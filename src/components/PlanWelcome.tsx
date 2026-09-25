@@ -176,7 +176,11 @@ export function PlanWelcome() {
               type="button"
               onClick={beginAnalysis}
               disabled={!file || loading}
-              className="mt-6 h-14 w-full justify-between rounded-xl bg-[#2E6B44] px-6 text-base font-bold text-white shadow-none hover:bg-[#2E6B44]/90 disabled:opacity-100"
+              className={`mt-6 h-14 w-full justify-between rounded-xl px-6 text-base font-bold text-white shadow-none disabled:opacity-100 ${
+                file
+                  ? "bg-[#2E6B44] hover:bg-[#2E6B44]/90"
+                  : "bg-[#2E6B44]/30 hover:bg-[#2E6B44]/30"
+              }`}
             >
               <span>
                 {loading
