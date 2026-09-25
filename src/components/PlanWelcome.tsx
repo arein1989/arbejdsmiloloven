@@ -59,7 +59,10 @@ export function PlanWelcome() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-foreground">
+    <div
+      className="min-h-screen text-white"
+      style={{ background: "linear-gradient(180deg, #0C6B3B 0%, #8CC63E 100%)" }}
+    >
       <SiteHeader />
       <main>
         <div className="mx-auto max-w-5xl px-5 py-10 sm:px-8 sm:py-14">
