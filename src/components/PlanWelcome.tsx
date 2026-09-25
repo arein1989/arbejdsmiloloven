@@ -192,23 +192,6 @@ export function PlanWelcome() {
               <img src={sendIcon.url} alt="" className="h-6 w-6 shrink-0 object-contain" />
             </Button>
           </section>
-
-          <section className="mx-auto mt-5 max-w-3xl">
-            <Button
-              type="button"
-              onClick={() => (file ? beginAnalysis() : fileInputRef.current?.click())}
-              className={`ml-auto flex h-auto w-full flex-col rounded-[15px] px-6 py-3 text-center text-white transition-colors sm:w-[214px] ${
-                file
-                  ? "bg-[#F78D0B] shadow-download hover:bg-[#F78D0B]/90"
-                  : "bg-download-muted shadow-none hover:bg-download-muted/90"
-              }`}
-            >
-              <span className="text-base font-bold">Download</span>
-              <span className="text-xs font-medium opacity-90">
-                {file ? "Klar til at analysere din PDF" : "Tilgængelig efter analyse"}
-              </span>
-            </Button>
-          </section>
         </div>
       </main>
     </div>
