@@ -369,7 +369,7 @@ function ChatInner({
             <button
               onClick={downloadPdf}
               disabled={messages.length === 0}
-              className="inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-3 py-1.5 text-sm font-medium transition-colors hover:border-primary/40 hover:text-primary disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 rounded-md bg-[#F78D0B] px-3 py-1.5 text-sm font-medium text-white shadow-[0_1px_0_0_#F78D0B] transition-colors hover:bg-[#df7f0a] disabled:cursor-not-allowed disabled:opacity-50"
             >
               <Download size={14} /> Download PDF
             </button>
