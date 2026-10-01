@@ -39,8 +39,7 @@ Skriv altid i et klart, roligt og professionelt sprog. Brug punktopstilling og k
     number: 2,
     title: "Find en bekendtgørelse eller AT-vejledning",
     short: "Juridisk assistent",
-    description:
-      "Find den præcise paragraf, bekendtgørelse eller AT-vejledning du leder efter.",
+    description: "Find den præcise paragraf, bekendtgørelse eller AT-vejledning du leder efter.",
     accent: "from-emerald-600 to-teal-700",
     system: `Du er en juridisk arbejdsmiljø-assistent. Din opgave er at finde præcis den bekendtgørelse, paragraf eller AT-vejledning, som brugeren efterspørger.
 
@@ -59,8 +58,7 @@ Svar altid kort, præcist og med høj juridisk nøjagtighed.`,
     number: 3,
     title: "Søg viden på AT.dk, NFA.dk og BFA-WEB.dk",
     short: "Videns-søgebot",
-    description:
-      "Strukturerede svar baseret på Arbejdstilsynet, NFA og branche-arbejdsmiljø.",
+    description: "Strukturerede svar baseret på Arbejdstilsynet, NFA og branche-arbejdsmiljø.",
     accent: "from-teal-600 to-emerald-700",
     system: `Du er en videns-søgebot for arbejdsmiljø. Du må kun bruge viden fra følgende kilder:
 - AT.dk

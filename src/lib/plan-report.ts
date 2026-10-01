@@ -17,8 +17,12 @@ async function fetchBase64(url: string): Promise<string> {
 function validOfficialLink(url: string): boolean {
   try {
     const host = new URL(url).hostname.toLowerCase();
-    return host === "retsinformation.dk" || host.endsWith(".retsinformation.dk") ||
-      host === "at.dk" || host.endsWith(".at.dk");
+    return (
+      host === "retsinformation.dk" ||
+      host.endsWith(".retsinformation.dk") ||
+      host === "at.dk" ||
+      host.endsWith(".at.dk")
+    );
   } catch {
     return false;
   }
@@ -56,7 +60,14 @@ export async function downloadPlanReport(answers: string[]): Promise<void> {
       );
       doc.rect(0, (bandHeight * i) / strips, pageWidth, bandHeight / strips + 0.5, "F");
     }
-    doc.addImage(`data:image/png;base64,${logo}`, "PNG", margin, first ? 21 : 8, first ? 80 : 44, first ? 80 : 44);
+    doc.addImage(
+      `data:image/png;base64,${logo}`,
+      "PNG",
+      margin,
+      first ? 21 : 8,
+      first ? 80 : 44,
+      first ? 80 : 44,
+    );
     doc.setFont("DejaVu", "bold");
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(first ? 22 : 13);
@@ -84,7 +95,12 @@ export async function downloadPlanReport(answers: string[]): Promise<void> {
     y = 85;
   };
 
-  const write = (text: string, size = 10.5, weight: "normal" | "bold" = "normal", link?: string) => {
+  const write = (
+    text: string,
+    size = 10.5,
+    weight: "normal" | "bold" = "normal",
+    link?: string,
+  ) => {
     doc.setFont("DejaVu", weight);
     doc.setFontSize(size);
     const lines = doc.splitTextToSize(text, textWidth) as string[];
@@ -93,7 +109,9 @@ export async function downloadPlanReport(answers: string[]): Promise<void> {
       if (y + height > pageHeight - 56) nextPage();
       doc.text(line, margin, y);
       if (link && validOfficialLink(link)) {
-        doc.link(margin, y - size, Math.min(textWidth, doc.getTextWidth(line)), height, { url: link });
+        doc.link(margin, y - size, Math.min(textWidth, doc.getTextWidth(line)), height, {
+          url: link,
+        });
       }
       y += height;
     }
@@ -115,7 +133,10 @@ export async function downloadPlanReport(answers: string[]): Promise<void> {
     }
     for (const raw of answer.split("\n")) {
       const line = raw.trim();
-      if (!line) { y += 7; continue; }
+      if (!line) {
+        y += 7;
+        continue;
+      }
       const heading = /^#{1,3}\s+(.+)/.exec(line);
       if (heading) {
         y += 12;
