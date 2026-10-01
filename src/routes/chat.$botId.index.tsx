@@ -64,6 +64,28 @@ function LawSection({
 }
 
 export const Route = createFileRoute("/chat/$botId/")({
+  head: ({ params }) => {
+    const name = isBotId(params.botId)
+      ? {
+          problem: "Arbejdsmiljørådgiver",
+          regler: "Regelfinder",
+          viden: "Vidensassistent",
+          plan: "Handlingsplan",
+        }[params.botId]
+      : "Assistent";
+    const title = `${name} — Arbejdsmiljøloven.dk`;
+    const description = `Start med ${name.toLowerCase()} og få hjælp til dit arbejdsmiljøarbejde.`;
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary" },
+      ],
+    };
+  },
   component: BotEntry,
 });
 

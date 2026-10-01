@@ -4,13 +4,9 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
 import ReactMarkdown from "react-markdown";
 import jsPDF from "jspdf";
-import {
-  ArrowLeft,
-  Download,
-  Loader2,
-  MessageSquarePlus,
-  Trash2,
-} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { downloadPlanReport } from "@/lib/plan-report";
+import { ArrowLeft, Download, Loader2, MessageSquarePlus, Trash2 } from "lucide-react";
 
 import { SiteHeader } from "@/components/SiteHeader";
 import {
@@ -35,6 +31,22 @@ import { getSessionId } from "@/lib/session";
 import sendIcon from "@/assets/send-icon-2.png.asset.json";
 
 export const Route = createFileRoute("/chat/$botId/$threadId")({
+  head: () => ({
+    meta: [
+      { title: "Handlingsplan og samtale — Arbejdsmiljøloven.dk" },
+      {
+        name: "description",
+        content: "Analysér din APV og download en handlingsplan med løsninger og lovgrundlag.",
+      },
+      { property: "og:title", content: "Handlingsplan og samtale — Arbejdsmiljøloven.dk" },
+      {
+        property: "og:description",
+        content: "Analysér din APV og download en handlingsplan med løsninger og lovgrundlag.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: ChatPage,
 });
 
@@ -182,6 +194,12 @@ function ChatInner({
   });
 
   const isLoading = status === "submitted" || status === "streaming";
+  const [downloadError, setDownloadError] = useState("");
+  const [downloading, setDownloading] = useState(false);
+  const assistantAnswers = messages
+    .filter((m) => m.role === "assistant")
+    .map((m) => m.parts.map((p) => (p.type === "text" ? p.text : "")).join(""))
+    .filter(Boolean);
   const pendingFileHandled = useRef(false);
 
   useEffect(() => {
@@ -193,7 +211,7 @@ function ChatInner({
         if (!file) return;
         const url = await fileToDataUrl(file);
         await sendMessage({
-          text: "Analysér den vedhæftede PDF og hjælp mig med at udarbejde en konkret handlingsplan.",
+          text: "Analysér den vedhæftede PDF og giv tre forskellige konkrete løsninger inden for lovens rammer. Angiv for hver løsning den relevante lov med officielt link og forklar, hvordan løsningen overholder den.",
           files: [{ type: "file", mediaType: "application/pdf", filename: file.name, url }],
         });
       })
@@ -296,12 +314,28 @@ function ChatInner({
     doc.save(`rapport-${botId}.pdf`);
   };
 
+  const handleDownload = async () => {
+    setDownloadError("");
+    if (botId !== "plan") {
+      downloadPdf();
+      return;
+    }
+    if (!assistantAnswers.length || isLoading || downloading) return;
+    setDownloading(true);
+    try {
+      await downloadPlanReport(assistantAnswers);
+    } catch (cause) {
+      console.error("PDF download error", cause);
+      setDownloadError("Rapporten kunne ikke hentes. Prøv igen.");
+    } finally {
+      setDownloading(false);
+    }
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <SiteHeader />
-      <div
-        className="mx-auto flex w-full max-w-6xl flex-1 gap-6 px-4 py-6 sm:px-6"
-      >
+      <div className="mx-auto flex w-full max-w-6xl flex-1 gap-6 px-4 py-6 sm:px-6">
         {/* Sidebar */}
         <aside className="hidden w-64 shrink-0 flex-col md:flex">
           <Link
@@ -366,14 +400,28 @@ function ChatInner({
               </div>
               <h1 className="truncate font-display text-lg font-semibold">{botTitle}</h1>
             </div>
-            <button
-              onClick={downloadPdf}
-              disabled={messages.length === 0}
-              className="inline-flex items-center gap-1.5 rounded-md bg-[#F78D0B] px-3 py-1.5 text-sm font-medium text-white shadow-[0_1px_0_0_#F78D0B] transition-colors hover:bg-[#df7f0a] disabled:cursor-not-allowed disabled:opacity-50"
+            <Button
+              onClick={handleDownload}
+              disabled={
+                botId === "plan"
+                  ? !assistantAnswers.length || isLoading || downloading
+                  : messages.length === 0
+              }
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-action px-3 py-1.5 text-sm font-medium text-action-foreground shadow-download transition-colors hover:bg-action/90 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              <Download size={14} /> Download PDF
-            </button>
+              {downloading ? (
+                <Loader2 size={14} className="animate-spin" />
+              ) : (
+                <Download size={14} />
+              )}{" "}
+              Download PDF
+            </Button>
           </div>
+          {downloadError ? (
+            <p role="alert" className="px-5 py-2 text-sm text-destructive">
+              {downloadError}
+            </p>
+          ) : null}
 
           {botId === "plan" ? (
             <Conversation className="min-h-0">
