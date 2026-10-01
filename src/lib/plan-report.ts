@@ -153,6 +153,22 @@ export async function downloadPlanReport(answers: string[]): Promise<void> {
         .replace(/\*/g, "")
         .replace(/^[-*]\s+/, "• ");
       const label = /^\*\*(.+?)\*\*/.exec(line);
+      if (links.length) {
+        doc.setFont("DejaVu", label ? "bold" : "normal");
+        doc.setFontSize(10.5);
+        const bodyHeight = (doc.splitTextToSize(clean, textWidth) as string[]).length * 10.5 * 1.55;
+        doc.setFont("DejaVu", "normal");
+        doc.setFontSize(8.5);
+        const linkHeight = links.reduce(
+          (total, [, title, url]) =>
+            total +
+            (validOfficialLink(url)
+              ? (doc.splitTextToSize(`${title}: ${url}`, textWidth) as string[]).length * 8.5 * 1.55
+              : 0),
+          0,
+        );
+        if (y + bodyHeight + linkHeight > pageHeight - 56) nextPage();
+      }
       write(clean, 10.5, label ? "bold" : "normal");
       for (const [, title, url] of links) {
         if (!validOfficialLink(url)) continue;
