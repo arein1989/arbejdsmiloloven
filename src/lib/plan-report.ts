@@ -140,7 +140,7 @@ export async function downloadPlanReport(answers: string[]): Promise<void> {
       const heading = /^#{1,3}\s+(.+)/.exec(line);
       if (heading) {
         y += 12;
-        if (y + 42 > pageHeight - 56) nextPage();
+        if (y + 110 > pageHeight - 56) nextPage();
         doc.setTextColor(12, 107, 59);
         write(heading[1], 15, "bold");
         doc.setTextColor(32, 49, 38);
@@ -150,7 +150,7 @@ export async function downloadPlanReport(answers: string[]): Promise<void> {
       const links = [...line.matchAll(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g)];
       const clean = line
         .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, "$1")
-        .replace(/\*\*/g, "")
+        .replace(/\*/g, "")
         .replace(/^[-*]\s+/, "• ");
       const label = /^\*\*(.+?)\*\*/.exec(line);
       write(clean, 10.5, label ? "bold" : "normal");
