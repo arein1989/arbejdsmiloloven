@@ -151,7 +151,7 @@ function BotEntry() {
             <br />
             Mangler du{" "}
             <a
-              href="https://www.arbejdsmiljøuddannelse.dk"
+              href="https://www.arbejdsmiljoeuddannelse.dk"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold underline"
@@ -161,7 +161,7 @@ function BotEntry() {
             </a>
             ? Så find en tæt på dig på{" "}
             <a
-              href="https://www.arbejdsmiljøuddannelse.dk"
+              href="https://www.arbejdsmiljoeuddannelse.dk"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold underline"
