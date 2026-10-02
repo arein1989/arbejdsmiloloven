@@ -147,7 +147,7 @@ function Home() {
           <p className="mt-3 text-base text-foreground sm:text-lg">
             Mangler du{" "}
             <a
-              href="https://www.arbejdsmiljøuddannelse.dk"
+              href="https://www.arbejdsmiljoeuddannelse.dk"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold hover:underline"
@@ -157,7 +157,7 @@ function Home() {
             </a>
             ? Så find en tæt på dig på{" "}
             <a
-              href="https://www.arbejdsmiljøuddannelse.dk"
+              href="https://www.arbejdsmiljoeuddannelse.dk"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold hover:underline"
