@@ -66,14 +66,14 @@ export function PlanWelcome() {
       <SiteHeader />
       <main>
         <div className="mx-auto max-w-5xl px-5 py-10 sm:px-8 sm:py-14">
-          <section className="grid min-w-0 items-center gap-4 sm:gap-6 lg:grid-cols-[minmax(0,460px)_minmax(0,1fr)]">
+          <section className="grid min-w-0 items-center gap-4 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:grid-cols-[minmax(0,460px)_minmax(0,1fr)]">
             <img
               src={robotMascot.url}
               alt="Handlingsplan-assistenten"
-              className="mx-auto h-[300px] w-full max-w-[300px] object-contain sm:h-[380px] sm:max-w-[380px] lg:h-[460px] lg:max-w-[460px]"
+              className="mx-auto h-[300px] w-full max-w-[300px] object-contain sm:h-[380px] sm:max-w-[380px] md:h-[340px] md:max-w-[340px] lg:h-[460px] lg:max-w-[460px]"
             />
             <div className="min-w-0 text-center">
-              <h1 className="text-3xl font-bold leading-snug">
+              <h1 className="text-3xl font-bold leading-snug md:text-2xl lg:text-3xl">
                 Velkommen&nbsp;! <br />
                 Handlingsplan – Din AI-assistent til{" "}
                 <br className="hidden xl:block" />
