@@ -629,7 +629,7 @@ function BotEntry() {
                 arbejdsmiljøuddannelse eller på "Arbejdsmiljøkoordinatoruddannelsen" så find en
                 uddannelse eller kursus på{" "}
                 <a
-                  href="https://www.arbejdsmiljøuddannelse.dk"
+                  href="https://www.arbejdsmiljoeuddannelse.dk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline"
