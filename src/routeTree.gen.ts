@@ -9,32 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as NyhederRouteImport } from './routes/nyheder'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ChatBotIdRouteImport } from './routes/chat.$botId'
+import { Route as NyhederRouteImport } from './routes/nyheder'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as ChatBotIdRouteImport } from './routes/chat.$botId'
 import { Route as ChatBotIdIndexRouteImport } from './routes/chat.$botId.index'
 import { Route as ChatBotIdThreadIdRouteImport } from './routes/chat.$botId.$threadId'
 import { Route as ApiPublicHooksRefreshLawChangesRouteImport } from './routes/api/public/hooks/refresh-law-changes'
 
-const NyhederRoute = NyhederRouteImport.update({
-  id: '/nyheder',
-  path: '/nyheder',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ChatBotIdRoute = ChatBotIdRouteImport.update({
-  id: '/chat/$botId',
-  path: '/chat/$botId',
+const NyhederRoute = NyhederRouteImport.update({
+  id: '/nyheder',
+  path: '/nyheder',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiChatRoute = ApiChatRouteImport.update({
   id: '/api/chat',
   path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatBotIdRoute = ChatBotIdRouteImport.update({
+  id: '/chat/$botId',
+  path: '/chat/$botId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChatBotIdIndexRoute = ChatBotIdIndexRouteImport.update({
@@ -120,13 +120,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/nyheder': {
-      id: '/nyheder'
-      path: '/nyheder'
-      fullPath: '/nyheder'
-      preLoaderRoute: typeof NyhederRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -134,11 +127,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chat/$botId': {
-      id: '/chat/$botId'
-      path: '/chat/$botId'
-      fullPath: '/chat/$botId'
-      preLoaderRoute: typeof ChatBotIdRouteImport
+    '/nyheder': {
+      id: '/nyheder'
+      path: '/nyheder'
+      fullPath: '/nyheder'
+      preLoaderRoute: typeof NyhederRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/chat': {
@@ -146,6 +139,13 @@ declare module '@tanstack/react-router' {
       path: '/api/chat'
       fullPath: '/api/chat'
       preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chat/$botId': {
+      id: '/chat/$botId'
+      path: '/chat/$botId'
+      fullPath: '/chat/$botId'
+      preLoaderRoute: typeof ChatBotIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/chat/$botId/': {
