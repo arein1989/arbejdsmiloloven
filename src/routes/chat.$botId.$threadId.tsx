@@ -196,6 +196,7 @@ function ChatInner({
   const isLoading = status === "submitted" || status === "streaming";
   const [downloadError, setDownloadError] = useState("");
   const [downloading, setDownloading] = useState(false);
+  const [mobileThreadsOpen, setMobileThreadsOpen] = useState(false);
   const assistantAnswers = messages
     .filter((m) => m.role === "assistant")
     .map((m) => m.parts.map((p) => (p.type === "text" ? p.text : "")).join(""))
@@ -335,9 +336,9 @@ function ChatInner({
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <SiteHeader />
-      <div className="mx-auto flex w-full max-w-6xl flex-1 gap-6 px-4 py-6 sm:px-6">
+      <div className={`mx-auto flex w-full max-w-6xl flex-1 gap-6 ${botId === "plan" ? "px-0 py-2 sm:px-4 sm:py-4 lg:px-6 lg:py-6" : "px-4 py-6 sm:px-6"}`}>
         {/* Sidebar */}
-        <aside className="hidden w-64 shrink-0 flex-col md:flex">
+        <aside className={`hidden w-64 shrink-0 flex-col ${botId === "plan" ? "lg:flex" : "md:flex"}`}>
           <Link
             to="/"
             className="mb-3 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
@@ -391,9 +392,9 @@ function ChatInner({
 
         {/* Main */}
         <main
-          className={`flex min-w-0 flex-1 flex-col rounded-2xl border border-border bg-card shadow-sm ${botId === "plan" ? "min-h-[720px] overflow-hidden" : ""}`}
+          className={`flex min-w-0 flex-1 flex-col rounded-2xl border border-border bg-card shadow-sm ${botId === "plan" ? "h-[calc(100dvh-8rem)] min-h-[420px] overflow-hidden rounded-none border-x-0 sm:rounded-lg sm:border-x lg:rounded-2xl" : ""}`}
         >
-          <div className="flex items-center justify-between border-b border-border px-5 py-4">
+          <div className="flex min-w-0 items-center justify-between gap-2 border-b border-border px-3 py-3 sm:px-5 sm:py-4">
             <div className="min-w-0">
               <div className="text-xs font-medium uppercase tracking-wider text-primary/80">
                 {botName}
@@ -401,6 +402,7 @@ function ChatInner({
               <h1 className="truncate font-display text-lg font-semibold">{botTitle}</h1>
             </div>
             <Button
+              aria-label="Download PDF"
               onClick={handleDownload}
               disabled={
                 botId === "plan"
@@ -414,9 +416,43 @@ function ChatInner({
               ) : (
                 <Download size={14} />
               )}{" "}
-              Download PDF
+              <span className={botId === "plan" ? "hidden sm:inline" : ""}>Download PDF</span>
             </Button>
           </div>
+          {botId === "plan" ? (
+            <div className="border-b border-border px-3 py-2 lg:hidden sm:px-5">
+              <Button
+                type="button"
+                variant="ghost"
+                onClick={() => setMobileThreadsOpen((open) => !open)}
+                aria-expanded={mobileThreadsOpen}
+                className="h-8 px-2 text-sm text-primary"
+              >
+                Dine samtaler {mobileThreadsOpen ? "−" : "+"}
+              </Button>
+              {mobileThreadsOpen ? (
+                <div className="mt-2 max-h-48 space-y-1 overflow-y-auto border-t border-border pt-2">
+                  <Button type="button" onClick={handleNewThread} className="mb-2 h-8 gap-2">
+                    <MessageSquarePlus size={16} /> Ny samtale
+                  </Button>
+                  {threads.map((thread) => (
+                    <div key={thread.id} className="flex min-w-0 items-center gap-2">
+                      <Link
+                        to="/chat/$botId/$threadId"
+                        params={{ botId, threadId: thread.id }}
+                        className={`min-w-0 flex-1 truncate px-2 py-1.5 text-sm ${thread.id === threadId ? "bg-primary/10 text-primary" : "text-foreground"}`}
+                      >
+                        {thread.title}
+                      </Link>
+                      <Button type="button" size="icon-sm" variant="ghost" aria-label="Slet samtale" onClick={() => handleDelete(thread.id)}>
+                        <Trash2 size={14} />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
           {downloadError ? (
             <p role="alert" className="px-5 py-2 text-sm text-destructive">
               {downloadError}
@@ -425,7 +461,7 @@ function ChatInner({
 
           {botId === "plan" ? (
             <Conversation className="min-h-0">
-              <ConversationContent className="px-5 py-7 sm:px-8">
+              <ConversationContent className="min-w-0 px-3 py-4 sm:px-8 sm:py-7 [&_a]:break-all [&_pre]:max-w-full [&_pre]:overflow-x-auto">
                 {messages.length === 0 ? (
                   <ConversationEmptyState
                     icon={<MessageSquarePlus className="h-6 w-6" />}
@@ -439,7 +475,7 @@ function ChatInner({
                     .map((part) => (part.type === "text" ? part.text : ""))
                     .join("");
                   return (
-                    <Message from={message.role} key={message.id}>
+                      <Message from={message.role} key={message.id} className="min-w-0 max-w-[90%] sm:max-w-[95%]">
                       <MessageContent
                         className={
                           message.role === "user" ? "bg-primary text-primary-foreground" : ""

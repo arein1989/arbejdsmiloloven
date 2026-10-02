@@ -66,42 +66,42 @@ export function PlanWelcome() {
       <SiteHeader />
       <main>
         <div className="mx-auto max-w-5xl px-5 py-10 sm:px-8 sm:py-14">
-          <section className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.8fr)] lg:grid-cols-[460px_minmax(0,1fr)]">
+          <section className="grid min-w-0 items-center gap-4 sm:gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:grid-cols-[minmax(0,460px)_minmax(0,1fr)]">
             <img
               src={robotMascot.url}
               alt="Handlingsplan-assistenten"
-              className="mx-auto h-[300px] w-[300px] object-contain sm:h-[380px] sm:w-[380px] lg:h-[460px] lg:w-[460px]"
+              className="mx-auto h-[300px] w-full max-w-[300px] object-contain sm:h-[380px] sm:max-w-[380px] md:h-[340px] md:max-w-[340px] lg:h-[460px] lg:max-w-[460px]"
             />
-            <div className="text-center">
-              <h1 className="text-3xl font-bold leading-snug sm:whitespace-nowrap">
-                Velkommen&nbsp;! <br className="hidden sm:block" />
+            <div className="min-w-0 text-center">
+              <h1 className="text-3xl font-bold leading-snug md:text-2xl lg:text-3xl">
+                Velkommen&nbsp;! <br />
                 Handlingsplan – Din AI-assistent til{" "}
-                <br className="hidden sm:block" />
+                <br className="hidden xl:block" />
                 APV og rapporter
               </h1>
             </div>
           </section>
 
-          <section className="mt-12 sm:mt-16">
+          <section className="mt-10 sm:mt-14">
             <h2 className="text-2xl font-semibold">Sådan fungerer Handlingsplan</h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base">
               Her er en kort guide til, hvordan AI-assistenten ‘Handlingsplan’ fungerer, og hvordan processen forløber.
             </p>
-            <div className="mx-auto mt-7 grid max-w-2xl gap-7 sm:grid-cols-3">
+            <div className="mx-auto mt-7 grid max-w-2xl gap-4 sm:grid-cols-3 sm:gap-7">
               {[
                 { icon: pdfIcon, label: "Upload PDF" },
                 { icon: robotIcon, label: "AI’en analyserer" },
                 { icon: downloadIcon, label: "Download PDF" },
               ].map((step, index) => (
-                <div className="relative" key={step.label}>
-                  <div className="grid h-[90px] place-items-center rounded-lg bg-card shadow-plan ring-2 ring-inset ring-plan-stroke">
+                <div className="relative flex items-center gap-4 sm:block" key={step.label}>
+                  <div className="grid h-[72px] w-[88px] shrink-0 place-items-center rounded-lg bg-card shadow-plan ring-2 ring-inset ring-plan-stroke sm:h-[90px] sm:w-full">
                     <img
                       src={step.icon.url}
                       alt=""
                       className="h-12 w-12 object-contain"
                     />
                   </div>
-                  <h3 className="mt-3 text-center text-lg font-semibold text-white">
+                  <h3 className="min-w-0 text-lg font-semibold text-white sm:mt-3 sm:text-center">
                     {step.label}
                   </h3>
                   {index < 2 ? (
@@ -128,7 +128,7 @@ export function PlanWelcome() {
               type="button"
               variant="ghost"
               onClick={() => fileInputRef.current?.click()}
-              className="mx-auto h-auto w-[calc(100%-12px)] flex-col rounded-lg bg-card px-6 py-7 text-center text-plan-ink shadow-plan transition-transform hover:-translate-y-0.5 hover:bg-card hover:text-plan-ink"
+               className="mx-auto h-auto w-[calc(100%-12px)] min-w-0 flex-col whitespace-normal rounded-lg bg-card px-4 py-7 text-center text-plan-ink shadow-plan transition-transform hover:-translate-y-0.5 hover:bg-card hover:text-plan-ink sm:px-6"
             >
               <img
                 src={uploadIcon.url}
@@ -136,7 +136,7 @@ export function PlanWelcome() {
                 className="h-14 w-14 object-contain"
               />
               <span className="mt-3 font-semibold text-action">Upload PDF</span>
-              <span className="mt-2 text-sm font-medium">
+               <span className="mt-2 max-w-full break-all text-sm font-medium">
                 {file ? file.name : "Træk PDF hertil eller klik for at vælge"}
               </span>
               <span className="text-sm font-medium">Filen må maksimalt fylde 10 MB</span>
@@ -179,7 +179,7 @@ export function PlanWelcome() {
               type="button"
               onClick={beginAnalysis}
               disabled={!file || loading}
-              className={`mt-6 h-14 w-full justify-between rounded-xl px-6 text-base font-bold text-white shadow-none disabled:opacity-100 ${
+               className={`mt-6 h-auto min-h-14 w-full justify-between gap-3 whitespace-normal rounded-xl px-4 py-3 text-left text-base font-bold text-white shadow-none disabled:opacity-100 sm:px-6 ${
                 file
                   ? "bg-[#2E6B44] hover:bg-[#2E6B44]/90"
                   : "bg-[#2E6B44]/30 hover:bg-[#2E6B44]/30"
