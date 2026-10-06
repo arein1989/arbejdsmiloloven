@@ -528,7 +528,15 @@ function ChatInner({
                     </div>
                     <div className="prose-chat min-w-0 flex-1 text-foreground">
                       {text ? (
-                        <ReactMarkdown>{text}</ReactMarkdown>
+                        <ReactMarkdown
+                          components={{
+                            a: ({ node: _node, ...props }) => (
+                              <a {...props} target="_blank" rel="noopener noreferrer" />
+                            ),
+                          }}
+                        >
+                          {text}
+                        </ReactMarkdown>
                       ) : (
                         <span className="text-sm text-muted-foreground">…</span>
                       )}
