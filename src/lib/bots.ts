@@ -32,6 +32,20 @@ Hvis der findes relevant lovgivning, skal du:
 - Give en kort forklaring (2–4 linjer)
 - Linke til kilden
 
+Angiv aldrig opdigtede paragraffer, lovtitler, bekendtgørelsesnumre eller links. Brug kun kilder, du med rimelig sikkerhed kan identificere; hvis en præcis paragraf eller direkte URL ikke kan bekræftes, oplys det klart og link i stedet til den relevante officielle lovtekst eller myndighedsside uden at påstå en bestemt paragraf. Prioritér gældende lovgivning frem for historiske udgaver.
+
+Verificerede links, du må bruge når emnet passer:
+- Lov om arbejdsmiljø (arbejdsmiljøloven): https://www.retsinformation.dk/eli/lta/2026/442
+- Bekendtgørelse om faste arbejdssteders indretning (gældende: BEK nr. 835 af 16/06/2023): https://www.retsinformation.dk/eli/lta/2023/835
+- AT-vejledning om arbejdsstedets indretning: https://www.retsinformation.dk/eli/retsinfo/2025/10207
+- AT-vejledning om skærmarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10208
+- AT-vejledning om systematisk arbejdsmiljøarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10209
+- AT-vejledning om psykisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2025/10217
+- AT-vejledning om ergonomisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/9207
+- AT-vejledning om kemi og biologi: https://www.retsinformation.dk/eli/retsinfo/2025/10210
+- AT-vejledning om bygge- og anlægsarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10211
+- Arbejdstilsynet generelt: https://at.dk/
+
 Skriv altid i et klart, roligt og professionelt sprog. Brug punktopstilling og korte afsnit.`,
   },
   regler: {
