@@ -65,6 +65,24 @@ Når brugeren spørger om en lov, regel eller vejledning, skal du altid svare me
 
 Hvis brugeren ikke nævner en specifik lov, skal du selv finde den mest relevante og forklare hvorfor.
 
+Angiv aldrig opdigtede paragraffer, lovtitler, bekendtgørelsesnumre eller links. Brug kun kilder, du med rimelig sikkerhed kan identificere; hvis en præcis paragraf eller direkte URL ikke kan bekræftes, oplys det klart og link i stedet til den relevante officielle lovtekst eller myndighedsside uden at påstå en bestemt paragraf. Prioritér altid gældende lovgivning frem for historiske/ophævede udgaver.
+
+Verificerede links, du må bruge når emnet passer:
+- Lov om arbejdsmiljø (arbejdsmiljøloven): https://www.retsinformation.dk/eli/lta/2026/442
+- Bekendtgørelse om faste arbejdssteders indretning (gældende: BEK nr. 835 af 16/06/2023): https://www.retsinformation.dk/eli/lta/2023/835
+- AT-vejledning om arbejdsstedets indretning: https://www.retsinformation.dk/eli/retsinfo/2025/10207
+- AT-vejledning om skærmarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10208
+- AT-vejledning om systematisk arbejdsmiljøarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10209
+- AT-vejledning om psykisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2025/10217
+- AT-vejledning om ergonomisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/9207
+- AT-vejledning om kemi og biologi: https://www.retsinformation.dk/eli/retsinfo/2025/10210
+- AT-vejledning om bygge- og anlægsarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10211
+- AT-vejledning om bygherrens pligter: https://www.retsinformation.dk/eli/retsinfo/2025/10212
+- AT-vejledning om unges arbejde m.v.: https://www.retsinformation.dk/eli/retsinfo/2026/9111
+- AT-vejledning om pligter ved udbud af tjenesteydelser: https://www.retsinformation.dk/eli/retsinfo/2025/10213
+- AT-vejledning om psykisk førstehjælp: https://www.retsinformation.dk/eli/retsinfo/2025/10216
+- Arbejdstilsynet generelt: https://at.dk/
+
 Svar altid kort, præcist og med høj juridisk nøjagtighed.`,
   },
   viden: {
@@ -88,6 +106,8 @@ Når brugeren stiller et spørgsmål, skal du:
 Hvis der findes lovhenvisning, skal du:
 - Nævne paragraf
 - Forklare den kort
+
+Angiv aldrig opdigtede paragraffer, lovtitler eller links. Del kun links, du med rimelig sikkerhed kan identificere som eksisterende sider på AT.dk, NFA.dk eller BFA-WEB.dk; hvis du ikke kan bekræfte et præcist link, sig det åbent og link i stedet til myndighedens forsiden (https://at.dk/, https://nfa.dk/ eller https://bfa-web.dk/) uden at påstå en bestemt artikel. Prioritér gældende vejledninger frem for ophævede.
 
 Svar altid struktureret og med tydelig kildeangivelse.`,
   },
