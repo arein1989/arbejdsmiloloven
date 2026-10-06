@@ -336,9 +336,13 @@ function ChatInner({
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <SiteHeader />
-      <div className={`mx-auto flex w-full max-w-6xl flex-1 gap-6 ${botId === "plan" ? "px-0 py-2 sm:px-4 sm:py-4 lg:px-6 lg:py-6" : "px-4 py-6 sm:px-6"}`}>
+      <div
+        className={`mx-auto flex w-full max-w-6xl flex-1 gap-6 ${botId === "plan" ? "px-0 py-2 sm:px-4 sm:py-4 lg:px-6 lg:py-6" : "px-4 py-6 sm:px-6"}`}
+      >
         {/* Sidebar */}
-        <aside className={`hidden w-64 shrink-0 flex-col ${botId === "plan" ? "lg:flex" : "md:flex"}`}>
+        <aside
+          className={`hidden w-64 shrink-0 flex-col ${botId === "plan" ? "lg:flex" : "md:flex"}`}
+        >
           <Link
             to="/"
             className="mb-3 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
@@ -444,7 +448,13 @@ function ChatInner({
                       >
                         {thread.title}
                       </Link>
-                      <Button type="button" size="icon-sm" variant="ghost" aria-label="Slet samtale" onClick={() => handleDelete(thread.id)}>
+                      <Button
+                        type="button"
+                        size="icon-sm"
+                        variant="ghost"
+                        aria-label="Slet samtale"
+                        onClick={() => handleDelete(thread.id)}
+                      >
                         <Trash2 size={14} />
                       </Button>
                     </div>
@@ -475,7 +485,11 @@ function ChatInner({
                     .map((part) => (part.type === "text" ? part.text : ""))
                     .join("");
                   return (
-                      <Message from={message.role} key={message.id} className="min-w-0 max-w-[90%] sm:max-w-[95%]">
+                    <Message
+                      from={message.role}
+                      key={message.id}
+                      className="min-w-0 max-w-[90%] sm:max-w-[95%]"
+                    >
                       <MessageContent
                         className={
                           message.role === "user" ? "bg-primary text-primary-foreground" : ""
@@ -528,7 +542,15 @@ function ChatInner({
                     </div>
                     <div className="prose-chat min-w-0 flex-1 text-foreground">
                       {text ? (
-                        <ReactMarkdown>{text}</ReactMarkdown>
+                        <ReactMarkdown
+                          components={{
+                            a: ({ node: _node, ...props }) => (
+                              <a {...props} target="_blank" rel="noopener noreferrer" />
+                            ),
+                          }}
+                        >
+                          {text}
+                        </ReactMarkdown>
                       ) : (
                         <span className="text-sm text-muted-foreground">…</span>
                       )}
