@@ -36,7 +36,9 @@ export const Route = createFileRoute("/api/chat")({
 
         const result = streamText({
           model,
-          system: bot.system,
+          system: `${bot.system}
+
+DIREKTE LINKS TIL PARAGRAFFER: Når du henviser til en bestemt paragraf i en lov eller bekendtgørelse på retsinformation.dk, skal linket gå direkte til paragraffen ved at tilføje "#P" og paragrafnummeret til den verificerede adresse, fx https://www.retsinformation.dk/eli/lta/2023/835#P22 for § 22. Lav ét link pr. paragraf, og lad linkteksten nævne paragraffen (fx "[§ 22 i bekendtgørelsen om faste arbejdssteders indretning](https://www.retsinformation.dk/eli/lta/2023/835#P22)"). Gengiv også kort, hvad paragraffen siger, så brugeren får svaret direkte. Brug kun #P-ankre med paragrafnumre, du er sikker på.`,
           messages: modelMessages,
           onError: ({ error }) => console.error("AI stream error", error),
         });
