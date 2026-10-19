@@ -59,13 +59,13 @@ export function FlipCard({ height }: { height?: number | null }) {
         >
           <h3 className="font-display text-xl font-semibold">Thomas Weyse</h3>
           <p className="mt-3 text-sm leading-relaxed">
-            Mere end 20 års erfaring – jeg kan løfte opgaver inden for både det
-            formelle, fysiske og psykosociale arbejdsmiljø.
+            Mere end 20 års erfaring med arbejdsmiljø og undervisning. Har været
+            tilsynsførende i Arbejdstilsynet i over 12 år og har undervist i
+            arbejdsmiljø siden 2013.
           </p>
           <p className="mt-4 text-sm leading-relaxed">
-            Hos AdWeyse er professionel arbejdsmiljøkommunikation
-            omdrejningspunktet – fra rådgivning og oplæg til sparring og
-            APV-processer.
+            Stiftede AdWeyse i 2013 og har siden arbejdet fokuseret på, at gøre
+            arbejdsmiljøarbejde spændende og medrivende.
           </p>
         </div>
       </div>
