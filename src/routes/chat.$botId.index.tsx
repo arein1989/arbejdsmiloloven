@@ -142,33 +142,17 @@ function BotEntry() {
 
         <section className="mx-auto max-w-4xl space-y-4 px-4 pt-10 sm:px-6">
           <h1 className="text-3xl font-semibold" style={{ color: "#000000" }}>
-            Få svar på dit arbejdsmiljøspørgsmål
+            Få svar på dine arbejdsmiljøspørgsmål
           </h1>
+          <p className="text-base font-semibold sm:text-lg" style={{ color: "#000000" }}>
+            arbejdsmiljøloven.dk
+          </p>
           <p className="text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
-            Arbejdsmiljøloven.dk
-            <br />
-            Skabt til at løfte arbejdsmiljøarbejdet til nye højder.
-            <br />
-            Mangler du{" "}
-            <a
-              href="https://www.arbejdsmiljoeuddannelse.dk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold underline"
-              style={{ color: "#0C6B3B" }}
-            >
-              "Den lovpligtige arbejdsmiljøuddannelse"
-            </a>
-            ? Så find en tæt på dig på{" "}
-            <a
-              href="https://www.arbejdsmiljoeuddannelse.dk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold underline"
-              style={{ color: "#0C6B3B" }}
-            >
-              www.arbejdsmiljøuddannelse.dk
-            </a>
+            En søgemaskine skabt til at hjælpe dig med at finde svar på de spørgsmål du kan have
+            inden for arbejdsmiljølovens rammer.
+          </p>
+          <p className="text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+            Du får svar indenfor gældende Lovbekendtgørelser, bekendtgørelser og At-vejledninger
           </p>
         </section>
 
