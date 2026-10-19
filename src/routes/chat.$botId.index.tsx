@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Link2 } from "lucide-react";
 import { useEffect, useRef, useState, type ComponentProps, type ReactNode } from "react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -144,8 +144,14 @@ function BotEntry() {
           <h1 className="text-3xl font-semibold" style={{ color: "#000000" }}>
             Få svar på dine arbejdsmiljøspørgsmål
           </h1>
-          <p className="text-base font-semibold sm:text-lg" style={{ color: "#000000" }}>
-            arbejdsmiljøloven.dk
+          <p className="text-base font-semibold sm:text-lg">
+            <Link
+              to="/"
+              className="underline-offset-4 transition-opacity hover:underline"
+              style={{ color: "#0C6B3B" }}
+            >
+              arbejdsmiljøloven.dk
+            </Link>
           </p>
           <p className="text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
             En søgemaskine skabt til at hjælpe dig med at finde svar på de spørgsmål du kan have
