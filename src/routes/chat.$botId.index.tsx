@@ -156,8 +156,7 @@ function BotEntry() {
           <p className="text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
             En søgemaskine skabt til at hjælpe dig med at finde svar på de spørgsmål du kan have
             inden for arbejdsmiljølovens rammer.
-          </p>
-          <p className="text-sm leading-relaxed sm:text-base" style={{ color: "#000000" }}>
+            <br />
             Du får svar indenfor gældende Lovbekendtgørelser, bekendtgørelser og At-vejledninger
           </p>
         </section>
