@@ -681,26 +681,25 @@ function BotEntry() {
                 </li>
                 {[
                   {
-                    label: "Bekendtgørelse nr. 65 af 22/01/2024 - Systematisk arbejdsmiljøarbejde",
-                    url: "https://www.retsinformation.dk/eli/lta/2024/65",
+                    label: "Bekendtgørelse nr. 608 af 29/06/2026 - Systematisk arbejdsmiljøarbejde",
+                    url: "https://www.retsinformation.dk/eli/lta/2026/608",
                   },
                   {
-                    label: "Bekendtgørelse nr. 1839 af 14/12/2023 - Arbejdets udførelse",
-                    url: "https://www.retsinformation.dk/eli/lta/2023/1839",
+                    label: "Bekendtgørelse nr. 609 af 29/06/2026 - Arbejdets udførelse",
+                    url: "https://www.retsinformation.dk/eli/lta/2026/609",
                   },
                   {
-                    label: "Bekendtgørelse nr. 1406 af 26/09/2020 - Psykisk arbejdsmiljø",
-                    url: "https://www.retsinformation.dk/eli/lta/2020/1406",
+                    label: "Bekendtgørelse nr. 605 af 29/06/2026 - Psykisk arbejdsmiljø",
+                    url: "https://www.retsinformation.dk/eli/lta/2026/605",
                   },
                   {
-                    label: "Bekendtgørelse nr. 835 af 16/06/2023 - Faste arbejdssteders indretning",
-                    url: "https://www.retsinformation.dk/eli/lta/2023/835",
+                    label: "Bekendtgørelse nr. 607 af 29/06/2026 - Faste arbejdssteders indretning",
+                    url: "https://www.retsinformation.dk/eli/lta/2026/607",
                   },
                   {
                     label:
-                      "Bekendtgørelse nr. 290 af 05/05/1993 - Skiftende arbejdssteders indretning",
-                    url: "https://www.retsinformation.dk/eli/lta/1993/290",
-                    note: " (Denne har en alder som gør den ikke kan laves i en pdf på Arbejdstilsynets hjemmeside, så den skal vi selv producere)",
+                      "Bekendtgørelse nr. 618 af 29/06/2026 - Skiftende arbejdssteders indretning",
+                    url: "https://www.retsinformation.dk/eli/lta/2026/618",
                   },
                   {
                     label:
@@ -709,22 +708,21 @@ function BotEntry() {
                   },
                   {
                     label:
-                      "Bekendtgørelse nr. 429 af 05/04/2022 - Indretning af tekniske hjælpemidler",
-                    url: "https://www.retsinformation.dk/eli/lta/2022/429",
+                      "Bekendtgørelse nr. 595 af 29/06/2026 - Indretning af tekniske hjælpemidler",
+                    url: "https://www.retsinformation.dk/eli/lta/2026/595",
                   },
                   {
                     label:
-                      "Bekendtgørelse nr. 381 af 12/04/2023 - Arbejde med stoffer og materialer",
-                    url: "https://www.retsinformation.dk/eli/lta/2023/381",
+                      "Bekendtgørelse nr. 581 af 25/06/2026 - Arbejde med stoffer og materialer (kemiske agenser)",
+                    url: "https://www.retsinformation.dk/eli/lta/2026/581",
                   },
                   {
                     label: "Bekendtgørelse nr. 1713 af 18/12/2025 - Unges arbejde",
                     url: "https://www.retsinformation.dk/eli/lta/2025/1713",
                   },
                   {
-                    label: "Bekendtgørelse nr. 324 af 23/05/2002 - Hvileperiode og fridøgn",
-                    url: "https://www.retsinformation.dk/eli/lta/2002/324",
-                    note: " (Denne har en alder som gør den ikke kan laves i en pdf på Arbejdstilsynets hjemmeside, så den skal vi selv producere)",
+                    label: "Bekendtgørelse nr. 606 af 29/06/2026 - Hvileperiode og fridøgn m.v.",
+                    url: "https://www.retsinformation.dk/eli/lta/2026/606",
                   },
                   {
                     label: "Bekendtgørelse nr. 2107 af 24/11/2021 - Bygge- og anlægsarbejde",
@@ -1190,7 +1188,7 @@ function BotEntry() {
                 {[
                   {
                     label: "AT-vejledning om Arbejdsstedets indretning",
-                    url: "https://www.retsinformation.dk/eli/retsinfo/2025/10207",
+                    url: "https://www.retsinformation.dk/eli/retsinfo/2026/10132",
                   },
                   {
                     label: "AT-vejledning om Skærmarbejde",
@@ -1203,19 +1201,19 @@ function BotEntry() {
                   },
                   {
                     label: "AT-vejledning om Psykisk arbejdsmiljø",
-                    url: "https://www.retsinformation.dk/eli/retsinfo/2025/10217",
+                    url: "https://www.retsinformation.dk/eli/retsinfo/2026/10227",
                   },
                   {
                     label: "AT-vejledning om Ergonomisk arbejdsmiljø",
-                    url: "https://www.retsinformation.dk/eli/retsinfo/2026/9207",
+                    url: "https://www.retsinformation.dk/eli/retsinfo/2026/10133",
                   },
                   {
                     label: "AT-vejledning om Kemi og biologi i arbejdsmiljøet – udvalgte emner",
-                    url: "https://www.retsinformation.dk/eli/retsinfo/2025/10210",
+                    url: "https://www.retsinformation.dk/eli/retsinfo/2026/10134",
                   },
                   {
                     label: "AT-vejledning om Bygge- og anlægsarbejde",
-                    url: "https://www.retsinformation.dk/eli/retsinfo/2025/10211",
+                    url: "https://www.retsinformation.dk/eli/retsinfo/2026/10135",
                   },
                   {
                     label: "AT-vejledning om Bygherrens pligter",
