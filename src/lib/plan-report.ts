@@ -178,8 +178,9 @@ export async function downloadPlanReport(answers: string[]): Promise<void> {
   await adweyseImg.decode();
   const adW = 140;
   const adH = (adweyseImg.naturalHeight / adweyseImg.naturalWidth) * adW;
-  y += 30;
-  if (y + adH > pageHeight - 56) nextPage();
-  doc.addImage(adweyseImg.src, "PNG", (pageWidth - adW) / 2, y, adW, adH);
+  // The logo sits in the bottom-right corner of the report's final page, just above the footer.
+  const cornerY = pageHeight - 56 - adH;
+  if (y + 24 > cornerY) nextPage();
+  doc.addImage(adweyseImg.src, "PNG", pageWidth - margin - adW, cornerY, adW, adH);
   doc.save("handlingsplan-loesninger.pdf");
 }
