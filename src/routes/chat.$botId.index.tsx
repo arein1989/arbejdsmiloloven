@@ -748,7 +748,6 @@ function BotEntry() {
                     >
                       {item.label}
                     </a>
-                    {item.note ? <strong>{item.note}</strong> : null}
                   </li>
                 ))}
               </ul>
