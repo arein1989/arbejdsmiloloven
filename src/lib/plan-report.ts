@@ -59,18 +59,18 @@ export async function downloadPlanReport(answers: string[]): Promise<void> {
       `data:image/png;base64,${logo}`,
       "PNG",
       margin,
-      first ? 21 : 8,
-      first ? 80 : 44,
-      first ? 80 : 44,
+      first ? 10 : 6,
+      first ? 112 : 48,
+      first ? 112 : 48,
     );
     doc.setFont("DejaVu", "bold");
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(first ? 22 : 13);
-    doc.text("HANDLINGSPLAN", first ? 145 : 107, first ? 67 : 35);
+    doc.text("HANDLINGSPLAN", first ? 172 : 104, first ? 64 : 34);
     if (first) {
       doc.setFont("DejaVu", "normal");
       doc.setFontSize(11);
-      doc.text("Tre løsninger inden for lovens rammer", 145, 88);
+      doc.text("Tre løsninger inden for lovens rammer", 172, 88);
     }
     doc.setDrawColor(140, 198, 62);
     doc.setLineWidth(2);
