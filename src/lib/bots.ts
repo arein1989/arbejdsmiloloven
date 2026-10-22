@@ -36,14 +36,14 @@ Angiv aldrig opdigtede paragraffer, lovtitler, bekendtgørelsesnumre eller links
 
 Verificerede links, du må bruge når emnet passer:
 - Lov om arbejdsmiljø (arbejdsmiljøloven): https://www.retsinformation.dk/eli/lta/2026/442
-- Bekendtgørelse om faste arbejdssteders indretning (gældende: BEK nr. 835 af 16/06/2023): https://www.retsinformation.dk/eli/lta/2023/835
-- AT-vejledning om arbejdsstedets indretning: https://www.retsinformation.dk/eli/retsinfo/2025/10207
+- Bekendtgørelse om faste arbejdssteders indretning (gældende: BEK nr. 607 af 29/06/2026): https://www.retsinformation.dk/eli/lta/2026/607
+- AT-vejledning om arbejdsstedets indretning: https://www.retsinformation.dk/eli/retsinfo/2026/10132
 - AT-vejledning om skærmarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10208
 - AT-vejledning om systematisk arbejdsmiljøarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10209
-- AT-vejledning om psykisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2025/10217
-- AT-vejledning om ergonomisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/9207
-- AT-vejledning om kemi og biologi: https://www.retsinformation.dk/eli/retsinfo/2025/10210
-- AT-vejledning om bygge- og anlægsarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10211
+- AT-vejledning om psykisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/10227
+- AT-vejledning om ergonomisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/10133
+- AT-vejledning om kemi og biologi: https://www.retsinformation.dk/eli/retsinfo/2026/10134
+- AT-vejledning om bygge- og anlægsarbejde: https://www.retsinformation.dk/eli/retsinfo/2026/10135
 - Arbejdstilsynet generelt: https://at.dk/
 
 Skriv altid i et klart, roligt og professionelt sprog. Brug punktopstilling og korte afsnit.`,
@@ -69,14 +69,14 @@ Angiv aldrig opdigtede paragraffer, lovtitler, bekendtgørelsesnumre eller links
 
 Verificerede links, du må bruge når emnet passer:
 - Lov om arbejdsmiljø (arbejdsmiljøloven): https://www.retsinformation.dk/eli/lta/2026/442
-- Bekendtgørelse om faste arbejdssteders indretning (gældende: BEK nr. 835 af 16/06/2023): https://www.retsinformation.dk/eli/lta/2023/835
-- AT-vejledning om arbejdsstedets indretning: https://www.retsinformation.dk/eli/retsinfo/2025/10207
+- Bekendtgørelse om faste arbejdssteders indretning (gældende: BEK nr. 607 af 29/06/2026): https://www.retsinformation.dk/eli/lta/2026/607
+- AT-vejledning om arbejdsstedets indretning: https://www.retsinformation.dk/eli/retsinfo/2026/10132
 - AT-vejledning om skærmarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10208
 - AT-vejledning om systematisk arbejdsmiljøarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10209
-- AT-vejledning om psykisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2025/10217
-- AT-vejledning om ergonomisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/9207
-- AT-vejledning om kemi og biologi: https://www.retsinformation.dk/eli/retsinfo/2025/10210
-- AT-vejledning om bygge- og anlægsarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10211
+- AT-vejledning om psykisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/10227
+- AT-vejledning om ergonomisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/10133
+- AT-vejledning om kemi og biologi: https://www.retsinformation.dk/eli/retsinfo/2026/10134
+- AT-vejledning om bygge- og anlægsarbejde: https://www.retsinformation.dk/eli/retsinfo/2026/10135
 - AT-vejledning om bygherrens pligter: https://www.retsinformation.dk/eli/retsinfo/2025/10212
 - AT-vejledning om unges arbejde m.v.: https://www.retsinformation.dk/eli/retsinfo/2026/9111
 - AT-vejledning om pligter ved udbud af tjenesteydelser: https://www.retsinformation.dk/eli/retsinfo/2025/10213
@@ -109,14 +109,14 @@ Hvis der findes lovhenvisning, skal du:
 
 VIGTIGT OM LINKS: Du kan ikke browse, så du må ALDRIG selv sammensætte eller gætte dybe adresser på at.dk, nfa.dk eller bfa-web.dk (fx "https://at.dk/regler/at-vejledninger/..." – de giver fejl). Brug udelukkende disse verificerede links:
 - Arbejdsmiljøloven: https://www.retsinformation.dk/eli/lta/2026/442
-- Bekendtgørelse om faste arbejdssteders indretning: https://www.retsinformation.dk/eli/lta/2023/835
-- AT-vejledning om arbejdsstedets indretning: https://www.retsinformation.dk/eli/retsinfo/2025/10207
+- Bekendtgørelse om faste arbejdssteders indretning: https://www.retsinformation.dk/eli/lta/2026/607
+- AT-vejledning om arbejdsstedets indretning: https://www.retsinformation.dk/eli/retsinfo/2026/10132
 - AT-vejledning om skærmarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10208
 - AT-vejledning om systematisk arbejdsmiljøarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10209
-- AT-vejledning om psykisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2025/10217
-- AT-vejledning om ergonomisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/9207
-- AT-vejledning om kemi og biologi: https://www.retsinformation.dk/eli/retsinfo/2025/10210
-- AT-vejledning om bygge- og anlægsarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10211
+- AT-vejledning om psykisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/10227
+- AT-vejledning om ergonomisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/10133
+- AT-vejledning om kemi og biologi: https://www.retsinformation.dk/eli/retsinfo/2026/10134
+- AT-vejledning om bygge- og anlægsarbejde: https://www.retsinformation.dk/eli/retsinfo/2026/10135
 - AT-vejledning om bygherrens pligter: https://www.retsinformation.dk/eli/retsinfo/2025/10212
 - AT-vejledning om unges arbejde m.v.: https://www.retsinformation.dk/eli/retsinfo/2026/9111
 - AT-vejledning om pligter ved udbud af tjenesteydelser: https://www.retsinformation.dk/eli/retsinfo/2025/10213
@@ -149,13 +149,13 @@ Hvad skal gøres, hvordan, hvem kan have ansvaret og en realistisk tidsramme.
 Gentag samme format for ## Løsning 2 og ## Løsning 3. Forslagene skal være reelt forskellige og holde sig inden for lovens rammer. Tilføj en kort note om, at nye tiltag også skal risikovurderes.
 
 Angiv aldrig opdigtede paragraffer, lovtitler eller direkte links. Den officielle arbejdsmiljølov kan findes på https://www.retsinformation.dk/eli/lta/2026/442; henvis kun til den når relevant. Ved henvisning til en AT-vejledning må du KUN bruge ét af disse verificerede links, når emnet passer:
-- Arbejdsstedets indretning (dækker bl.a. velfærdsforanstaltninger): https://www.retsinformation.dk/eli/retsinfo/2025/10207
+- Arbejdsstedets indretning (dækker bl.a. velfærdsforanstaltninger): https://www.retsinformation.dk/eli/retsinfo/2026/10132
 - Skærmarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10208
 - Systematisk arbejdsmiljøarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10209
-- Psykisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2025/10217
-- Ergonomisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/9207
-- Kemi og biologi: https://www.retsinformation.dk/eli/retsinfo/2025/10210
-- Bygge- og anlægsarbejde: https://www.retsinformation.dk/eli/retsinfo/2025/10211
+- Psykisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/10227
+- Ergonomisk arbejdsmiljø: https://www.retsinformation.dk/eli/retsinfo/2026/10133
+- Kemi og biologi: https://www.retsinformation.dk/eli/retsinfo/2026/10134
+- Bygge- og anlægsarbejde: https://www.retsinformation.dk/eli/retsinfo/2026/10135
 - Bygherrens pligter: https://www.retsinformation.dk/eli/retsinfo/2025/10212
 - Unges arbejde m.v.: https://www.retsinformation.dk/eli/retsinfo/2026/9111
 - Pligter ved udbud af tjenesteydelser: https://www.retsinformation.dk/eli/retsinfo/2025/10213
