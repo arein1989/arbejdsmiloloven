@@ -1,5 +1,6 @@
 import jsPDF from "jspdf";
 import logoAsset from "@/assets/arbejdsmiljoloven-logo.png.asset.json";
+import adweyseLogo from "@/assets/adweyse-logo.png.asset.json";
 
 // The embedded fonts preserve Danish letters in reports across browsers and PDF readers.
 async function fetchBase64(url: string): Promise<string> {
@@ -29,10 +30,11 @@ function validOfficialLink(url: string): boolean {
 }
 
 export async function downloadPlanReport(answers: string[]): Promise<void> {
-  const [regular, bold, logo] = await Promise.all([
+  const [regular, bold, logo, adweyse] = await Promise.all([
     fetchBase64("/fonts/DejaVuSans.ttf"),
     fetchBase64("/fonts/DejaVuSans-Bold.ttf"),
     fetchBase64(logoAsset.url),
+    fetchBase64(adweyseLogo.url),
   ]);
   const doc = new jsPDF({ unit: "pt", format: "a4" });
   doc.addFileToVFS("DejaVuSans.ttf", regular);
@@ -49,17 +51,10 @@ export async function downloadPlanReport(answers: string[]): Promise<void> {
 
   const band = (first: boolean) => {
     // A smooth green strip echoes the Handlingsplan page while the text remains on white.
+    // Solid band matches the logo's own background so the logo blends seamlessly.
     const bandHeight = first ? 132 : 60;
-    const strips = 80;
-    for (let i = 0; i < strips; i++) {
-      const t = i / (strips - 1);
-      doc.setFillColor(
-        Math.round(12 + (140 - 12) * t),
-        Math.round(107 + (198 - 107) * t),
-        Math.round(59 + (62 - 59) * t),
-      );
-      doc.rect(0, (bandHeight * i) / strips, pageWidth, bandHeight / strips + 0.5, "F");
-    }
+    doc.setFillColor(12, 107, 59);
+    doc.rect(0, 0, pageWidth, bandHeight, "F");
     doc.addImage(
       `data:image/png;base64,${logo}`,
       "PNG",
@@ -178,5 +173,13 @@ export async function downloadPlanReport(answers: string[]): Promise<void> {
       }
     }
   }
+  const adweyseImg = new Image();
+  adweyseImg.src = `data:image/png;base64,${adweyse}`;
+  await adweyseImg.decode();
+  const adW = 140;
+  const adH = (adweyseImg.naturalHeight / adweyseImg.naturalWidth) * adW;
+  y += 30;
+  if (y + adH > pageHeight - 56) nextPage();
+  doc.addImage(adweyseImg.src, "PNG", (pageWidth - adW) / 2, y, adW, adH);
   doc.save("handlingsplan-loesninger.pdf");
 }
