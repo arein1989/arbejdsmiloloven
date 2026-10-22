@@ -40,7 +40,8 @@ function NewsPage() {
         <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14">
           <h1 className="text-3xl font-semibold text-foreground sm:text-4xl">Nyheder</h1>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-foreground sm:text-lg">
-            Her finder du nyheder om arbejdsmiljø, lovændringer og nye regler.
+            Her finder du de seneste nyheder fra AT, BFA og NFA. Vi ønsker at give jer hurtig og nem
+            adgang til up-to-date viden om arbejdsmiljø, forebyggelse, trivsel og lovkrav.
           </p>
         </section>
       </main>
