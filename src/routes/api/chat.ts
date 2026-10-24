@@ -45,8 +45,9 @@ export const Route = createFileRoute("/api/chat")({
           )
           .join("\n");
         const knowledge = botId === "viden" ? await import("@/lib/knowledge-sources.server") : null;
+        const latestQuestion = [...uiMessages].reverse().find(message => message.role === "user")?.parts.filter(part => part.type === "text").map(part => part.text).join(" ") ?? question;
         const articles = knowledge
-          ? await knowledge.collectKnowledge(question, request.signal)
+          ? await knowledge.collectKnowledge(latestQuestion, request.signal)
           : null;
         const laws =
           botId === "plan"
@@ -71,7 +72,7 @@ export const Route = createFileRoute("/api/chat")({
                 experimental_transform: knowledge.knowledgeAnswerTransform(
                   articles.sources,
                   laws,
-                  question,
+                  latestQuestion,
                   articles.failed,
                 ),
               }
