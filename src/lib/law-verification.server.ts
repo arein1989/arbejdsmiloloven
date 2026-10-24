@@ -154,7 +154,7 @@ ${laws
   .join("\n\n")}`;
 }
 
-export function validateAnswer(answer: string, laws: VerifiedLaw[]): string {
+export function validateAnswer(answer: string, laws: VerifiedLaw[], question = ""): string {
   const urls = answer.match(/https?:\/\/(?:www\.)?retsinformation\.dk[^\s)\]>"“”]+/g) ?? [];
   const invalid = urls.some((url) => {
     const canonical = lawUrl(url);
@@ -184,7 +184,9 @@ export function validateAnswer(answer: string, laws: VerifiedLaw[]): string {
         return !normalized.includes(firstSentence);
       }));
   if (missingEvidence) {
-    const sources = references.length
+    const requestedNumbers = [...question.matchAll(/§{1,2}\s*(\d+(?:\s*[a-z])?)(?:\s+og\s+(\d+(?:\s*[a-z])?))?/gi)].flatMap((match) => [match[1], match[2]].filter(Boolean).map((number) => number.replace(/\s/g, "")));
+    const requestedSources = cited.flatMap((law) => requestedNumbers.filter((number) => law.paragraphs[number]).map((number) => ({ law, number, text: law.paragraphs[number] })));
+    const sources = requestedSources.length ? requestedSources : references.length
       ? references
       : cited.flatMap((law) =>
           Object.entries(law.paragraphs)
@@ -215,7 +217,7 @@ export function validateAnswer(answer: string, laws: VerifiedLaw[]): string {
 }
 
 // Hold generated legal text until validation, while retaining the upstream streaming call.
-export function lawAnswerTransform(laws: VerifiedLaw[]): StreamTextTransform<ToolSet> {
+export function lawAnswerTransform(laws: VerifiedLaw[], question = ""): StreamTextTransform<ToolSet> {
   return () => {
     const buffers = new Map<string, string>();
     return new TransformStream({
@@ -228,7 +230,7 @@ export function lawAnswerTransform(laws: VerifiedLaw[]): StreamTextTransform<Too
           controller.enqueue({
             type: "text-delta",
             id: chunk.id,
-            text: validateAnswer(buffers.get(chunk.id) ?? "", laws),
+            text: validateAnswer(buffers.get(chunk.id) ?? "", laws, question),
           });
           buffers.delete(chunk.id);
         }
