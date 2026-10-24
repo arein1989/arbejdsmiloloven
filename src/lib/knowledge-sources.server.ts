@@ -214,12 +214,27 @@ export function validateKnowledgeAnswer(
 ) {
   const excerpts = (items: KnowledgeSource[]) => {
     const words = searchTerms(question).split(" ");
-    return items.slice(0, 3).map(source => {
-      const sentences = source.text.replace(/https:\/\/\S+/g, "").split(/(?<=[.!?])\s+/).filter(sentence => sentence.length >= 40 && sentence.length <= 600);
-      const ranked = sentences.map((text, index) => ({ text, index, score: words.filter(word => text.toLowerCase().includes(word)).length })).sort((a, b) => b.score - a.score || a.index - b.index).slice(0, 3);
-      const selected = ranked.length ? ranked.map(item => item.text) : [source.text.slice(0, 400)];
-      return `## 📚 Kilde\n${source.source}\n\n## 📄 Artikel eller vejledning\n${source.title}\n\n## 🔗 Direkte link\n[${source.title}](${source.url})\n\n## 📝 Kort opsummering\n*Den genererede opsummering kunne ikke godkendes. Her er ordrette uddrag fra den læste kilde:*\n${selected.map(text => `- “${text.replace(/[“”"]/g, "'")}”`).join("\n")}`;
-    }).join("\n\n");
+    return items
+      .slice(0, 3)
+      .map((source) => {
+        const sentences = source.text
+          .replace(/https:\/\/\S+/g, "")
+          .split(/(?<=[.!?])\s+/)
+          .filter((sentence) => sentence.length >= 40 && sentence.length <= 600);
+        const ranked = sentences
+          .map((text, index) => ({
+            text,
+            index,
+            score: words.filter((word) => text.toLowerCase().includes(word)).length,
+          }))
+          .sort((a, b) => b.score - a.score || a.index - b.index)
+          .slice(0, 3);
+        const selected = ranked.length
+          ? ranked.map((item) => item.text)
+          : [source.text.slice(0, 400)];
+        return `## 📚 Kilde\n${source.source}\n\n## 📄 Artikel eller vejledning\n${source.title}\n\n## 🔗 Direkte link\n[${source.title}](${source.url})\n\n## 📝 Kort opsummering\n*Den genererede opsummering kunne ikke godkendes. Her er ordrette uddrag fra den læste kilde:*\n${selected.map((text) => `- “${text.replace(/[“”"]/g, "'")}”`).join("\n")}`;
+      })
+      .join("\n\n");
   };
   if (!sources.length) return NO_KNOWLEDGE;
   if (answer.trim() === NO_KNOWLEDGE) return answer;
