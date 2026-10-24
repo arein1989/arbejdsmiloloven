@@ -45,7 +45,13 @@ export const Route = createFileRoute("/api/chat")({
           )
           .join("\n");
         const knowledge = botId === "viden" ? await import("@/lib/knowledge-sources.server") : null;
-        const latestQuestion = [...uiMessages].reverse().find(message => message.role === "user")?.parts.filter(part => part.type === "text").map(part => part.text).join(" ") ?? question;
+        const latestQuestion =
+          [...uiMessages]
+            .reverse()
+            .find((message) => message.role === "user")
+            ?.parts.filter((part) => part.type === "text")
+            .map((part) => part.text)
+            .join(" ") ?? question;
         const articles = knowledge
           ? await knowledge.collectKnowledge(latestQuestion, request.signal)
           : null;

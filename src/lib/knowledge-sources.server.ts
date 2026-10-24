@@ -85,9 +85,16 @@ export function parseArticle(html: string, url: string): KnowledgeSource | null 
     .find('a[href*="retsinformation.dk/eli/"]')
     .map((_i, el) => $(el).attr("href"))
     .get();
-  const paragraphs = body.find("p, li").map((_i, el) => $(el).text().replace(/\s+/g, " ").trim()).get().filter(text => text.length >= 40);
+  const paragraphs = body
+    .find("p, li")
+    .map((_i, el) => $(el).text().replace(/\s+/g, " ").trim())
+    .get()
+    .filter((text) => text.length >= 40);
   const text = (
-    (paragraphs.length ? paragraphs.join(" ") : body.text()).replace(/\s+/g, " ").trim().slice(0, 18000) +
+    (paragraphs.length ? paragraphs.join(" ") : body.text())
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 18000) +
     "\n" +
     legalLinks.join("\n")
   ).trim();
@@ -188,7 +195,10 @@ export async function collectKnowledge(question: string, signal?: AbortSignal) {
       [...candidates].slice(0, 12).map(async (url) => {
         try {
           const result = await fetchOfficial(url, signal);
-          if (!result) { failed = true; return null; }
+          if (!result) {
+            failed = true;
+            return null;
+          }
           return parseArticle(result.html, result.url);
         } catch {
           if (signal?.aborted) throw new Error("Request aborted");
