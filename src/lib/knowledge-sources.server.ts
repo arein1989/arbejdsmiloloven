@@ -81,8 +81,15 @@ export function parseArticle(html: string, url: string): KnowledgeSource | null 
   $("script,style,nav,header,footer,aside,form,[role=navigation]").remove();
   const title = $("h1").first().text().replace(/\s+/g, " ").trim();
   const body = $("main").first().length ? $("main").first() : $("article").first();
-  const legalLinks = body.find('a[href*="retsinformation.dk/eli/"]').map((_i, el) => $(el).attr("href")).get();
-  const text = (body.text().replace(/\s+/g, " ").trim().slice(0, 18000) + "\n" + legalLinks.join("\n")).trim();
+  const legalLinks = body
+    .find('a[href*="retsinformation.dk/eli/"]')
+    .map((_i, el) => $(el).attr("href"))
+    .get();
+  const text = (
+    body.text().replace(/\s+/g, " ").trim().slice(0, 18000) +
+    "\n" +
+    legalLinks.join("\n")
+  ).trim();
   if (!title || text.length < 200) return null;
   return {
     url: canonical,
@@ -97,7 +104,11 @@ export function parseArticle(html: string, url: string): KnowledgeSource | null 
 }
 
 function searchTerms(question: string) {
-  const topics = question.toLowerCase().match(/stress|mobning|trivsel|arbejdsulykker|tunge løft|skærmarbejde|kemi|støj|ergonomi|hviletid|psykisk arbejdsmiljø/g);
+  const topics = question
+    .toLowerCase()
+    .match(
+      /stress|mobning|trivsel|arbejdsulykker|tunge løft|skærmarbejde|kemi|støj|ergonomi|hviletid|psykisk arbejdsmiljø/g,
+    );
   if (topics?.length) return [...new Set(topics)].slice(-2).join(" ");
   const stop = new Set(
     "hvad hvordan hvilke hvilken bliver skal kan vil jeg vi vores med om den det der fra til og for er en et på også mere gerne find fortæl siger anbefaler arbejdspladsen arbejdsmiljø".split(
@@ -124,52 +135,52 @@ export async function collectKnowledge(question: string, signal?: AbortSignal) {
     if (url) candidates.add(url);
   }
   await Promise.all([
-    ...["https://at.ankiro.dk/Rest/at.dk", "https://bm.ankiro.dk/Rest/nfa.dk"].map(async (endpoint) => {
-      try {
-        const res = await fetch(
-          `${endpoint}/Search.json?q=${encodeURIComponent(query)}&maxResults=4&resultDetail=All`,
-          { signal, redirect: "error" },
-        );
-        if (!res.ok) {
-          failed = true;
-          return;
-        }
-        const data = (await res.json()) as {
-          Documents?: Array<{ Properties?: Array<{ Name: string; Value: string }> }>;
-        };
-        for (const doc of data.Documents ?? []) {
-          const url = knowledgeUrl(doc.Properties?.find((p) => p.Name === "Uri")?.Value ?? "");
-          if (url) candidates.add(url);
-        }
-      } catch {
-        if (signal?.aborted) throw new Error("Request aborted");
-        failed = true;
-      }
-    }),
-    ...["https://www.godtarbejdsmiljo.dk/soegeresultat?q="].map(
-      async (base) => {
+    ...["https://at.ankiro.dk/Rest/at.dk", "https://bm.ankiro.dk/Rest/nfa.dk"].map(
+      async (endpoint) => {
         try {
-          const result = await fetchOfficial(base + encodeURIComponent(query), signal);
-          if (!result) {
+          const res = await fetch(
+            `${endpoint}/Search.json?q=${encodeURIComponent(query)}&maxResults=4&resultDetail=All`,
+            { signal, redirect: "error" },
+          );
+          if (!res.ok) {
             failed = true;
             return;
           }
-          const $ = load(result.html);
-          const selector = "a.search-result";
-          $(selector)
-            .slice(0, 5)
-            .each((_i, el) => {
-              const href = $(el).attr("href");
-              if (!href) return;
-              const url = knowledgeUrl(new URL(href, result.url).href);
-              if (url) candidates.add(url);
-            });
+          const data = (await res.json()) as {
+            Documents?: Array<{ Properties?: Array<{ Name: string; Value: string }> }>;
+          };
+          for (const doc of data.Documents ?? []) {
+            const url = knowledgeUrl(doc.Properties?.find((p) => p.Name === "Uri")?.Value ?? "");
+            if (url) candidates.add(url);
+          }
         } catch {
           if (signal?.aborted) throw new Error("Request aborted");
           failed = true;
         }
       },
     ),
+    ...["https://www.godtarbejdsmiljo.dk/soegeresultat?q="].map(async (base) => {
+      try {
+        const result = await fetchOfficial(base + encodeURIComponent(query), signal);
+        if (!result) {
+          failed = true;
+          return;
+        }
+        const $ = load(result.html);
+        const selector = "a.search-result";
+        $(selector)
+          .slice(0, 5)
+          .each((_i, el) => {
+            const href = $(el).attr("href");
+            if (!href) return;
+            const url = knowledgeUrl(new URL(href, result.url).href);
+            if (url) candidates.add(url);
+          });
+      } catch {
+        if (signal?.aborted) throw new Error("Request aborted");
+        failed = true;
+      }
+    }),
   ]);
   const sources = (
     await Promise.all(
