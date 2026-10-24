@@ -185,7 +185,7 @@ export function validateAnswer(answer: string, laws: VerifiedLaw[], question = "
       }));
   if (missingEvidence) {
     const requestedNumbers = [
-      ...question.matchAll(/§{1,2}\s*(\d+(?:\s*[a-z])?)(?:\s+og\s+(\d+(?:\s*[a-z])?))?/gi),
+      ...question.matchAll(/§{1,2}\s*(\d+(?:\s*[a-z](?![a-z]))?)(?:\s+og\s+(\d+(?:\s*[a-z](?![a-z]))?))?/gi),
     ].flatMap((match) =>
       [match[1], match[2]].filter(Boolean).map((number) => number.replace(/\s/g, "")),
     );
