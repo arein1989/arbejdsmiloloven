@@ -252,6 +252,28 @@ Få den ansvarlige leder og de berørte medarbejdere til at gennemgå problemet 
   return validated;
 }
 
+export function validateRulesAnswer(answer: string, laws: VerifiedLaw[], question = "") {
+  const validated = validateAnswer(answer, laws, question);
+  if (
+    validated.startsWith("Jeg kan ikke bekræfte alle lovhenvisninger") ||
+    validated.startsWith("Jeg kan bekræfte dokumenternes aktuelle status, men ikke")
+  ) {
+    return `## 📖 Lov/Bekendtgørelse/AT-vejledning
+Den foreslåede regel kunne ikke godkendes som grundlag for svaret.
+
+## 📌 Paragraf/Afsnit
+En præcis, relevant bestemmelse eller dens forklaring kunne ikke bekræftes.
+
+## 🔗 Kilde
+Jeg viser ikke ukontrollerede henvisninger som gældende kilder.
+
+## 📝 Hvad betyder det?
+Jeg kan ikke give en sikker juridisk forklaring ud fra det kontrollerede materiale.
+Angiv gerne den ønskede regels navn eller officielle dokumentlink, så bestemmelsen kan kontrolleres præcist.`;
+  }
+  return validated;
+}
+
 export function lawAnswerTransform(
   laws: VerifiedLaw[],
   question = "",
@@ -272,7 +294,9 @@ export function lawAnswerTransform(
             text:
               botId === "problem"
                 ? validateProblemAnswer(buffers.get(chunk.id) ?? "", laws, question)
-                : validateAnswer(buffers.get(chunk.id) ?? "", laws, question),
+                : botId === "regler"
+                  ? validateRulesAnswer(buffers.get(chunk.id) ?? "", laws, question)
+                  : validateAnswer(buffers.get(chunk.id) ?? "", laws, question),
           });
           buffers.delete(chunk.id);
         }
