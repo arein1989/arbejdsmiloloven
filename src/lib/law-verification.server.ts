@@ -184,15 +184,25 @@ export function validateAnswer(answer: string, laws: VerifiedLaw[], question = "
         return !normalized.includes(firstSentence);
       }));
   if (missingEvidence) {
-    const requestedNumbers = [...question.matchAll(/§{1,2}\s*(\d+(?:\s*[a-z])?)(?:\s+og\s+(\d+(?:\s*[a-z])?))?/gi)].flatMap((match) => [match[1], match[2]].filter(Boolean).map((number) => number.replace(/\s/g, "")));
-    const requestedSources = cited.flatMap((law) => requestedNumbers.filter((number) => law.paragraphs[number]).map((number) => ({ law, number, text: law.paragraphs[number] })));
-    const sources = requestedSources.length ? requestedSources : references.length
-      ? references
-      : cited.flatMap((law) =>
-          Object.entries(law.paragraphs)
-            .slice(0, 2)
-            .map(([number, text]) => ({ law, number, text })),
-        );
+    const requestedNumbers = [
+      ...question.matchAll(/§{1,2}\s*(\d+(?:\s*[a-z])?)(?:\s+og\s+(\d+(?:\s*[a-z])?))?/gi),
+    ].flatMap((match) =>
+      [match[1], match[2]].filter(Boolean).map((number) => number.replace(/\s/g, "")),
+    );
+    const requestedSources = cited.flatMap((law) =>
+      requestedNumbers
+        .filter((number) => law.paragraphs[number])
+        .map((number) => ({ law, number, text: law.paragraphs[number] })),
+    );
+    const sources = requestedSources.length
+      ? requestedSources
+      : references.length
+        ? references
+        : cited.flatMap((law) =>
+            Object.entries(law.paragraphs)
+              .slice(0, 2)
+              .map(([number, text]) => ({ law, number, text })),
+          );
     return `Jeg kan bekræfte dokumenternes aktuelle status, men ikke den foreslåede paragrafforklaring. Derfor viser jeg den officielle ordlyd i stedet for en ukontrolleret vurdering.\n\n${sources
       .slice(0, 4)
       .map(
@@ -217,7 +227,10 @@ export function validateAnswer(answer: string, laws: VerifiedLaw[], question = "
 }
 
 // Hold generated legal text until validation, while retaining the upstream streaming call.
-export function lawAnswerTransform(laws: VerifiedLaw[], question = ""): StreamTextTransform<ToolSet> {
+export function lawAnswerTransform(
+  laws: VerifiedLaw[],
+  question = "",
+): StreamTextTransform<ToolSet> {
   return () => {
     const buffers = new Map<string, string>();
     return new TransformStream({

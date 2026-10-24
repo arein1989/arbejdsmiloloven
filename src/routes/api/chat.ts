@@ -50,7 +50,9 @@ export const Route = createFileRoute("/api/chat")({
 
         const result = streamText({
           model,
-          ...(botId !== "plan" ? { experimental_transform: lawAnswerTransform(laws, question) } : {}),
+          ...(botId !== "plan"
+            ? { experimental_transform: lawAnswerTransform(laws, question) }
+            : {}),
           system: `${bot.system}
 
 ${verifiedContext}
