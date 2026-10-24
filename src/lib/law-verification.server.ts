@@ -236,20 +236,18 @@ export function validateProblemAnswer(answer: string, laws: VerifiedLaw[], quest
     validated.startsWith("Jeg kan bekræfte dokumenternes aktuelle status, men ikke")
   ) {
     return `## 🔍 Afklaring
-Jeg kan ikke bekræfte lovgrundlaget for den foreslåede vurdering.
-- Hvilken konkret situation på arbejdspladsen skal vi tage stilling til?
-- Er der en umiddelbar fare for medarbejderne?
+Jeg kan ikke bekræfte lovgrundlaget for den foreslåede vurdering. Det betyder ikke, at du skal gentage de oplysninger, du allerede har givet. Nedenfor er generelle forebyggende anbefalinger, ikke en konkret juridisk vurdering.
 
 ## ✅ Hvad bør virksomheden gøre?
 - Beskriv problemet og inddrag de berørte medarbejdere og arbejdsmiljørepræsentanten, hvis der er en.
 - Ved umiddelbar fare: afbryd det farlige arbejde og kontakt den ansvarlige leder.
-- En konkret løsning afhænger af afklaringen ovenfor.
+- Kortlæg de belastende opgaver og drøft mulige hjælpemidler og ændringer i arbejdsgangene, før I vælger en løsning.
 
 ## 📖 Relevant lovgivning
 Den foreslåede lovhenvisning eller paragrafforklaring kunne ikke godkendes ved kildekontrollen. Jeg viser derfor ikke den ukontrollerede juridiske vurdering eller dens links.
 
 ## 🎯 Anbefalet næste skridt
-Besvar de to spørgsmål under Afklaring, så jeg kan tilpasse rådene og kontrollere det relevante lovgrundlag.`;
+Få den ansvarlige leder og de berørte medarbejdere til at gennemgå problemet og aftale en foreløbig forebyggende handling. Søg arbejdsmiljøfaglig rådgivning, hvis I er i tvivl om risikoen eller lovkravene.`;
   }
   return validated;
 }

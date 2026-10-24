@@ -6,6 +6,6 @@
 
 # Bot 1 – praktisk arbejdsmiljørådgivning
 
-- [ ] Opdatér rådgivningen til fire faste afsnit og nødvendige korte afklaringer.
-- [ ] Bevar strukturen, også når lovkontrollen afviser en henvisning.
-- [ ] Test afklaring og konkret rådgivning med et opfølgende spørgsmål.
+- [x] Opdatér rådgivningen til fire faste afsnit og nødvendige korte afklaringer.
+- [x] Bevar strukturen, også når lovkontrollen afviser en henvisning.
+- [x] Test afklaring og opfølgning; afviste lovhenvisninger giver generelle råd med tydelig usikkerhed i stedet for en ubekræftet konkret vurdering.
