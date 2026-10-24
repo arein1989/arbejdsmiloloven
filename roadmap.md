@@ -9,3 +9,9 @@
 - [x] Opdatér rådgivningen til fire faste afsnit og nødvendige korte afklaringer.
 - [x] Bevar strukturen, også når lovkontrollen afviser en henvisning.
 - [x] Test afklaring og opfølgning; afviste lovhenvisninger giver generelle råd med tydelig usikkerhed i stedet for en ubekræftet konkret vurdering.
+
+# Bot 2 – præcis regelfinder
+
+- [x] Tilpas svarformat og afgræns rollen til regler, uden rådgivning.
+- [x] Bevar format og tydelig usikkerhed ved afviste lovhenvisninger.
+- [x] Test konkret APV-paragraf, opfølgning og lovkontrol; opfølgning blev afvist med tydelig usikkerhed, og begge svar blev læst tilbage efter genindlæsning.

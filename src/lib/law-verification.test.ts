@@ -5,6 +5,7 @@ import {
   parseLawXml,
   validateAnswer,
   validateProblemAnswer,
+  validateRulesAnswer,
 } from "./law-verification.server";
 
 const fixture = (status: string) =>
@@ -64,5 +65,29 @@ describe("kun gældende og kontrollerede lovhenvisninger", () => {
     const law = parseLawXml(fixture("Valid"), url, "2026-10-24");
     const answer = `Inddrag medarbejderne.\n> Arbejdslokaler skal være forsvarlige.\n[§ 21](${url}#P21)`;
     expect(validateProblemAnswer(answer, [law])).toContain(answer);
+  });
+  test("Bot 2 viser ikke historiske regler som gældende", () => {
+    const law = parseLawXml(fixture("Historic"), url, "2026-10-24");
+    const answer = validateRulesAnswer(`Krav: 12 m³ luft. [§ 21](${url}#P21)`, [law]);
+    expect(answer).not.toContain(url);
+    expect(answer).not.toContain("12 m³");
+  });
+  test("Bot 2 afviser ukontrollerede dokumenter", () => {
+    expect(validateRulesAnswer(`[§ 21](${url}#P21)`, [])).not.toContain(url);
+  });
+  test("Bot 2 afviser opdigtede paragrafnumre", () => {
+    const law = parseLawXml(fixture("Valid"), url, "2026-10-24");
+    expect(validateRulesAnswer(`[§ 999](${url}#P999)`, [law])).not.toContain("999");
+  });
+  test("Bot 2 afviser ubekræftede fortolkninger", () => {
+    const law = parseLawXml(fixture("Valid"), url, "2026-10-24");
+    expect(validateRulesAnswer(`§ 21 kræver 12 m³ luft. [§ 21](${url}#P21)`, [law])).not.toContain(
+      "12 m³",
+    );
+  });
+  test("Bot 2 bevarer dokumenteret regeltekst og direkte paragrafkilde", () => {
+    const law = parseLawXml(fixture("Valid"), url, "2026-10-24");
+    const answer = `> Arbejdslokaler skal være forsvarlige.\n[§ 21](${url}#P21)`;
+    expect(validateRulesAnswer(answer, [law])).toContain(answer);
   });
 });
