@@ -44,26 +44,40 @@ export const Route = createFileRoute("/api/chat")({
               .join(" "),
           )
           .join("\n");
-        const knowledge = botId === "viden"
-          ? await import("@/lib/knowledge-sources.server")
+        const knowledge = botId === "viden" ? await import("@/lib/knowledge-sources.server") : null;
+        const articles = knowledge
+          ? await knowledge.collectKnowledge(question, request.signal)
           : null;
-        const articles = knowledge ? await knowledge.collectKnowledge(question, request.signal) : null;
         const laws =
-          botId === "plan" ? [] : await collectLaws(
-            botId === "viden" ? articles?.sources.map(source => source.text).join("\n") ?? "" : bot.system,
-            botId === "viden" ? "" : question,
-            request.signal,
-          );
+          botId === "plan"
+            ? []
+            : await collectLaws(
+                botId === "viden"
+                  ? (articles?.sources.map((source) => source.text).join("\n") ?? "")
+                  : bot.system,
+                botId === "viden" ? "" : question,
+                request.signal,
+              );
         const verifiedContext = botId === "plan" ? "" : lawContext(laws, question);
-        const articleContext = knowledge && articles ? knowledge.knowledgeContext(articles.sources, articles.failed) : "";
+        const articleContext =
+          knowledge && articles
+            ? knowledge.knowledgeContext(articles.sources, articles.failed)
+            : "";
 
         const result = streamText({
           model,
           ...(knowledge && articles
-            ? { experimental_transform: knowledge.knowledgeAnswerTransform(articles.sources, laws, question, articles.failed) }
+            ? {
+                experimental_transform: knowledge.knowledgeAnswerTransform(
+                  articles.sources,
+                  laws,
+                  question,
+                  articles.failed,
+                ),
+              }
             : botId !== "plan"
-            ? { experimental_transform: lawAnswerTransform(laws, question, botId) }
-            : {}),
+              ? { experimental_transform: lawAnswerTransform(laws, question, botId) }
+              : {}),
           system: `${bot.system}
 
 ${verifiedContext}
