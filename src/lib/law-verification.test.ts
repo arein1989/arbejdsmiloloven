@@ -1,7 +1,8 @@
 import { describe, expect, test } from "bun:test";
 import { lawUrl, parseLawXml, validateAnswer } from "./law-verification.server";
 
-const fixture = (status: string) => `<Dokument><Meta><Status>${status}</Status><DocumentTitle>Bekendtgørelse</DocumentTitle><EndDate>2026-06-30</EndDate></Meta><Kapitel><Paragraf><Explicatus>§ 21</Explicatus><Stk><Linea><Char>Arbejdslokaler skal være forsvarlige.</Char></Linea></Stk></Paragraf></Kapitel></Dokument>`;
+const fixture = (status: string) =>
+  `<Dokument><Meta><Status>${status}</Status><DocumentTitle>Bekendtgørelse</DocumentTitle><EndDate>2026-06-30</EndDate></Meta><Kapitel><Paragraf><Explicatus>§ 21</Explicatus><Stk><Linea><Char>Arbejdslokaler skal være forsvarlige.</Char></Linea></Stk></Paragraf></Kapitel></Dokument>`;
 const url = "https://www.retsinformation.dk/eli/lta/2026/607";
 
 describe("kun gældende og kontrollerede lovhenvisninger", () => {
