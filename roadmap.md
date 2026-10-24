@@ -12,6 +12,6 @@
 
 # Bot 2 – præcis regelfinder
 
-- [ ] Tilpas svarformat og afgræns rollen til regler, uden rådgivning.
-- [ ] Bevar format og tydelig usikkerhed ved afviste lovhenvisninger.
-- [ ] Test konkrete regelspørgsmål, opfølgning og lovkontrol.
+- [x] Tilpas svarformat og afgræns rollen til regler, uden rådgivning.
+- [x] Bevar format og tydelig usikkerhed ved afviste lovhenvisninger.
+- [x] Test konkret APV-paragraf, opfølgning og lovkontrol; opfølgning blev afvist med tydelig usikkerhed, og begge svar blev læst tilbage efter genindlæsning.
