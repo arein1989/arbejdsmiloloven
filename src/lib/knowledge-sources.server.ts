@@ -212,6 +212,15 @@ export function validateKnowledgeAnswer(
   laws: VerifiedLaw[],
   question = "",
 ) {
+  const excerpts = (items: KnowledgeSource[]) => {
+    const words = searchTerms(question).split(" ");
+    return items.slice(0, 3).map(source => {
+      const sentences = source.text.replace(/https:\/\/\S+/g, "").split(/(?<=[.!?])\s+/).filter(sentence => sentence.length >= 40 && sentence.length <= 600);
+      const ranked = sentences.map((text, index) => ({ text, index, score: words.filter(word => text.toLowerCase().includes(word)).length })).sort((a, b) => b.score - a.score || a.index - b.index).slice(0, 3);
+      const selected = ranked.length ? ranked.map(item => item.text) : [source.text.slice(0, 400)];
+      return `## 📚 Kilde\n${source.source}\n\n## 📄 Artikel eller vejledning\n${source.title}\n\n## 🔗 Direkte link\n[${source.title}](${source.url})\n\n## 📝 Kort opsummering\n*Den genererede opsummering kunne ikke godkendes. Her er ordrette uddrag fra den læste kilde:*\n${selected.map(text => `- “${text.replace(/[“”"]/g, "'")}”`).join("\n")}`;
+    }).join("\n\n");
+  };
   if (!sources.length) return NO_KNOWLEDGE;
   if (answer.trim() === NO_KNOWLEDGE) return answer;
   const urls = answer.match(/https?:\/\/[^\s)\]>"“”]+/g) ?? [];
@@ -224,18 +233,18 @@ export function validateKnowledgeAnswer(
     cited.length > 3 ||
     articleUrls.some((url) => !sources.some((source) => knowledgeUrl(url) === source.url))
   )
-    return "Kildelinks i svaret kunne ikke godkendes. Jeg viser derfor ikke en ukontrolleret opsummering.";
+    return excerpts(cited.length ? cited : sources);
   const quotes = [...answer.matchAll(/[“"]([^“”"\n]{25,})[”"]/g)].map((match) =>
     match[1].replace(/\s+/g, " ").trim(),
   );
   if (cited.some((source) => !quotes.some((quote) => source.text.includes(quote))))
-    return "Opsummeringens dokumentation kunne ikke bekræftes i de læste AT-, NFA- eller BFA-kilder. Jeg viser derfor ikke den ukontrollerede opsummering.";
+    return excerpts(cited);
   const checked = validateAnswer(answer, laws, question);
   if (
     checked.startsWith("Jeg kan ikke bekræfte alle lovhenvisninger") ||
     checked.startsWith("Jeg kan bekræfte dokumenternes aktuelle status, men ikke")
   )
-    return "Lovhenvisningen kunne ikke bekræftes. Jeg viser derfor ikke den ukontrollerede vurdering.";
+    return excerpts(cited) + "\n\n*Lovhenvisningen kunne ikke bekræftes og er udeladt.*";
   return checked;
 }
 
