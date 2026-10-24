@@ -129,6 +129,7 @@ export function lawContext(laws: VerifiedLaw[], question: string): string {
   );
   return `KILDEKONTROL — autoritativt opslag foretaget nu. Status gælder Retsinformations dokumentstatus, ikke en garanti for at enhver fortolkning er korrekt.
 Du må kun bruge nedenstående dokumenter med status current til lovhenvisninger. Historiske og ukontrollerede dokumenter må ikke bruges som gældende ret. Brug kun paragraftekster fra opslaget; oplys usikkerhed, hvis relevant tekst mangler. Citér hver juridisk påstand med dokumentets URL og eksisterende #P-anker. Genbrug ikke ukontrollerede henvisninger fra tidligere svar. Vejledninger er vejledning, ikke lovkrav. Du har ikke søgt på AT/NFA/BFA og må ikke påstå det.
+For hver paragrafhenvisning SKAL du gengive første sætning af den hentede paragraf ordret som blokcitat og linke direkte til #P-ankeret. Forklar først derefter relevansen. Afvis brugerens forkerte paragrafnumre, hvis teksten ikke handler om spørgsmålet. Brug aldrig tal eller minimumskrav fra hukommelsen, når de ikke står i den hentede tekst.
 ${laws
   .map((law) => {
     const entries = Object.entries(law.paragraphs);
@@ -143,11 +144,11 @@ ${laws
       .sort((a, b) => b.score - a.score);
     const excerpt = entries.length
       ? ranked
-          .slice(0, 8)
+          .slice(0, 5)
           .map(({ number, text }) => `${law.url}#P${number}\n${text}`)
           .join("\n")
-          .slice(0, 14000)
-      : law.text.slice(0, 10000);
+          .slice(0, 6000)
+      : law.text.slice(0, 3500);
     return `${law.title || "Ukendt dokument"}\n${law.url}\nStatus: ${law.status}; kontrolleret ${law.checkedAt}\n${law.status === "current" ? excerpt : "Må ikke citeres som gældende."}`;
   })
   .join("\n\n")}`;
@@ -166,6 +167,21 @@ export function validateAnswer(answer: string, laws: VerifiedLaw[]): string {
     return "Jeg kan ikke bekræfte alle lovhenvisninger i dette svar og viser derfor ikke den ukontrollerede vurdering.\n\nBed mig gerne om en bestemt lov eller paragraf med dens officielle link, så jeg kan kontrollere den. Jeg vil ikke henvise til en historisk eller ubekræftet version som gældende ret.";
   const current = laws.filter((law) => law.status === "current");
   const cited = current.filter((law) => urls.some((url) => lawUrl(url) === law.url));
+  const references = urls.flatMap((url) => {
+    const law = cited.find((item) => item.url === lawUrl(url));
+    const number = new URL(url).hash.slice(2);
+    return law && number && law.paragraphs[number] ? [{ law, number, text: law.paragraphs[number] }] : [];
+  });
+  const normalized = answer.replace(/[*_>]/g, "").replace(/\s+/g, " ");
+  const missingEvidence = /§\s*\d/.test(answer) && (!references.length || references.some(({ text, number }) => {
+    const body = text.replace(new RegExp(`^§\\s*${number}\\.\\s*`), "");
+    const firstSentence = body.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim() ?? body.slice(0, 160);
+    return !normalized.includes(firstSentence);
+  }));
+  if (missingEvidence) {
+    const sources = references.length ? references : cited.flatMap((law) => Object.entries(law.paragraphs).slice(0, 2).map(([number, text]) => ({ law, number, text })));
+    return `Jeg kan bekræfte dokumenternes aktuelle status, men ikke den foreslåede paragrafforklaring. Derfor viser jeg den officielle ordlyd i stedet for en ukontrolleret vurdering.\n\n${sources.slice(0, 4).map(({ law, number, text }) => `**${law.title} — [§ ${number}](${law.url}#P${number})**\n\n> ${text}`).join("\n\n")}\n\n*Kilder kontrolleret på Retsinformation ${cited[0]?.checkedAt.slice(0, 10) ?? "ved dette opslag"}. Ordlyden skal vurderes i forhold til den konkrete situation.*`;
+  }
   const note = cited.length
     ? `\n\n*Kildekontrol: De citerede dokumenter var markeret gældende på Retsinformation ved opslag ${cited[0]?.checkedAt.slice(0, 10)}. Juridisk fortolkning kan kræve faglig vurdering.*`
     : "";

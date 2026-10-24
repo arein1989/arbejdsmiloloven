@@ -1,3 +1,4 @@
+/// <reference types="bun" />
 import { describe, expect, test } from "bun:test";
 import { lawUrl, parseLawXml, validateAnswer } from "./law-verification.server";
 
@@ -20,7 +21,7 @@ describe("kun gældende og kontrollerede lovhenvisninger", () => {
   test("Eksisterende paragraf med tekst kan citeres direkte", () => {
     const law = parseLawXml(fixture("Valid"), url, "2026-10-24");
     expect(law.paragraphs["21"]).toContain("Arbejdslokaler skal være forsvarlige.");
-    expect(validateAnswer(`[§ 21](${url}#P21)`, [law])).toContain(`${url}#P21`);
+    expect(validateAnswer(`Arbejdslokaler skal være forsvarlige. [§ 21](${url}#P21)`, [law])).toContain(`${url}#P21`);
   });
   test("Opdigtede paragrafankre fjernes sammen med den ukontrollerede vurdering", () => {
     const law = parseLawXml(fixture("Valid"), url, "2026-10-24");
@@ -28,6 +29,12 @@ describe("kun gældende og kontrollerede lovhenvisninger", () => {
   });
   test("Ukontrollerede dokumenter fjernes", () => {
     expect(validateAnswer(`[Kilde](${url})`, [])).not.toContain(url);
+  });
+  test("Paragrafforklaring uden dokumenteret ordlyd erstattes af kildeteksten", () => {
+    const law = parseLawXml(fixture("Valid"), url, "2026-10-24");
+    const answer = validateAnswer(`§ 21 kræver 12 m³ luft. [§ 21](${url}#P21)`, [law]);
+    expect(answer).not.toContain("12 m³");
+    expect(answer).toContain("Arbejdslokaler skal være forsvarlige.");
   });
   test("Kun officielle HTTPS dokumentadresser kan hentes", () => {
     expect(lawUrl("https://retsinformation.dk.evil.example/eli/lta/2026/607")).toBeNull();
