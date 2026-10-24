@@ -15,3 +15,9 @@
 - [x] Tilpas svarformat og afgræns rollen til regler, uden rådgivning.
 - [x] Bevar format og tydelig usikkerhed ved afviste lovhenvisninger.
 - [x] Test konkret APV-paragraf, opfølgning og lovkontrol; opfølgning blev afvist med tydelig usikkerhed, og begge svar blev læst tilbage efter genindlæsning.
+
+# Bot 3 – kildebaseret viden
+
+- [x] Find og læs konkrete sider fra AT, NFA og BFA på hver forespørgsel.
+- [x] Brug det ønskede svarformat og kontrollér kildelinks før visning og lagring; afviste opsummeringer erstattes af tydeligt markerede kildeuddrag.
+- [x] Test kilderegler og samtale med stress og mobning; begge svar med tre konkrete kilder blev læst tilbage efter genindlæsning, og 24 tests bestod.
