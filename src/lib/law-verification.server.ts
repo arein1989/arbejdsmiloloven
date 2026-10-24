@@ -179,7 +179,7 @@ export function validateAnswer(answer: string, laws: VerifiedLaw[], question = "
     /§\s*\d/.test(answer) &&
     (!references.length ||
       references.some(({ text, number }) => {
-        const body = text.replace(new RegExp(`^§\\s*${number}\\.\\s*`), "");
+        const body = text.replace(new RegExp(`^§\\s*${number}\\.?\\s*`), "");
         const firstSentence = body.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim() ?? body.slice(0, 160);
         return !normalized.includes(firstSentence);
       }));
