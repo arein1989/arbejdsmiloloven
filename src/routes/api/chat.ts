@@ -33,10 +33,17 @@ export const Route = createFileRoute("/api/chat")({
 
         const uiMessages = messages as UIMessage[];
         const modelMessages = await convertToModelMessages(uiMessages);
+        const { collectLaws, lawContext, lawAnswerTransform } = await import("@/lib/law-verification.server");
+        const question = uiMessages.filter((message) => message.role === "user").map((message) => message.parts.filter((part) => part.type === "text").map((part) => part.text).join(" ")).join("\n");
+        const laws = botId === "plan" ? [] : await collectLaws(bot.system, question, request.signal);
+        const verifiedContext = botId === "plan" ? "" : lawContext(laws, question);
 
         const result = streamText({
           model,
+          ...(botId !== "plan" ? { experimental_transform: lawAnswerTransform(laws) } : {}),
           system: `${bot.system}
+
+${verifiedContext}
 
 DIREKTE LINKS TIL PARAGRAFFER: Når du henviser til en bestemt paragraf i en lov eller bekendtgørelse på retsinformation.dk, skal linket gå direkte til paragraffen ved at tilføje "#P" og paragrafnummeret til den verificerede adresse, fx https://www.retsinformation.dk/eli/lta/2026/442#P15 for § 15. Lav ét link pr. paragraf, og lad linkteksten nævne paragraffen (fx "[§ 15 i lov om arbejdsmiljø](https://www.retsinformation.dk/eli/lta/2026/442#P15)"). Gengiv også kort, hvad paragraffen siger, så brugeren får svaret direkte. Brug kun #P-ankre med paragrafnumre, du er sikker på.`,
           messages: modelMessages,
