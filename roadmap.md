@@ -18,6 +18,6 @@
 
 # Bot 3 – kildebaseret viden
 
-- [ ] Find og læs konkrete sider fra AT, NFA og BFA på hver forespørgsel.
-- [ ] Brug det ønskede svarformat og kontrollér kildelinks før visning og lagring.
-- [ ] Test kilderegler og samtale med opfølgning.
+- [x] Find og læs konkrete sider fra AT, NFA og BFA på hver forespørgsel.
+- [x] Brug det ønskede svarformat og kontrollér kildelinks før visning og lagring; afviste opsummeringer erstattes af tydeligt markerede kildeuddrag.
+- [x] Test kilderegler og samtale med stress og mobning; begge svar med tre konkrete kilder blev læst tilbage efter genindlæsning, og 24 tests bestod.
