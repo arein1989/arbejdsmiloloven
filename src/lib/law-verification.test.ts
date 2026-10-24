@@ -81,7 +81,9 @@ describe("kun gældende og kontrollerede lovhenvisninger", () => {
   });
   test("Bot 2 afviser ubekræftede fortolkninger", () => {
     const law = parseLawXml(fixture("Valid"), url, "2026-10-24");
-    expect(validateRulesAnswer(`§ 21 kræver 12 m³ luft. [§ 21](${url}#P21)`, [law])).not.toContain("12 m³");
+    expect(validateRulesAnswer(`§ 21 kræver 12 m³ luft. [§ 21](${url}#P21)`, [law])).not.toContain(
+      "12 m³",
+    );
   });
   test("Bot 2 bevarer dokumenteret regeltekst og direkte paragrafkilde", () => {
     const law = parseLawXml(fixture("Valid"), url, "2026-10-24");
