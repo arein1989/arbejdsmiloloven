@@ -33,10 +33,29 @@ export const Route = createFileRoute("/api/chat")({
 
         const uiMessages = messages as UIMessage[];
         const modelMessages = await convertToModelMessages(uiMessages);
+        const { collectLaws, lawContext, lawAnswerTransform } =
+          await import("@/lib/law-verification.server");
+        const question = uiMessages
+          .filter((message) => message.role === "user")
+          .map((message) =>
+            message.parts
+              .filter((part) => part.type === "text")
+              .map((part) => part.text)
+              .join(" "),
+          )
+          .join("\n");
+        const laws =
+          botId === "plan" ? [] : await collectLaws(bot.system, question, request.signal);
+        const verifiedContext = botId === "plan" ? "" : lawContext(laws, question);
 
         const result = streamText({
           model,
+          ...(botId !== "plan"
+            ? { experimental_transform: lawAnswerTransform(laws, question) }
+            : {}),
           system: `${bot.system}
+
+${verifiedContext}
 
 DIREKTE LINKS TIL PARAGRAFFER: Når du henviser til en bestemt paragraf i en lov eller bekendtgørelse på retsinformation.dk, skal linket gå direkte til paragraffen ved at tilføje "#P" og paragrafnummeret til den verificerede adresse, fx https://www.retsinformation.dk/eli/lta/2026/442#P15 for § 15. Lav ét link pr. paragraf, og lad linkteksten nævne paragraffen (fx "[§ 15 i lov om arbejdsmiljø](https://www.retsinformation.dk/eli/lta/2026/442#P15)"). Gengiv også kort, hvad paragraffen siger, så brugeren får svaret direkte. Brug kun #P-ankre med paragrafnumre, du er sikker på.`,
           messages: modelMessages,
@@ -47,26 +66,23 @@ DIREKTE LINKS TIL PARAGRAFFER: Når du henviser til en bestemt paragraf i en lov
           originalMessages: uiMessages,
           onFinish: async ({ messages: finalMessages }) => {
             try {
-              const { supabaseAdmin } = await import(
-                "@/integrations/supabase/client.server"
-              );
-              const lastUser = [...finalMessages]
-                .reverse()
-                .find((m) => m.role === "user");
+              const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+              const lastUser = [...finalMessages].reverse().find((m) => m.role === "user");
               const lastAssistant = [...finalMessages]
                 .reverse()
                 .find((m) => m.role === "assistant");
               const textOf = (m: UIMessage | undefined) =>
-                m
-                  ? m.parts
-                      .map((p) => (p.type === "text" ? p.text : ""))
-                      .join("")
-                  : "";
+                m ? m.parts.map((p) => (p.type === "text" ? p.text : "")).join("") : "";
 
               const rows: Array<{ thread_id: string; role: string; content: string }> = [];
-              if (lastUser) rows.push({ thread_id: threadId, role: "user", content: textOf(lastUser) });
+              if (lastUser)
+                rows.push({ thread_id: threadId, role: "user", content: textOf(lastUser) });
               if (lastAssistant)
-                rows.push({ thread_id: threadId, role: "assistant", content: textOf(lastAssistant) });
+                rows.push({
+                  thread_id: threadId,
+                  role: "assistant",
+                  content: textOf(lastAssistant),
+                });
 
               if (rows.length) {
                 const { error } = await supabaseAdmin.from("messages").insert(rows);
