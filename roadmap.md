@@ -1,5 +1,7 @@
 # Chatbotternes lovkontrol
 
+- [x] Tilpas bot 1 og 2 til de seneste instruktioner; test stressspørgsmål og arbejdsgiveransvar med gemte svar samt 16 tests af lovsikringerne. Modellen følger ikke altid ønsket om helt korte forklaringer.
+
 - [x] Kontrollér lovstatus og paragraftekster fra Retsinformation før svar fra bot 1–3.
 - [x] Afvis ukontrollerede eller historiske lovhenvisninger og oplys usikkerhed.
 - [x] Test statusregler og konkrete samtaler i alle tre chatbots.
