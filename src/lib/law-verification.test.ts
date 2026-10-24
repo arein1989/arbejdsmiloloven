@@ -21,7 +21,9 @@ describe("kun gældende og kontrollerede lovhenvisninger", () => {
   test("Eksisterende paragraf med tekst kan citeres direkte", () => {
     const law = parseLawXml(fixture("Valid"), url, "2026-10-24");
     expect(law.paragraphs["21"]).toContain("Arbejdslokaler skal være forsvarlige.");
-    expect(validateAnswer(`Arbejdslokaler skal være forsvarlige. [§ 21](${url}#P21)`, [law])).toContain(`${url}#P21`);
+    expect(
+      validateAnswer(`Arbejdslokaler skal være forsvarlige. [§ 21](${url}#P21)`, [law]),
+    ).toContain(`${url}#P21`);
   });
   test("Opdigtede paragrafankre fjernes sammen med den ukontrollerede vurdering", () => {
     const law = parseLawXml(fixture("Valid"), url, "2026-10-24");

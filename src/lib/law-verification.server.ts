@@ -170,17 +170,36 @@ export function validateAnswer(answer: string, laws: VerifiedLaw[]): string {
   const references = urls.flatMap((url) => {
     const law = cited.find((item) => item.url === lawUrl(url));
     const number = new URL(url).hash.slice(2);
-    return law && number && law.paragraphs[number] ? [{ law, number, text: law.paragraphs[number] }] : [];
+    return law && number && law.paragraphs[number]
+      ? [{ law, number, text: law.paragraphs[number] }]
+      : [];
   });
   const normalized = answer.replace(/[*_>]/g, "").replace(/\s+/g, " ");
-  const missingEvidence = /§\s*\d/.test(answer) && (!references.length || references.some(({ text, number }) => {
-    const body = text.replace(new RegExp(`^§\\s*${number}\\.\\s*`), "");
-    const firstSentence = body.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim() ?? body.slice(0, 160);
-    return !normalized.includes(firstSentence);
-  }));
+  const missingEvidence =
+    /§\s*\d/.test(answer) &&
+    (!references.length ||
+      references.some(({ text, number }) => {
+        const body = text.replace(new RegExp(`^§\\s*${number}\\.\\s*`), "");
+        const firstSentence = body.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim() ?? body.slice(0, 160);
+        return !normalized.includes(firstSentence);
+      }));
   if (missingEvidence) {
-    const sources = references.length ? references : cited.flatMap((law) => Object.entries(law.paragraphs).slice(0, 2).map(([number, text]) => ({ law, number, text })));
-    return `Jeg kan bekræfte dokumenternes aktuelle status, men ikke den foreslåede paragrafforklaring. Derfor viser jeg den officielle ordlyd i stedet for en ukontrolleret vurdering.\n\n${sources.slice(0, 4).map(({ law, number, text }) => `**${law.title} — [§ ${number}](${law.url}#P${number})**\n\n> ${text}`).join("\n\n")}\n\n*Kilder kontrolleret på Retsinformation ${cited[0]?.checkedAt.slice(0, 10) ?? "ved dette opslag"}. Ordlyden skal vurderes i forhold til den konkrete situation.*`;
+    const sources = references.length
+      ? references
+      : cited.flatMap((law) =>
+          Object.entries(law.paragraphs)
+            .slice(0, 2)
+            .map(([number, text]) => ({ law, number, text })),
+        );
+    return `Jeg kan bekræfte dokumenternes aktuelle status, men ikke den foreslåede paragrafforklaring. Derfor viser jeg den officielle ordlyd i stedet for en ukontrolleret vurdering.\n\n${sources
+      .slice(0, 4)
+      .map(
+        ({ law, number, text }) =>
+          `**${law.title} — [§ ${number}](${law.url}#P${number})**\n\n> ${text}`,
+      )
+      .join(
+        "\n\n",
+      )}\n\n*Kilder kontrolleret på Retsinformation ${cited[0]?.checkedAt.slice(0, 10) ?? "ved dette opslag"}. Ordlyden skal vurderes i forhold til den konkrete situation.*`;
   }
   const note = cited.length
     ? `\n\n*Kildekontrol: De citerede dokumenter var markeret gældende på Retsinformation ved opslag ${cited[0]?.checkedAt.slice(0, 10)}. Juridisk fortolkning kan kræve faglig vurdering.*`
