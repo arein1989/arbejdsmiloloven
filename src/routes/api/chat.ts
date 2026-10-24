@@ -44,18 +44,31 @@ export const Route = createFileRoute("/api/chat")({
               .join(" "),
           )
           .join("\n");
+        const knowledge = botId === "viden"
+          ? await import("@/lib/knowledge-sources.server")
+          : null;
+        const articles = knowledge ? await knowledge.collectKnowledge(question, request.signal) : null;
         const laws =
-          botId === "plan" ? [] : await collectLaws(bot.system, question, request.signal);
+          botId === "plan" ? [] : await collectLaws(
+            botId === "viden" ? articles?.sources.map(source => source.text).join("\n") ?? "" : bot.system,
+            botId === "viden" ? "" : question,
+            request.signal,
+          );
         const verifiedContext = botId === "plan" ? "" : lawContext(laws, question);
+        const articleContext = knowledge && articles ? knowledge.knowledgeContext(articles.sources, articles.failed) : "";
 
         const result = streamText({
           model,
-          ...(botId !== "plan"
+          ...(knowledge && articles
+            ? { experimental_transform: knowledge.knowledgeAnswerTransform(articles.sources, laws, question, articles.failed) }
+            : botId !== "plan"
             ? { experimental_transform: lawAnswerTransform(laws, question, botId) }
             : {}),
           system: `${bot.system}
 
 ${verifiedContext}
+
+${articleContext}
 
 DIREKTE LINKS TIL PARAGRAFFER: Når du henviser til en bestemt paragraf i en lov eller bekendtgørelse på retsinformation.dk, skal linket gå direkte til paragraffen ved at tilføje "#P" og paragrafnummeret til den verificerede adresse, fx https://www.retsinformation.dk/eli/lta/2026/442#P15 for § 15. Lav ét link pr. paragraf, og lad linkteksten nævne paragraffen (fx "[§ 15 i lov om arbejdsmiljø](https://www.retsinformation.dk/eli/lta/2026/442#P15)"). Gengiv også kort, hvad paragraffen siger, så brugeren får svaret direkte. Brug kun #P-ankre med paragrafnumre, du er sikker på.`,
           messages: modelMessages,
