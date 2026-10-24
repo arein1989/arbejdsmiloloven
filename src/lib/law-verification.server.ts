@@ -179,7 +179,7 @@ export function validateAnswer(answer: string, laws: VerifiedLaw[], question = "
     /§\s*\d/.test(answer) &&
     (!references.length ||
       references.some(({ text, number }) => {
-        const body = text.replace(new RegExp(`^§\\s*${number}\\.\\s*`), "");
+        const body = text.replace(new RegExp(`^§\\s*${number}\\.?\\s*`), "");
         const firstSentence = body.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim() ?? body.slice(0, 160);
         return !normalized.includes(firstSentence);
       }));
@@ -229,9 +229,33 @@ export function validateAnswer(answer: string, laws: VerifiedLaw[], question = "
 }
 
 // Hold generated legal text until validation, while retaining the upstream streaming call.
+export function validateProblemAnswer(answer: string, laws: VerifiedLaw[], question = "") {
+  const validated = validateAnswer(answer, laws, question);
+  if (
+    validated.startsWith("Jeg kan ikke bekræfte alle lovhenvisninger") ||
+    validated.startsWith("Jeg kan bekræfte dokumenternes aktuelle status, men ikke")
+  ) {
+    return `## 🔍 Afklaring
+Jeg kan ikke bekræfte lovgrundlaget for den foreslåede vurdering. Det betyder ikke, at du skal gentage de oplysninger, du allerede har givet. Nedenfor er generelle forebyggende anbefalinger, ikke en konkret juridisk vurdering.
+
+## ✅ Hvad bør virksomheden gøre?
+- Beskriv problemet og inddrag de berørte medarbejdere og arbejdsmiljørepræsentanten, hvis der er en.
+- Ved umiddelbar fare: afbryd det farlige arbejde og kontakt den ansvarlige leder.
+- Kortlæg de belastende opgaver og drøft mulige hjælpemidler og ændringer i arbejdsgangene, før I vælger en løsning.
+
+## 📖 Relevant lovgivning
+Den foreslåede lovhenvisning eller paragrafforklaring kunne ikke godkendes ved kildekontrollen. Jeg viser derfor ikke den ukontrollerede juridiske vurdering eller dens links.
+
+## 🎯 Anbefalet næste skridt
+Få den ansvarlige leder og de berørte medarbejdere til at gennemgå problemet og aftale en foreløbig forebyggende handling. Søg arbejdsmiljøfaglig rådgivning, hvis I er i tvivl om risikoen eller lovkravene.`;
+  }
+  return validated;
+}
+
 export function lawAnswerTransform(
   laws: VerifiedLaw[],
   question = "",
+  botId?: string,
 ): StreamTextTransform<ToolSet> {
   return () => {
     const buffers = new Map<string, string>();
@@ -245,7 +269,10 @@ export function lawAnswerTransform(
           controller.enqueue({
             type: "text-delta",
             id: chunk.id,
-            text: validateAnswer(buffers.get(chunk.id) ?? "", laws, question),
+            text:
+              botId === "problem"
+                ? validateProblemAnswer(buffers.get(chunk.id) ?? "", laws, question)
+                : validateAnswer(buffers.get(chunk.id) ?? "", laws, question),
           });
           buffers.delete(chunk.id);
         }
